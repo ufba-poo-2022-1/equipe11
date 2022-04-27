@@ -1,2 +1,79 @@
-//git commit -m "first commit"
-System.out.println("Teste");
+public class Aluno {
+	
+	private String matricula;
+	private String nome;
+	
+    public Aluno(String matricula, String nome) {
+    	this.matricula = matricula;
+    	this.nome = nome; 
+    }
+    
+    //Retorna matricula e nome do aluno
+    public String exibirAluno() {
+    	return matricula + ": "+ nome; 	
+    }
+    
+    //Retorna matricula
+    public String getMatricula() {
+    	return matricula;
+    }
+    
+    //Retorna nome
+    public String getNome() {
+    	return nome;
+    }
+    
+    //Trocar nome do aluno
+    public void setNome(String nome) {
+    	this.nome = nome;
+    }
+
+    public boolean equals(Object obj) {
+		Aluno other = (Aluno) obj;
+		if(this.matricula == null || other.matricula == null) {
+            System.out.print("null");
+			return false;
+			
+		}
+		if (this.hashCode() == other.hashCode()) {
+            System.out.print("MATRICULA IGUAIS HASHCODE");
+            
+            return true;			
+		}
+		if (this.matricula == other.matricula) {
+            System.out.print("MATRICULA IGUAIS");
+            
+            return true;
+        }
+        else {
+            System.out.print("ELSE");
+        	return false;
+        }
+    }
+    
+    public int hashCode() {
+    	return this.matricula.hashCode();
+    }
+
+    public static void main(String[] args) {
+    	Aluno aluno01 = new Aluno("00322301", "betino");
+    	Aluno aluno02 = new Aluno("00322301", "bedss");
+    	
+    	System.out.println(aluno01.hashCode());
+    	System.out.println(aluno02.hashCode());
+    	
+    	System.out.println(aluno01 == aluno02);
+    	
+    	System.out.println(" " + aluno01.equals(aluno02));
+
+    	Aluno aluno03 = new Aluno("0003231", "betino");
+    	Aluno aluno04 = new Aluno(null, "bedss");
+    	
+    	System.out.println(" " + aluno03.equals(aluno04));
+    	
+    	Aluno aluno05 = new Aluno("02201", "betino");
+    	Aluno aluno06 = new Aluno("02201", "betino");
+    	
+    	System.out.println(" " + aluno05.equals(aluno06));
+    }
+}
