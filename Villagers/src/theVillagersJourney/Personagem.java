@@ -15,6 +15,7 @@ public class Personagem {
 	
 	//Construtor para personagem(player)
 	public Personagem() {
+		// opa
 		
 	}
 
