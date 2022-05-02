@@ -8,6 +8,7 @@ public class Inimigo {
 	private int Força;
 	private int Defesa;
 	private int Agilidade;
+	private float Rupees;
 	
 	//Construtor inimigo
 	public Inimigo() {
