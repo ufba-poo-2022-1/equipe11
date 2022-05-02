@@ -1,7 +1,7 @@
 package theVillagersJourney;
 
 public class Equipamento {
-	
+	//sssasas
 	//Atributos do equipamento
 	private int ID;
 	private String Nome;
