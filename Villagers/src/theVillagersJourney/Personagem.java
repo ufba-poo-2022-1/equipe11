@@ -9,6 +9,7 @@ public class Personagem {
 	private int Defesa;
 	private int Agilidade;
 	private int Ouro;
+	private float Dinheiro;
 	// teste
 	
 	//Construtor para personagem(player)
