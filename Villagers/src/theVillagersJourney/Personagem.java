@@ -5,8 +5,8 @@ public class Personagem {
 	//Atributos do player
 	private String Nome;
 	private int Vida = 100;
-	private int Morte = 0;
 	private int Força = 5;
+	//PRIVATE
 	private int Defesa = 0;
 	private int Agilidade = 10;
 	private int Ouro = 0;
@@ -16,11 +16,7 @@ public class Personagem {
 	
 	//Construtor para personagem(player)
 	public Personagem() {
-		// opa
-		// TESTANDO VINI 1234333333
-		// VINI 1234
-	// NOVO COMMIT 456
-		/// TESTES E TESTESFFF
+
 	}
 
 }
