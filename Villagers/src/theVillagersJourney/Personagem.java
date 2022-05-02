@@ -17,7 +17,8 @@ public class Personagem {
 	//Construtor para personagem(player)
 	public Personagem() {
 		// opa
-		// TESTANDO VINI 1234
+		// TESTANDO VINI 1234333333
+		// VINI 1234
 	
 	}
 
