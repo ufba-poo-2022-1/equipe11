@@ -10,14 +10,15 @@ import java.awt.*;
 
 public class Intro extends JPanel implements Runnable{
 	JFrame window = new JFrame();
-	private String imagePath = "images//intro.jpg";
-	private int wait = 2000;
+	private String imagePath = "images//brasao_ufba.png";
+	private int wait = 1500;
 	private String audioFileName = "sounds//musicafundo.wav";
 	
 	public Intro(){
 		//Tocar audio
 		playAudio();
 		this.setPreferredSize(new Dimension(GameManager.SCREEN_WIDTH, GameManager.SCREEN_HEIGHT));
+		window.setBackground(Color.black);
 		//Criar janela
 		window.add(this);
 		//Fechar processos ao fechar janela
@@ -49,7 +50,7 @@ public class Intro extends JPanel implements Runnable{
 	
 	@Override
 	public void paint(Graphics g) {
-		g.drawImage(new ImageIcon(imagePath).getImage() ,-200 ,0 , null);
+		g.drawImage(new ImageIcon(imagePath).getImage() ,0 ,0 , null);
 	}
 
 	@Override
@@ -57,7 +58,6 @@ public class Intro extends JPanel implements Runnable{
 		try {
 			Thread.sleep(wait);
 			window.dispose();		
-			JOptionPane.showMessageDialog(null, "MENU TESTE TESTE");
 			//MENU CLASS
 			Menu menu = new Menu();
 		} catch (InterruptedException e) {
