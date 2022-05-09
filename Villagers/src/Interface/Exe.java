@@ -1,11 +1,15 @@
 package Interface;
 
+import javax.swing.SwingUtilities;
+
 public class Exe {
 
+	public static Janela janela;
+
 	public static void main(String[] args) {
-		
-		Thread gameThread = new Thread(new Intro());
+		janela = new Janela();
+		Thread gameThread = new Thread(janela);
 		gameThread.run();
-	}
+	} 
 
 }

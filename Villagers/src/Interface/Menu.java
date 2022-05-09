@@ -1,64 +1,79 @@
 package Interface;
 
-//Criação de janelas
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Menu {
-	//Criação de uma janela para o menu
-	private static JFrame menu = new JFrame();
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
-	//Criação de botão
-	private static void setupStartButton(Container pane) {		
-		//Criar botão
-				JButton button = new JButton();	
-		//Dimensões do botão (dimensões no parâmetro)
-		button.setPreferredSize(new Dimension(GameManager.SCREEN_WIDTH, GameManager.SCREEN_HEIGHT/5));
-		//Selecionar imagem para o botão
-		button.setIcon(new ImageIcon("images//start.png"));
-		//Definir o que o botão realiza ao ser pressionado
-		button.addActionListener(new ActionListener() {
-			//@Override
+
+public class Menu extends JPanel{
+	//Resolução da tela
+	final static int SCREEN_WIDTH = Intro.SCREEN_WIDTH;
+	final static int SCREEN_HEIGHT = Intro.SCREEN_HEIGHT;
+
+	public Menu(){	
+		//Panel
+		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));	
+		this.setBackground(Color.black);
+		this.setLayout(null);
+		
+		//Configurações botão jogar
+		JButton botaoJogar = new JButton("Jogar");	
+		botaoJogar.setIcon(new ImageIcon("images//start.png"));
+		botaoJogar.setBounds(SCREEN_WIDTH-500, 175, 400, 100);		
+		botaoJogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Método para fechar a janela
-				//frame.dispose();
-				
-				//Aqui iniciar o jogo, abrindo outra janela do jogo
-				//JOptionPane.showMessageDialog(null, "BOTAO BOTAO");
-				System.out.println("Botao sendo pressionado");
+				JOptionPane.showMessageDialog(null, "Botão jogar em construção");
+				System.out.println("Botao jogar sendo pressionado");
+				//Janela.cl.show(Janela.panelBase, "intro");		
 			}
 		});
+		this.add(botaoJogar);
 		
-		//Modelo de layout de borda, adicionando botão ao topo
-		pane.add(button, BorderLayout.SOUTH); //page_start = inicio pagina
-	}
-	
-	//Método para adicionar label no menu
-	private static void setupCenterImage(Container pane) {
-		JLabel label = new JLabel();
+		//Configurações botão Opções
+		JButton botaoOpcoes = new JButton("Opcoes");
+		botaoOpcoes.setIcon(new ImageIcon("images//start.png"));
+		botaoOpcoes.setBounds(SCREEN_WIDTH-500, 300, 400, 100);
+		
+		botaoOpcoes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Botão opções em construção");
+				System.out.println("Botao opções sendo pressionado");
+			}
+		});
+		this.add(botaoOpcoes);
+		
+		//Configurações botão sair
+		JButton botaoSair = new JButton("Sair");		
+		botaoSair.setIcon(new ImageIcon("images//start.png"));
+		botaoSair.setBounds(SCREEN_WIDTH-500, 425, 400, 100);
+		
+		botaoSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Botão sair em construção");
+				System.out.println("Botao sair sendo pressionado");
+				Exe.janela.dispose();
+			}
+		});
+		this.add(botaoSair);
+		this.setVisible(true);
 
-		label.setPreferredSize(new Dimension(GameManager.SCREEN_WIDTH/3, GameManager.SCREEN_HEIGHT/2));
-		label.setIcon(new ImageIcon("images//titulo.png"));
-		pane.add(label, BorderLayout.CENTER);
-	}
-	
-	//Adicionar componentes a janela
-	public static void addComponents(Container pane) {
-		pane.setComponentOrientation(java.awt.ComponentOrientation.LEFT_TO_RIGHT); 
-		pane.setBackground(Color.black);
-		setupStartButton(pane);
-		setupCenterImage(pane);
-	}
+	}	
 
-	//Construtor
-	public Menu() {
-		menu.setPreferredSize(new Dimension(GameManager.SCREEN_WIDTH, GameManager.SCREEN_HEIGHT));
-		menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		addComponents(menu.getContentPane());
-		menu.pack();
-		menu.setVisible(true);
+	@Override
+	public void paint(Graphics g) {
+		super.paint(g);
 
 	}
 }

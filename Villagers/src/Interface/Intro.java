@@ -1,68 +1,64 @@
 package Interface;
 
-//AUDIO
-import javax.sound.sampled.AudioSystem;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 
-//Criação de janelas
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
-import java.awt.*;
 
-public class Intro extends JPanel implements Runnable{
-	JFrame window = new JFrame();
-	private String imagePath = "images//brasao_ufba.png";
-	private int wait = 1500;
-	private String audioFileName = "sounds//musicafundo.wav";
+public class Intro extends JPanel{
+	//Resolução da tela
+	final static int SCREEN_WIDTH = 1366;
+	final static int SCREEN_HEIGHT = 768;
 	
-	public Intro(){
-		//Tocar audio
+	//Inicializar audio
+	public static AudioInputStream stream;
+	public static Clip clip;
+	String audioFileName = "sounds//UndetaleCompact.wav";
+	
+	//Delay para fechar introdução
+	static int wait = 2000;
+	
+	//Declaração imagem de fundo
+	Image Background;
+	String BackgroundPath = "images//brasao_ufba.png";
+	Image Background2;
+	String BackgroundPath2 = "images//candybox2.png";
+	
+	Intro(){
+		//Panel
 		playAudio();
-		this.setPreferredSize(new Dimension(GameManager.SCREEN_WIDTH, GameManager.SCREEN_HEIGHT));
-		window.setBackground(Color.black);
-		//Criar janela
-		window.add(this);
-		//Fechar processos ao fechar janela
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.pack();
-		
-		//FullScreen
-		window.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		window.setVisible(true);
+		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
+		this.setBackground(Color.black);
+				
+		Background = new ImageIcon(BackgroundPath).getImage();
+		Background2 = new ImageIcon(BackgroundPath2).getImage();
 	}
 	
+	//Pintura do quadro
+	@Override
+	public void paint(Graphics g) {
+		Graphics2D intro2D = (Graphics2D) g;
+		super.paint(intro2D);
+		intro2D.drawImage(Background, 0, 0, null);
+	}	
+	
+	//Leitura de arquivo .wav
 	public void playAudio(){
 		try {
 		File audioPath = new File(audioFileName);
-		//JAVA'S AUDIO INPUT STREAM
-		GameManager.stream = AudioSystem.getAudioInputStream(audioPath);
-		//REFERENCE TO AUDIO CLIP CLASS
-		GameManager.clip = AudioSystem.getClip();
-		//OPEN THE STREAM USING THE CLIP CLASS
-		GameManager.clip.open(GameManager.stream);
-		//MUSIC STARTS
-		GameManager.clip.start();
-		} //END OF TRY BLOCK
+		stream = AudioSystem.getAudioInputStream(audioPath);
+		clip = AudioSystem.getClip();
+		clip.open(stream);
+		clip.start();
+		}
+		
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		
 	}
-	
-	@Override
-	public void paint(Graphics g) {
-		g.drawImage(new ImageIcon(imagePath).getImage() ,0 ,0 , null);
-	}
-
-	@Override
-	public void run() {
-		try {
-			Thread.sleep(wait);
-			window.dispose();		
-			//MENU CLASS
-			Menu menu = new Menu();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-	
 }
