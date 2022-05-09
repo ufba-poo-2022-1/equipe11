@@ -21,7 +21,7 @@ public class Intro extends JPanel{
 	String audioFileName = "sounds//UndetaleCompact.wav";
 	
 	//Delay para fechar introdução
-	static int wait = 200;
+	static int wait = 1500;
 	
 	//Declaração imagem de fundo
 	Image Background;
