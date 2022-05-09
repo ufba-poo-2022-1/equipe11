@@ -63,6 +63,7 @@ public class Menu extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "Botão sair em construção");
 				System.out.println("Botao sair sendo pressionado");
+				Intro.clip.stop();
 				Exe.janela.dispose();
 			}
 		});
