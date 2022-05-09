@@ -8,6 +8,7 @@ public class Janela extends JFrame implements Runnable {
 		static JPanel panelBase = new JPanel();
 		static Menu menu = new Menu();
 		static Intro intro = new Intro();
+		static animacao animacao = new animacao();
 		
 		String TituloJanela = "The Villager's Journey";
 		
@@ -15,6 +16,7 @@ public class Janela extends JFrame implements Runnable {
 		panelBase.setLayout(cl);
 		panelBase.add(intro, "intro");		
 		panelBase.add(menu, "menu");
+		panelBase.add(animacao, "animacao");
 		cl.show(panelBase, "intro");
 		
 		this.setTitle(TituloJanela);		

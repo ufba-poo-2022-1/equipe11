@@ -48,8 +48,8 @@ public class Menu extends JPanel{
 		
 		botaoOpcoes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Botão opções em construção");
 				System.out.println("Botao opções sendo pressionado");
+				Janela.cl.show(Janela.panelBase, "animacao");
 			}
 		});
 		this.add(botaoOpcoes);
