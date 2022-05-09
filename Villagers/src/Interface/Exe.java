@@ -8,8 +8,6 @@ public class Exe {
 
 	public static void main(String[] args) {
 		janela = new Janela();
-		Thread gameThread = new Thread(janela);
-		gameThread.run();
 	} 
 
 }

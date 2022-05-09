@@ -23,20 +23,24 @@ public class Intro extends JPanel{
 	//Delay para fechar introdução
 	static int wait = 1500;
 	
-	//Declaração imagem de fundo
-	Image Background;
-	String BackgroundPath = "images//brasao_ufba.png";
-	Image Background2;
-	String BackgroundPath2 = "images//candybox2.png";
-	
 	Intro(){
 		//Panel
 		playAudio();
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		this.setBackground(Color.black);
-				
-		Background = new ImageIcon(BackgroundPath).getImage();
-		Background2 = new ImageIcon(BackgroundPath2).getImage();
+		this.setLayout(null);
+
+		
+		//Configurações botão jogar
+		JButton botaoMenu = new JButton("");	
+		botaoMenu.setIcon(new ImageIcon("images//introducao_black.png"));
+		botaoMenu.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);		
+		botaoMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Janela.cl.show(Janela.panelBase, "menu");	
+			}
+		});
+		this.add(botaoMenu);
 	}
 	
 	//Pintura do quadro
@@ -44,7 +48,6 @@ public class Intro extends JPanel{
 	public void paint(Graphics g) {
 		Graphics2D intro2D = (Graphics2D) g;
 		super.paint(intro2D);
-		intro2D.drawImage(Background, 0, 0, null);
 	}	
 	
 	//Leitura de arquivo .wav

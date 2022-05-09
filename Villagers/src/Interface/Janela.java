@@ -3,7 +3,7 @@ package Interface;
 import javax.swing.*;
 import java.awt.*;
 
-public class Janela extends JFrame implements Runnable {		
+public class Janela extends JFrame{		
 		static CardLayout cl = new CardLayout();
 		static JPanel panelBase = new JPanel();
 		static Menu menu = new Menu();
@@ -25,19 +25,6 @@ public class Janela extends JFrame implements Runnable {
 		this.pack();
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
-	}
-
-	@Override
-	public void run() {
-		try {
-			Thread.sleep(Intro.wait);
-			
-			//Exibir menu			
-			cl.show(panelBase, "menu");
-			
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 	}
 
 }
