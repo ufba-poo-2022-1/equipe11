@@ -12,8 +12,8 @@ import javax.swing.*;
 
 public class Intro extends JPanel{
 	//Resolução da tela
-	final static int SCREEN_WIDTH = 1366;
-	final static int SCREEN_HEIGHT = 768;
+	public final static int SCREEN_WIDTH = 1366;
+	public final static int SCREEN_HEIGHT = 768;
 	
 	//Inicializar audio
 	public static AudioInputStream stream;

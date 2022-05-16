@@ -1,14 +1,20 @@
 package Interface;
 
 import javax.swing.*;
+import cenários.*;
+
 import java.awt.*;
 
 public class Janela extends JFrame{		
+		//Card Layout
 		static CardLayout cl = new CardLayout();
 		static JPanel panelBase = new JPanel();
+		
+		//Cenas a serem inseridas na janela
 		static Menu menu = new Menu();
 		static Intro intro = new Intro();
 		static animacao animacao = new animacao();
+		static Cena02 cena02 = new Cena02();
 		
 		String TituloJanela = "The Villager's Journey";
 		
@@ -17,6 +23,7 @@ public class Janela extends JFrame{
 		panelBase.add(intro, "intro");		
 		panelBase.add(menu, "menu");
 		panelBase.add(animacao, "animacao");
+		panelBase.add(cena02, "cena02");
 		cl.show(panelBase, "intro");
 		
 		this.setTitle(TituloJanela);		

@@ -40,9 +40,7 @@ public class Menu extends JPanel{
 		botaoJogar.setBounds(SCREEN_WIDTH-500, 175, 360, 100);		
 		botaoJogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "Botão jogar em construção");
-				System.out.println("Botao jogar sendo pressionado");
-				Janela.cl.show(Janela.panelBase, "animacao");	
+				Janela.cl.show(Janela.panelBase, "cena02");					
 			}
 		});
 		this.add(botaoJogar);
@@ -55,7 +53,8 @@ public class Menu extends JPanel{
 		botaoOpcoes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Botao opções sendo pressionado");
-				JOptionPane.showMessageDialog(null, "Botão opções em construção");				
+				JOptionPane.showMessageDialog(null, "Botão opções em construção");	
+				Janela.cl.show(Janela.panelBase, "animacao");
 			}
 		});
 		this.add(botaoOpcoes);
