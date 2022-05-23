@@ -1,0 +1,7 @@
+<project default="compile">
+    <target name="compile">
+        <mkdir dir="Villagers/bin"/>
+        <javac srcdir="Villagers/src" destdir="Villagers/bin"/>
+    </target>
+</project>
+
