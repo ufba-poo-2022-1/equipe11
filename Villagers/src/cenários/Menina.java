@@ -12,13 +12,15 @@ public class Menina {
 	Image MeninaDireita02;
 	String MeninaDireita02Path = "images//Menina//michica_parada_3.png";
 	
-	Image MeninaEsquerda01;
+	public Image MeninaEsquerda01;
 	String MeninaEsquerda01Path = "images//Menina//michica_parada_left2.png";
 	Image MeninaEsquerda02;
 	String MeninaEsquerda02Path = "images//Menina//michica_parada_left3.png";
 	
 	//Posição inicial da menina
-	int x, y;
+	public int x;
+	public int y;
+	public boolean orientacaoMenina = false;
 	
 	int estado;
 	//Estado 1 para menina normal, 2 para endiabrada, maluca, surtada
@@ -36,7 +38,12 @@ public class Menina {
 	}
 	
 	public void draw(Graphics g) {
-		g.drawImage(MeninaEsquerda01, x, y, null);
+		if(orientacaoMenina) {
+			g.drawImage(MeninaDireita01, x, y, null);
+		}
+		else {
+			g.drawImage(MeninaEsquerda01, x, y, null);
+		}
 		
 	}
 

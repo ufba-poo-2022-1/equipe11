@@ -36,8 +36,9 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	Menina menina = new Menina(1,200,200);
 
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
-	Caminhos caminhos = new Caminhos(1);
-		
+	Caminhos caminhos = new Caminhos(4);
+
+			
 	public Cena02(){ 
 		//
 		//Inicialização do painel	
@@ -67,13 +68,34 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		/*if(player.x > menina.x && player.x < menina.x + (player.parado01.getWidth(null)) && 
+		   player.y > menina.y && player.y < menina.y + (player.parado01.getHeight(null))){
+			if(player.x > menina.x){
+				player.x = player.x - player.velMax;
+			}
+			if(player.y > menina.y) {
+				player.y = player.y - player.velMax;
+            }
+			if(player.x < menina.x + (player.parado01.getWidth(null))) {
+				player.x = player.x + player.velMax;
+			}
+			if(player.y < menina.y + (player.parado01.getHeight(null))) {
+				player.y = player.y + player.velMax;
+			}
+		}  */
 		player.x = player.x + player.velx;
 		player.y = player.y + player.vely;
 		player.personagemDelay += 1;
         if(player.personagemDelay > (player.TrocaPosição*2)) {
         	player.personagemDelay = 0;
         }
-
+        if(player.x > menina.x) {
+        	menina.orientacaoMenina = true;
+        }
+        else {
+        	menina.orientacaoMenina = false;
+        }
+        
         repaint();
 		
 	}
@@ -102,11 +124,14 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 			System.out.println("key D Pressed");
 			player.d = true;
 			player.right();
-			
+		
 			player.aaux = false;
 			player.daux = true;
 		}		
 	}
+		
+	
+	
 	
 	public void keyTyped(KeyEvent e) {}
 	

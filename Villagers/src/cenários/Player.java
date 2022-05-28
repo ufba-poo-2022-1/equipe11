@@ -53,6 +53,7 @@ public class Player extends JPanel  {
 	public int y;
 	public int velx = 0;
 	public int vely = 0;
+	public int velMax = 4;
 	public boolean w = false, s = false, a = false, d = false, aaux = false, daux = false;
 	
 	
