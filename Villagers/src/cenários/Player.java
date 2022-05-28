@@ -1,34 +1,18 @@
 package cenários;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.geom.Ellipse2D;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
-import Interface.Intro;
-
-public class Cena02 extends JPanel implements ActionListener, KeyListener{
-	//Resolução da tela
-	final static int SCREEN_WIDTH = Intro.SCREEN_WIDTH;
-	final static int SCREEN_HEIGHT = Intro.SCREEN_HEIGHT;
-		
-	//Timer ajustes, delay define intervalo(ms) em que ações são percebidas
-	Timer timer;
-	int delay = 10; 
-	
+public class Player extends JPanel  {
 	//Parametrização animação personagem
-	int personagemDelay = 0;
+	public int personagemDelay = 0;
 	//Intervalo de tempo entre frames da animação do personagem
 	//Cada unidade multiplica o delay (TrocaPosição = delay * unidade)
-	int TrocaPosição = 15;
+	public int TrocaPosição = 15;
 	
 	//Imagens e seus caminhos
 	//Player parado
@@ -36,6 +20,12 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	String pathParado01 = "images//player//parado//player_parado1.png";
 	Image parado02;
 	String pathParado02 = "images//player//parado//player_parado2.png";
+	
+	//Player esquerda
+	Image paradoEsquerda01;
+	String pathParadoEsquerda01 = "images//player//parado//player_parado_left1.png";
+	Image paradoEsquerda02;
+	String pathParadoEsquerda02 = "images//player//parado//player_parado_left2.png";
 	
 	//Player andando para direita
 	Image direita01;
@@ -59,16 +49,33 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	
 	
 	//Parâmetros para movimentação, velocidade inicial e posição inicial
-	public static int x = 0, y = 0, velx = 0, vely = 0;
-	boolean w = false, s = false, a = false, d = false;
+	public int x;
+	public int y;
+	public int velx = 0;
+	public int vely = 0;
+	public boolean w = false, s = false, a = false, d = false, aaux = false, daux = false;
+	
+	
+	public boolean direita = false;
+	String orientação;
+	//
+	//Parâmetros x e y para definir posição inicial
+	//Orientação indica a direção que o player inicia, caso "Direita" a orientação é direita
+	public Player(int x, int y, String orientação) {
+		this.x = x;
+		this.y = y;
+		this.orientação = orientação;
 		
-	public Cena02(){ 
+		if(orientação == "Direita") {
+			direita = true;
+		}		
+				
 		
-		//Inicialização do painel	
-		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
-		this.setBackground(Color.black);
 		parado01 = new ImageIcon(pathParado01).getImage();
 		parado02 = new ImageIcon(pathParado02).getImage();
+		paradoEsquerda01 = new ImageIcon(pathParadoEsquerda01).getImage();
+		paradoEsquerda02 = new ImageIcon(pathParadoEsquerda02).getImage();
+		
 		direita01 = new ImageIcon(pathDireita01).getImage();
 		direita02 = new ImageIcon(pathDireita02).getImage();
 		direita03 = new ImageIcon(pathDireita03).getImage();
@@ -77,27 +84,29 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		esquerda02 = new ImageIcon(pathEsquerda02).getImage();
 		esquerda03 = new ImageIcon(pathEsquerda03).getImage();
 		esquerda04 = new ImageIcon(pathEsquerda04).getImage();
-		
-		
-		//Timer iniciado
-		timer = new Timer(delay, this);
-		timer.start();
-		
-		//Parâmetros para detecção do teclado
-		requestFocusInWindow();
-		addKeyListener(this);
-		setFocusable(true);
-		setFocusTraversalKeysEnabled(false);
-		
 	}
 	
-	@Override
-	public void paintComponent(Graphics g) {
-		requestFocusInWindow();
+	public void up() {
+        vely = -4;
+    }
+
+    public void down() {
+        vely = 4;
+    }
+
+    public void left() {
+        velx = -4;
+    }
+
+    public void right() {
+        velx = 4;
+    }
+
+	public void draw(Graphics g) {
 		Graphics2D cena022D = (Graphics2D) g;
 		super.paintComponent(cena022D);
 		
-		if (w == true & d == true | s == true & d == true | d == true) {
+		if (w == true & d == true | s == true & d == true |  daux == true) {
 			if (personagemDelay <= TrocaPosição/2) {
 				cena022D.drawImage(direita01, x, y, null);
 			}
@@ -112,7 +121,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 			}	
 		}
 		
-		else if (w == true & a == true | s == true & a == true | a == true) {
+		else if (w == true & a == true | s == true & a == true | aaux == true) {
 			if (personagemDelay <= TrocaPosição/2) {
 				cena022D.drawImage(esquerda01, x, y, null);
 			}
@@ -143,106 +152,25 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		}
 		
 		else {	
-			if (personagemDelay <= TrocaPosição) {
-				cena022D.drawImage(parado01, x, y, null);
+			if(direita) {
+				if (personagemDelay <= TrocaPosição) {
+					cena022D.drawImage(parado01, x, y, null);
+				}
+				else if (personagemDelay <= (TrocaPosição*2)) {
+					cena022D.drawImage(parado02, x, y, null);
+				}
 			}
-			else if (personagemDelay <= (TrocaPosição*2)) {
-				cena022D.drawImage(parado02, x, y, null);
-			}					
-		}
-		
-	}
-	
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		x = x + velx;
-		y = y + vely;
-		personagemDelay += 1;
-		if(personagemDelay > (TrocaPosição*2)) {
-			personagemDelay = 0;
+			else {
+				if (personagemDelay <= TrocaPosição) {
+					cena022D.drawImage(paradoEsquerda01, x, y, null);
+				}
+				else if (personagemDelay <= (TrocaPosição*2)) {
+					cena022D.drawImage(paradoEsquerda02, x, y, null);
+				}
+				
+			}
+								
 		}
 
-		repaint();
-	}
-	
-	public void up() {
-		vely = -4;		
-	}
-	
-	public void down() {
-		vely = 4;		
-	}
-	
-	public void left() {		
-		velx = -4;
-	}
-	
-	public void right() {		
-		velx = 4;
-	}
-	
-	@Override
-	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_W) {
-			System.out.println("key W Pressed");
-			w = true;
-			up();
-		}
-		if (e.getKeyCode() == KeyEvent.VK_S) {
-			System.out.println("key S Pressed");
-			s =  true;
-			down();
-		}
-		if (e.getKeyCode() == KeyEvent.VK_A) {
-			System.out.println("key A Pressed");
-			a = true;
-			left();
-		}
-		if (e.getKeyCode() == KeyEvent.VK_D) {
-			System.out.println("key D Pressed");
-			d = true;
-			right();
-		}		
-	}
-	
-	public void keyTyped(KeyEvent e) {}
-	
-	public void keyReleased(KeyEvent e) {
-		//iguala zero aqui para parar o movimento quanto soltar o botao
-		if (e.getKeyCode() == KeyEvent.VK_W) {
-			System.out.println("key W Realeased");
-			w = false;
-			vely = 0;
-		}
-		if (e.getKeyCode() == KeyEvent.VK_S) {
-			System.out.println("key S Realeased");
-			s = false;
-			vely = 0;
-		}
-		if (e.getKeyCode() == KeyEvent.VK_A) {
-			System.out.println("key A Realeased");
-			a = false;
-			velx = 0;
-		}
-		if (e.getKeyCode() == KeyEvent.VK_D) {
-			System.out.println("key D Realeased");
-			d = false;
-			velx = 0;
-		}
-		
-		if(w == true & s == false) {
-			up();
-		}
-		else if(w == false & s == true) {
-			down();
-		}
-		
-		if(a == true & d == false) {
-			left();
-		}
-		else if(a == false & d == true) {
-			right();
-		}
 	}
 }
