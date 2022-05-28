@@ -1,34 +1,18 @@
 package cenários;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.geom.Ellipse2D;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
-import Interface.Intro;
-
-public class Cena02 extends JPanel implements ActionListener, KeyListener{
-	//Resolução da tela
-	final static int SCREEN_WIDTH = Intro.SCREEN_WIDTH;
-	final static int SCREEN_HEIGHT = Intro.SCREEN_HEIGHT;
-		
-	//Timer ajustes, delay define intervalo(ms) em que ações são percebidas
-	Timer timer;
-	int delay = 10; 
-	
+public class Player extends JPanel  {
 	//Parametrização animação personagem
-	int personagemDelay = 0;
+	public int personagemDelay = 0;
 	//Intervalo de tempo entre frames da animação do personagem
 	//Cada unidade multiplica o delay (TrocaPosição = delay * unidade)
-	int TrocaPosição = 15;
+	public int TrocaPosição = 15;
 	
 	//Imagens e seus caminhos
 	//Player parado
@@ -59,14 +43,15 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	
 	
 	//Parâmetros para movimentação, velocidade inicial e posição inicial
-	public static int x = 0, y = 0, velx = 0, vely = 0;
-	boolean w = false, s = false, a = false, d = false;
+	public int x;
+	public int y;
+	public int velx = 0;
+	public int vely = 0;
+	public boolean w = false, s = false, a = false, d = false;
+	
+	//Parâmetros x e y para definir posição inicial
+	public Player(int x, int y) {
 		
-	public Cena02(){ 
-		
-		//Inicialização do painel	
-		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
-		this.setBackground(Color.black);
 		parado01 = new ImageIcon(pathParado01).getImage();
 		parado02 = new ImageIcon(pathParado02).getImage();
 		direita01 = new ImageIcon(pathDireita01).getImage();
@@ -77,23 +62,25 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		esquerda02 = new ImageIcon(pathEsquerda02).getImage();
 		esquerda03 = new ImageIcon(pathEsquerda03).getImage();
 		esquerda04 = new ImageIcon(pathEsquerda04).getImage();
-		
-		
-		//Timer iniciado
-		timer = new Timer(delay, this);
-		timer.start();
-		
-		//Parâmetros para detecção do teclado
-		requestFocusInWindow();
-		addKeyListener(this);
-		setFocusable(true);
-		setFocusTraversalKeysEnabled(false);
-		
 	}
 	
-	@Override
-	public void paintComponent(Graphics g) {
-		requestFocusInWindow();
+	public void up() {
+        vely = -4;
+    }
+
+    public void down() {
+        vely = 4;
+    }
+
+    public void left() {
+        velx = -4;
+    }
+
+    public void right() {
+        velx = 4;
+    }
+
+	public void draw(Graphics g) {
 		Graphics2D cena022D = (Graphics2D) g;
 		super.paintComponent(cena022D);
 		
@@ -151,98 +138,5 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 			}					
 		}
 		
-	}
-	
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		x = x + velx;
-		y = y + vely;
-		personagemDelay += 1;
-		if(personagemDelay > (TrocaPosição*2)) {
-			personagemDelay = 0;
-		}
-
-		repaint();
-	}
-	
-	public void up() {
-		vely = -4;		
-	}
-	
-	public void down() {
-		vely = 4;		
-	}
-	
-	public void left() {		
-		velx = -4;
-	}
-	
-	public void right() {		
-		velx = 4;
-	}
-	
-	@Override
-	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_W) {
-			System.out.println("key W Pressed");
-			w = true;
-			up();
-		}
-		if (e.getKeyCode() == KeyEvent.VK_S) {
-			System.out.println("key S Pressed");
-			s =  true;
-			down();
-		}
-		if (e.getKeyCode() == KeyEvent.VK_A) {
-			System.out.println("key A Pressed");
-			a = true;
-			left();
-		}
-		if (e.getKeyCode() == KeyEvent.VK_D) {
-			System.out.println("key D Pressed");
-			d = true;
-			right();
-		}		
-	}
-	
-	public void keyTyped(KeyEvent e) {}
-	
-	public void keyReleased(KeyEvent e) {
-		//iguala zero aqui para parar o movimento quanto soltar o botao
-		if (e.getKeyCode() == KeyEvent.VK_W) {
-			System.out.println("key W Realeased");
-			w = false;
-			vely = 0;
-		}
-		if (e.getKeyCode() == KeyEvent.VK_S) {
-			System.out.println("key S Realeased");
-			s = false;
-			vely = 0;
-		}
-		if (e.getKeyCode() == KeyEvent.VK_A) {
-			System.out.println("key A Realeased");
-			a = false;
-			velx = 0;
-		}
-		if (e.getKeyCode() == KeyEvent.VK_D) {
-			System.out.println("key D Realeased");
-			d = false;
-			velx = 0;
-		}
-		
-		if(w == true & s == false) {
-			up();
-		}
-		else if(w == false & s == true) {
-			down();
-		}
-		
-		if(a == true & d == false) {
-			left();
-		}
-		else if(a == false & d == true) {
-			right();
-		}
 	}
 }
