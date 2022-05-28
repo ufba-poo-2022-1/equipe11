@@ -58,7 +58,7 @@ public class Player extends JPanel  {
 	
 	public boolean direita = false;
 	String orientação;
-	
+	//
 	//Parâmetros x e y para definir posição inicial
 	//Orientação indica a direção que o player inicia, caso "Direita" a orientação é direita
 	public Player(int x, int y, String orientação) {
@@ -171,6 +171,6 @@ public class Player extends JPanel  {
 			}
 								
 		}
-		
+
 	}
 }

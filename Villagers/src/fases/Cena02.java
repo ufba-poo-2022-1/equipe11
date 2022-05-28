@@ -39,7 +39,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	Caminhos caminhos = new Caminhos(1);
 		
 	public Cena02(){ 
-		
+		//
 		//Inicialização do painel	
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		this.setBackground(Color.black);
