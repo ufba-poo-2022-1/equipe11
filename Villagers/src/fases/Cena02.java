@@ -30,7 +30,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	int delay = 10; 
 	
 	//Inicializando player
-	Player player = new Player(0,0);
+	Player player = new Player(0,0, "Direita");
 	
 	//Inicializar menina
 	Menina menina = new Menina(1,200,200);
@@ -94,11 +94,17 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 			System.out.println("key A Pressed");
 			player.a = true;
 			player.left();
+			
+			player.daux = false;
+			player.aaux = true;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_D) {
 			System.out.println("key D Pressed");
 			player.d = true;
 			player.right();
+			
+			player.aaux = false;
+			player.daux = true;
 		}		
 	}
 	
@@ -111,20 +117,37 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 			player.w = false;
 			player.vely = 0;
 		}
+		
 		if (e.getKeyCode() == KeyEvent.VK_S) {
 			System.out.println("key S Realeased");
 			player.s = false;
 			player.vely = 0;
 		}
+		
 		if (e.getKeyCode() == KeyEvent.VK_A) {
 			System.out.println("key A Realeased");
 			player.a = false;
 			player.velx = 0;
+			
+			player.direita = false;
+			
+			if(player.d) {
+				player.daux = true;
+			}
+			player.aaux = false;
+			
 		}
 		if (e.getKeyCode() == KeyEvent.VK_D) {
 			System.out.println("key D Realeased");
 			player.d = false;
 			player.velx = 0;
+			
+			player.direita = true;
+			
+			if(player.a) {
+				player.aaux = true;
+			}
+			player.daux = false;
 		}
 
 		if(player.w == true & player.s == false) {

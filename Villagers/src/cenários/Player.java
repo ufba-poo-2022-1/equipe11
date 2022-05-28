@@ -21,6 +21,12 @@ public class Player extends JPanel  {
 	Image parado02;
 	String pathParado02 = "images//player//parado//player_parado2.png";
 	
+	//Player esquerda
+	Image paradoEsquerda01;
+	String pathParadoEsquerda01 = "images//player//parado//player_parado_left1.png";
+	Image paradoEsquerda02;
+	String pathParadoEsquerda02 = "images//player//parado//player_parado_left2.png";
+	
 	//Player andando para direita
 	Image direita01;
 	String pathDireita01 = "images//player//direita//player_andando_right1.png";
@@ -47,13 +53,29 @@ public class Player extends JPanel  {
 	public int y;
 	public int velx = 0;
 	public int vely = 0;
-	public boolean w = false, s = false, a = false, d = false;
+	public boolean w = false, s = false, a = false, d = false, aaux = false, daux = false;
+	
+	
+	public boolean direita = false;
+	String orientação;
 	
 	//Parâmetros x e y para definir posição inicial
-	public Player(int x, int y) {
+	//Orientação indica a direção que o player inicia, caso "Direita" a orientação é direita
+	public Player(int x, int y, String orientação) {
+		this.x = x;
+		this.y = y;
+		this.orientação = orientação;
+		
+		if(orientação == "Direita") {
+			direita = true;
+		}		
+				
 		
 		parado01 = new ImageIcon(pathParado01).getImage();
 		parado02 = new ImageIcon(pathParado02).getImage();
+		paradoEsquerda01 = new ImageIcon(pathParadoEsquerda01).getImage();
+		paradoEsquerda02 = new ImageIcon(pathParadoEsquerda02).getImage();
+		
 		direita01 = new ImageIcon(pathDireita01).getImage();
 		direita02 = new ImageIcon(pathDireita02).getImage();
 		direita03 = new ImageIcon(pathDireita03).getImage();
@@ -84,7 +106,7 @@ public class Player extends JPanel  {
 		Graphics2D cena022D = (Graphics2D) g;
 		super.paintComponent(cena022D);
 		
-		if (w == true & d == true | s == true & d == true | d == true) {
+		if (w == true & d == true | s == true & d == true |  daux == true) {
 			if (personagemDelay <= TrocaPosição/2) {
 				cena022D.drawImage(direita01, x, y, null);
 			}
@@ -99,7 +121,7 @@ public class Player extends JPanel  {
 			}	
 		}
 		
-		else if (w == true & a == true | s == true & a == true | a == true) {
+		else if (w == true & a == true | s == true & a == true | aaux == true) {
 			if (personagemDelay <= TrocaPosição/2) {
 				cena022D.drawImage(esquerda01, x, y, null);
 			}
@@ -130,12 +152,24 @@ public class Player extends JPanel  {
 		}
 		
 		else {	
-			if (personagemDelay <= TrocaPosição) {
-				cena022D.drawImage(parado01, x, y, null);
+			if(direita) {
+				if (personagemDelay <= TrocaPosição) {
+					cena022D.drawImage(parado01, x, y, null);
+				}
+				else if (personagemDelay <= (TrocaPosição*2)) {
+					cena022D.drawImage(parado02, x, y, null);
+				}
 			}
-			else if (personagemDelay <= (TrocaPosição*2)) {
-				cena022D.drawImage(parado02, x, y, null);
-			}					
+			else {
+				if (personagemDelay <= TrocaPosição) {
+					cena022D.drawImage(paradoEsquerda01, x, y, null);
+				}
+				else if (personagemDelay <= (TrocaPosição*2)) {
+					cena022D.drawImage(paradoEsquerda02, x, y, null);
+				}
+				
+			}
+								
 		}
 		
 	}
