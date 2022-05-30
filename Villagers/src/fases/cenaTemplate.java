@@ -68,12 +68,15 @@ public class cenaTemplate extends JPanel implements ActionListener, KeyListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
+    	//Algoritmo Movimentação e animação player
         player.x = player.x + player.velx;
         player.y = player.y + player.vely;
         player.personagemDelay += 1;
         if(player.personagemDelay > (player.TrocaPosição*2)) {
             player.personagemDelay = 0;
         }
+        
+      //Algoritmo para menina olhar em direção ao player
         if(player.x > menina.x) {
             menina.orientacaoMenina = true;
         }
@@ -117,7 +120,6 @@ public class cenaTemplate extends JPanel implements ActionListener, KeyListener{
     public void keyTyped(KeyEvent e) {}
     
     public void keyReleased(KeyEvent e) {
-        //iguala zero aqui para parar o movimento quanto soltar o botao
         if (e.getKeyCode() == KeyEvent.VK_W) {
             player.w = false;
             player.vely = 0;
