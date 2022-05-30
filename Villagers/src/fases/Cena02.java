@@ -11,10 +11,10 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 
 import Interface.Intro;
-import cenários.Caminhos;
-import cenários.Decorativos;
-import cenários.Menina;
-import cenários.Player;
+import cenarios.Caminhos;
+import cenarios.Decorativos;
+import cenarios.Menina;
+import cenarios.Player;
 
 public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	/**
@@ -41,7 +41,6 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	
 	Decorativos decorativos = new Decorativos(1, 300, 300);
 	Decorativos decorativos2 = new Decorativos(0, 400, 300);
-
 			
 	public Cena02(){ 
 		//

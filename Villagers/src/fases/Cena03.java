@@ -11,10 +11,10 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 
 import Interface.Intro;
-import cenários.Caminhos;
-import cenários.Decorativos;
-import cenários.Menina;
-import cenários.Player;
+import cenarios.Caminhos;
+import cenarios.Decorativos;
+import cenarios.Menina;
+import cenarios.Player;
 
 public class Cena03 extends JPanel implements ActionListener, KeyListener{
     /**

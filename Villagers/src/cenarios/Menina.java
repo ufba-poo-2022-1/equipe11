@@ -1,4 +1,4 @@
-package cenários;
+package cenarios;
 
 import java.awt.Graphics;
 import java.awt.Image;
