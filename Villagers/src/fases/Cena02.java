@@ -91,7 +91,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		player.x = player.x + player.velx;
 		player.y = player.y + player.vely;
 		player.personagemDelay += 1;
-        if(player.personagemDelay > (player.TrocaPosição*2)) {
+        if(player.personagemDelay > (player.TrocaPosicao*2)) {
         	player.personagemDelay = 0;
         }
         if(player.x > menina.x) {
