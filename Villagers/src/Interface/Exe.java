@@ -1,7 +1,5 @@
 package Interface;
 
-import javax.swing.SwingUtilities;
-
 public class Exe {
 
 	public static Janela janela;

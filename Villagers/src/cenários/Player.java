@@ -8,6 +8,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class Player extends JPanel  {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//Parametrização animação personagem
 	public int personagemDelay = 0;
 	//Intervalo de tempo entre frames da animação do personagem

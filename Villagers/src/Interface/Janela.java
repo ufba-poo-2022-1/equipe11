@@ -1,12 +1,15 @@
 package Interface;
 
 import javax.swing.*;
-import cenários.*;
 import fases.Cena02;
 
 import java.awt.*;
 
 public class Janela extends JFrame{		
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 		//Card Layout
 		static CardLayout cl = new CardLayout();
 		static JPanel panelBase = new JPanel();
