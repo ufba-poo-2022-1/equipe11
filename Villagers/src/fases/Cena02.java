@@ -12,6 +12,7 @@ import javax.swing.*;
 
 import Interface.Intro;
 import cenários.Caminhos;
+import cenários.Decorativos;
 import cenários.Menina;
 import cenários.Player;
 
@@ -30,13 +31,16 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	int delay = 10; 
 	
 	//Inicializando player
-	Player player = new Player(0,0, "Direita");
+	Player player = new Player(1200,600, "sda");
 	
 	//Inicializar menina
-	Menina menina = new Menina(1,200,200);
+	Menina menina = new Menina(1,500,500);
 
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
 	Caminhos caminhos = new Caminhos(4);
+	
+	Decorativos decorativos = new Decorativos(1, 300, 300);
+	Decorativos decorativos2 = new Decorativos(0, 400, 300);
 
 			
 	public Cena02(){ 
@@ -62,6 +66,8 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		super.paint(g);
 		
 		caminhos.draw(g);
+		decorativos.draw(g);
+		decorativos2.draw(g);
 		menina.draw(g);
 		player.draw(g);
 	}

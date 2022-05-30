@@ -17,10 +17,12 @@ public class Decorativos {
 	Image Decorativos01;
 	String Decorativos01Path = "images//Decorativos//plaquinha.png";
 	
-int numeroDecorativo;
+int numeroDecorativo, x, y;
 	
-	public Decorativos(int numeroDecorativo) {
+	public Decorativos(int numeroDecorativo, int x, int y) {
 		this.numeroDecorativo = numeroDecorativo;
+		this.x = x;
+		this.y = y;
 		
 		Decorativos00 = new ImageIcon(Decorativos00Path).getImage();
 		Decorativos01 = new ImageIcon(Decorativos01Path).getImage();
@@ -30,7 +32,7 @@ int numeroDecorativo;
 	}		
 	
 	public void draw(Graphics g) {
-		g.drawImage(Decorativos.get(numeroDecorativo), 0, 0, null);
+		g.drawImage(Decorativos.get(numeroDecorativo), x, y, null);
 		
 	}
 }
