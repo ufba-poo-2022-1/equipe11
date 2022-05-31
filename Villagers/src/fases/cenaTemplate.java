@@ -68,6 +68,51 @@ public class cenaTemplate extends JPanel implements ActionListener, KeyListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
+    	//Algoritmo de colisão com a menina.
+		if (player.x >= menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
+				(player.y >= menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 && 
+				player.y <= menina.y + menina.MeninaEsquerda01.getHeight(null)*0.7 ) &&
+				player.x <= menina.x) {
+			
+			player.x = player.x - player.velMax;
+		}
+
+		else if (player.x <= menina.x + menina.MeninaEsquerda01.getWidth(null)/2 && 
+				(player.y >= menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 &&
+				player.y <= menina.y + menina.MeninaEsquerda01.getHeight(null)*0.7 ) &&
+				player.x >= menina.x) {
+			
+			player.x = player.x + player.velMax;
+		}
+
+		if (player.y >= menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 - player.velMax &&
+				(player.x >= menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
+				player.x <= menina.x + menina.MeninaEsquerda01.getWidth(null)/2) &&
+				player.y <= menina.y) {
+			player.y = player.y - player.velMax;
+		}
+			
+		else if (player.y <= menina.y + menina.MeninaEsquerda01.getHeight(null)*0.7+ player.velMax &&
+				(player.x >= menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
+				player.x <= menina.x + menina.MeninaEsquerda01.getWidth(null)/2) &&
+				player.y >= menina.y) {
+			player.y = player.y + player.velMax;
+		}
+		
+		//Colisao com bordas da tela
+		if(player.x >= Intro.SCREEN_WIDTH - player.parado01.getWidth(null)) {
+			player.x = player.x - player.velMax;
+		}
+		else if(player.x <= -1) {
+			player.x = player.x + player.velMax;
+		}
+		if(player.y >= Intro.SCREEN_HEIGHT - player.parado01.getHeight(null) ) {
+			player.y = player.y - player.velMax;
+		}
+		else if(player.y <= -1) {
+			player.y = player.y + player.velMax;
+		}
+    			
     	//Algoritmo Movimentação e animação player
         player.x = player.x + player.velx;
         player.y = player.y + player.vely;
@@ -77,11 +122,16 @@ public class cenaTemplate extends JPanel implements ActionListener, KeyListener{
         }
         
       //Algoritmo para menina olhar em direção ao player
+      //Animacao menina
+        menina.personagemDelay += 1;
+        if(menina.personagemDelay > (menina.TrocaPosicao*2)) {
+        	menina.personagemDelay = 0;
+        }
         if(player.x > menina.x) {
-            menina.orientacaoMenina = true;
+        	menina.orientacaoMenina = true;
         }
         else {
-            menina.orientacaoMenina = false;
+        	menina.orientacaoMenina = false;
         }
         
         repaint();

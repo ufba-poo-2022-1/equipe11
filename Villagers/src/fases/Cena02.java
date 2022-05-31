@@ -34,14 +34,29 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	Player player = new Player(500,400, "Direita");
 	
 	//Inicializar menina
-	Menina menina = new Menina(1,500,500);
+	Menina menina = new Menina(1,500,300);
 
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
-	Caminhos caminhos = new Caminhos(4);
+	Caminhos caminhos = new Caminhos(1);
 	
-	Decorativos decorativos = new Decorativos(1, 300, 300);
+	Decorativos decorativos = new Decorativos(0, 300, 400);
 	Decorativos decorativos2 = new Decorativos(0, 400, 300);
-			
+	Decorativos decorativos3 = new Decorativos(0, 300, 400);
+	Decorativos decorativos4 = new Decorativos(0, 0, 300);
+	Decorativos decorativos5 = new Decorativos(0, 100, 200);
+	Decorativos decorativos6 = new Decorativos(0, 650, 300);
+	Decorativos decorativos7 = new Decorativos(0, 300, 100);
+	Decorativos decorativos8 = new Decorativos(0, 400, 650);
+	Decorativos decorativos9 = new Decorativos(0, 900, 200);
+	Decorativos decorativos10 = new Decorativos(0, 800, 650);
+	Decorativos decorativos11 = new Decorativos(0, 500, 450);
+	Decorativos decorativos12 = new Decorativos(0, 1200, 650);
+	Decorativos decorativos13 = new Decorativos(0, 800, 350);
+	Decorativos decorativos14 = new Decorativos(0, 1200, 100);
+	Decorativos decorativos15 = new Decorativos(0, 1100, 400);
+	
+	Decorativos decorativos16 = new Decorativos(1, 1250, 400);
+	
 	public Cena02(){ 
 		//
 		//Inicialização do painel	
@@ -67,6 +82,20 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		caminhos.draw(g);
 		decorativos.draw(g);
 		decorativos2.draw(g);
+		decorativos3.draw(g);
+		decorativos4.draw(g);
+		decorativos5.draw(g);
+		decorativos6.draw(g);
+		decorativos7.draw(g);
+		decorativos8.draw(g);
+		decorativos9.draw(g);
+		decorativos10.draw(g);
+		decorativos11.draw(g);
+		decorativos12.draw(g);
+		decorativos13.draw(g);
+		decorativos14.draw(g);
+		decorativos15.draw(g);
+		decorativos16.draw(g);
 		menina.draw(g);
 		player.draw(g);
 	}
@@ -101,6 +130,20 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 				(player.x >= menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
 				player.x <= menina.x + menina.MeninaEsquerda01.getWidth(null)/2) &&
 				player.y >= menina.y) {
+			player.y = player.y + player.velMax;
+		}
+		
+		//Colisao com bordas da tela
+		if(player.x >= Intro.SCREEN_WIDTH - player.parado01.getWidth(null)) {
+			player.x = player.x - player.velMax;
+		}
+		else if(player.x <= -1) {
+			player.x = player.x + player.velMax;
+		}
+		if(player.y >= Intro.SCREEN_HEIGHT - player.parado01.getHeight(null) ) {
+			player.y = player.y - player.velMax;
+		}
+		else if(player.y <= -1) {
 			player.y = player.y + player.velMax;
 		}
 		
