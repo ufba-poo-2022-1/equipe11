@@ -31,10 +31,10 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	int delay = 10; 
 	
 	//Inicializando player
-	Player player = new Player(1200,600, "sda");
+	Player player = new Player(500,400, "Direita");
 	
 	//Inicializar menina
-	Menina menina = new Menina(1,500,500);
+	Menina menina = new Menina(1,500,200);
 
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
 	Caminhos caminhos = new Caminhos(4);
@@ -72,22 +72,36 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		/*if(player.x > menina.x && player.x < menina.x + (player.parado01.getWidth(null)) && 
-		   player.y > menina.y && player.y < menina.y + (player.parado01.getHeight(null))){
-			if(player.x > menina.x){
-				player.x = player.x - player.velMax;
-			}
-			if(player.y > menina.y) {
-				player.y = player.y - player.velMax;
-            }
-			if(player.x < menina.x + (player.parado01.getWidth(null))) {
-				player.x = player.x + player.velMax;
-			}
-			if(player.y < menina.y + (player.parado01.getHeight(null))) {
-				player.y = player.y + player.velMax;
-			}
-		}  */
+	public void actionPerformed(ActionEvent e) {			
+		//Algoritmo de colisão com a menina
+		if (player.x >= menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
+				(player.y >= menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 && player.y <= menina.y ) &&
+				player.x <= menina.x) {
+			
+			player.x = player.x - player.velMax;
+		}
+
+		else if (player.x <= menina.x + menina.MeninaEsquerda01.getWidth(null)/2 && 
+				(player.y >= menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 && player.y <= menina.y ) &&
+				player.x >= menina.x) {
+			
+			player.x = player.x + player.velMax;
+		}
+
+		if (player.y >= menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 &&
+				(player.x >= menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
+				player.x <= menina.x + menina.MeninaEsquerda01.getWidth(null)/2) &&
+				player.y <= menina.y) {
+			player.y = player.y - player.velMax;
+		}
+			
+		else if (player.y <= menina.y + menina.MeninaEsquerda01.getHeight(null)*0.7 &&
+				(player.x >= menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
+				player.x <= menina.x + menina.MeninaEsquerda01.getWidth(null)/2) &&
+				player.y >= menina.y) {
+			player.y = player.y + player.velMax;
+		}
+		
 		player.x = player.x + player.velx;
 		player.y = player.y + player.vely;
 		player.personagemDelay += 1;
