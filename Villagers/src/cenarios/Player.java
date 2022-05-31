@@ -20,7 +20,7 @@ public class Player extends JPanel  {
 	
 	//Imagens e seus caminhos
 	//Player parado
-	Image parado01;
+	public Image parado01;
 	String pathParado01 = "images//player//parado//player_parado1.png";
 	Image parado02;
 	String pathParado02 = "images//player//parado//player_parado2.png";

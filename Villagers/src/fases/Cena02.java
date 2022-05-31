@@ -34,7 +34,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	Player player = new Player(500,400, "Direita");
 	
 	//Inicializar menina
-	Menina menina = new Menina(1,500,200);
+	Menina menina = new Menina(1,500,500);
 
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
 	Caminhos caminhos = new Caminhos(4);
@@ -75,38 +75,47 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	public void actionPerformed(ActionEvent e) {			
 		//Algoritmo de colisão com a menina.
 		if (player.x >= menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
-				(player.y >= menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 && player.y <= menina.y ) &&
+				(player.y >= menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 && 
+				player.y <= menina.y + menina.MeninaEsquerda01.getHeight(null)*0.7 ) &&
 				player.x <= menina.x) {
 			
 			player.x = player.x - player.velMax;
 		}
 
 		else if (player.x <= menina.x + menina.MeninaEsquerda01.getWidth(null)/2 && 
-				(player.y >= menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 && player.y <= menina.y ) &&
+				(player.y >= menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 &&
+				player.y <= menina.y + menina.MeninaEsquerda01.getHeight(null)*0.7 ) &&
 				player.x >= menina.x) {
 			
 			player.x = player.x + player.velMax;
 		}
 
-		if (player.y >= menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 &&
+		if (player.y >= menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 - player.velMax &&
 				(player.x >= menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
 				player.x <= menina.x + menina.MeninaEsquerda01.getWidth(null)/2) &&
 				player.y <= menina.y) {
 			player.y = player.y - player.velMax;
 		}
 			
-		else if (player.y <= menina.y + menina.MeninaEsquerda01.getHeight(null)*0.7 &&
+		else if (player.y <= menina.y + menina.MeninaEsquerda01.getHeight(null)*0.7+ player.velMax &&
 				(player.x >= menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
 				player.x <= menina.x + menina.MeninaEsquerda01.getWidth(null)/2) &&
 				player.y >= menina.y) {
 			player.y = player.y + player.velMax;
 		}
 		
+		//Animacao player
 		player.x = player.x + player.velx;
 		player.y = player.y + player.vely;
 		player.personagemDelay += 1;
         if(player.personagemDelay > (player.TrocaPosicao*2)) {
         	player.personagemDelay = 0;
+        }
+        
+        //Animacao menina
+        menina.personagemDelay += 1;
+        if(menina.personagemDelay > (menina.TrocaPosicao*2)) {
+        	menina.personagemDelay = 0;
         }
         if(player.x > menina.x) {
         	menina.orientacaoMenina = true;
@@ -122,17 +131,14 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_W) {
-			System.out.println("key W Pressed");
 			player.w = true;
 			player.up();
 		}
 		if (e.getKeyCode() == KeyEvent.VK_S) {
-			System.out.println("key S Pressed");
 			player.s =  true;
 			player.down();
 		}
 		if (e.getKeyCode() == KeyEvent.VK_A) {
-			System.out.println("key A Pressed");
 			player.a = true;
 			player.left();
 			
@@ -140,7 +146,6 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 			player.aaux = true;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_D) {
-			System.out.println("key D Pressed");
 			player.d = true;
 			player.right();
 		
@@ -157,19 +162,16 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	public void keyReleased(KeyEvent e) {
 		//iguala zero aqui para parar o movimento quanto soltar o botao
 		if (e.getKeyCode() == KeyEvent.VK_W) {
-			System.out.println("key W Realeased");
 			player.w = false;
 			player.vely = 0;
 		}
 		
 		if (e.getKeyCode() == KeyEvent.VK_S) {
-			System.out.println("key S Realeased");
 			player.s = false;
 			player.vely = 0;
 		}
 		
 		if (e.getKeyCode() == KeyEvent.VK_A) {
-			System.out.println("key A Realeased");
 			player.a = false;
 			player.velx = 0;
 			
@@ -182,7 +184,6 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 			
 		}
 		if (e.getKeyCode() == KeyEvent.VK_D) {
-			System.out.println("key D Realeased");
 			player.d = false;
 			player.velx = 0;
 			
