@@ -73,7 +73,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {			
-		//Algoritmo de colisão com a menina
+		//Algoritmo de colisão com a menina.
 		if (player.x >= menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
 				(player.y >= menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 && player.y <= menina.y ) &&
 				player.x <= menina.x) {
