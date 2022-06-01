@@ -134,36 +134,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 			Frase = "";
 		}
 		
-		//Algoritmo de colisão com a menina.
-		if (player.x >= menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
-				(player.y >= menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 && 
-				player.y <= menina.y + menina.MeninaEsquerda01.getHeight(null)*0.7 ) &&
-				player.x <= menina.x) {
-			
-			player.x = player.x - player.velMax;
-		}
-
-		else if (player.x <= menina.x + menina.MeninaEsquerda01.getWidth(null)/2 && 
-				(player.y >= menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 &&
-				player.y <= menina.y + menina.MeninaEsquerda01.getHeight(null)*0.7 ) &&
-				player.x >= menina.x) {
-			
-			player.x = player.x + player.velMax;
-		}
-
-		if (player.y >= menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 - player.velMax &&
-				(player.x >= menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
-				player.x <= menina.x + menina.MeninaEsquerda01.getWidth(null)/2) &&
-				player.y <= menina.y) {
-			player.y = player.y - player.velMax;
-		}
-			
-		else if (player.y <= menina.y + menina.MeninaEsquerda01.getHeight(null)*0.7+ player.velMax &&
-				(player.x >= menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
-				player.x <= menina.x + menina.MeninaEsquerda01.getWidth(null)/2) &&
-				player.y >= menina.y) {
-			player.y = player.y + player.velMax;
-		}
+		menina.colisao(player, menina);
 		
 		//Colisao com bordas da tela
 		if(player.x >= Intro.SCREEN_WIDTH - player.parado01.getWidth(null)) {
