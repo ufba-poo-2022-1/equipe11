@@ -2,6 +2,7 @@ package fases;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +11,7 @@ import java.awt.event.KeyListener;
 
 import javax.swing.*;
 
+import Interface.Exe;
 import Interface.Intro;
 import cenarios.Caminhos;
 import cenarios.Decorativos;
@@ -30,8 +32,16 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	Timer timer;
 	int delay = 10; 
 	
+	//fonte do texto
+	int fontSize = 20, contador = 0;
+    Font f = new Font("Comic Sans MS", Font.BOLD, fontSize);
+    String Frase = "";
+    String Letras = "Pressione [E]";
+    
+
+	
 	//Inicializando player
-	Player player = new Player(500,400, "Direita");
+	Player player = new Player(0,500, "Direita");
 	
 	//Inicializar menina
 	Menina menina = new Menina(1,500,300);
@@ -54,7 +64,6 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos13 = new Decorativos(0, 800, 350);
 	Decorativos decorativos14 = new Decorativos(0, 1200, 100);
 	Decorativos decorativos15 = new Decorativos(0, 1100, 400);
-	
 	Decorativos decorativos16 = new Decorativos(1, 1250, 400);
 	
 	public Cena02(){ 
@@ -98,10 +107,33 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		decorativos16.draw(g);
 		menina.draw(g);
 		player.draw(g);
+
+		//Imprimir frase letra por letra
+		if((menina.proxima && Frase.length() < Letras.length()) &&
+				(menina.personagemDelay <= menina.TrocaPosicao*2)) {
+			Frase = Frase + Letras.charAt(contador);
+			contador++;			
+			
+		}
+		g.setColor(Color.white);
+		g.setFont(f);
+		g.drawString(Frase, menina.x, menina.y);
+		
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent e) {			
+	public void actionPerformed(ActionEvent e) {
+		//Algoritmo de checar proximidade
+		if((player.x >= menina.x - 150 && player.x <= menina.x + 150) &&
+				(player.y >= menina.y - 150 && player.y <= menina.y +150)) {
+			menina.proxima = true;
+		}
+		else {
+			menina.proxima = false;
+			contador = 0;
+			Frase = "";
+		}
+		
 		//Algoritmo de colisão com a menina.
 		if (player.x >= menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
 				(player.y >= menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 && 
@@ -194,7 +226,20 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		
 			player.aaux = false;
 			player.daux = true;
-		}		
+		}
+		
+		if (e.getKeyCode() == KeyEvent.VK_E) {
+			if(menina.proxima) {
+				System.out.println("Botao E pressionado proximo a menina.");
+				Exe.janela.cl.show(Exe.janela.panelBase, "menu");
+				player.x = 0;
+				player.y = 500;
+			}
+			else {
+				System.out.println("Botao E pressionado longe da menina.");
+			}
+			
+		}
 	}
 		
 	
