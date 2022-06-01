@@ -20,7 +20,7 @@ public class Menina {
 	//Posição inicial da menina
 	public int x;
 	public int y;
-	public boolean orientacaoMenina = false;
+	public boolean orientacaoMenina = false, proxima = false;
 	
 	//Parametrizacao animação personagem
 	public int personagemDelay = 0;
