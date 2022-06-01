@@ -135,6 +135,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		}
 		
 		menina.colisao(player, menina);
+		decorativos.colisaoD(player, decorativos16, 01);
 		
 		//Colisao com bordas da tela
 		if(player.x >= Intro.SCREEN_WIDTH - player.parado01.getWidth(null)) {
