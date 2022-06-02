@@ -1,7 +1,8 @@
 package Interface;
 
 import javax.swing.*;
-import fases.Cena02;
+
+import fases.*;
 
 import java.awt.*;
 
@@ -19,7 +20,7 @@ public class Janela extends JFrame{
 		static Intro intro = new Intro();
 		static animacao animacao = new animacao();
 		static Cena02 cena02 = new Cena02();
-		
+		static Cena01Pergaminho cena01Pergaminho = new Cena01Pergaminho();
 		String TituloJanela = "The Villager's Journey";
 		
 	Janela(){
@@ -27,8 +28,9 @@ public class Janela extends JFrame{
 		panelBase.add(intro, "intro");		
 		panelBase.add(menu, "menu");
 		panelBase.add(animacao, "animacao");
+		panelBase.add(cena01Pergaminho, "cena01Pergaminho");
 		panelBase.add(cena02, "cena02");
-		cl.show(panelBase, "cena02");
+		cl.show(panelBase, "cena01Pergaminho");
 		
 		this.setTitle(TituloJanela);		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
