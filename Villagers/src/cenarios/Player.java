@@ -12,6 +12,20 @@ public class Player extends JPanel  {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	//Parâmetros para movimentação, velocidade inicial e posição inicial
+	public int x;
+	public int y;
+	public int velx = 0;
+	public int vely = 0;
+	public int velMax = 13;
+	public boolean w = false, s = false, a = false, d = false, aaux = false, daux = false;
+	
+	
+	public boolean direita = false;
+	String orientacao;
+	public boolean adaga = true;
+		
 	//Parametrizacao animação personagem
 	public int personagemDelay = 0;
 	//Intervalo de tempo entre frames da animacao do personagem
@@ -83,20 +97,6 @@ public class Player extends JPanel  {
 	String pathEsquerda03Adaga = "images//player//esquerdaAdaga//chicoliro_left-w-sword3.png";
 	Image esquerda04Adaga;
 	String pathEsquerda04Adaga = "images//player//esquerdaAdaga//chicoliro_left-w-sword4.png";
-	
-	
-	//Parâmetros para movimentação, velocidade inicial e posição inicial
-	public int x;
-	public int y;
-	public int velx = 0;
-	public int vely = 0;
-	public int velMax = 4;
-	public boolean w = false, s = false, a = false, d = false, aaux = false, daux = false;
-	
-	
-	public boolean direita = false;
-	String orientacao;
-	public boolean adaga = true;
 
 	//Parâmetros x e y para definir posição inicial
 	//Orientação indica a direção que o player inicia, caso "Direita" a orientação é direita

@@ -17,6 +17,7 @@ import cenarios.Caminhos;
 import cenarios.Decorativos;
 import cenarios.Menina;
 import cenarios.Player;
+import cenarios.Velho;
 
 public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	/**
@@ -48,6 +49,9 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
 	Caminhos caminhos = new Caminhos(1);
+	
+	//Inicializar velho
+	Velho velho = new Velho(700, 300);
 	
 	Decorativos decorativos = new Decorativos(0, 300, 400);
 	Decorativos decorativos2 = new Decorativos(0, 400, 300);
@@ -105,7 +109,10 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		decorativos14.draw(g);
 		decorativos15.draw(g);
 		decorativos16.draw(g);
+		
 		menina.draw(g);
+		velho.draw(g);
+		
 		player.draw(g);
 
 		//Imprimir frase letra por letra
@@ -134,7 +141,10 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 			Frase = "";
 		}
 		
+		velho.colisao(player, velho);
+		
 		menina.colisao(player, menina);
+		
 		decorativos.colisaoD(player, decorativos16, 01);
 		
 		//Colisao com bordas da tela
@@ -169,6 +179,18 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
         }
         else {
         	menina.orientacaoMenina = false;
+        }
+        
+      //Animacao Velho
+        velho.personagemDelay += 1;
+        if(velho.personagemDelay > (velho.TrocaPosicao*2)) {
+        	velho.personagemDelay = 0;
+        }
+        if(player.x > velho.x) {
+        	velho.orientacaoVelho = true;
+        }
+        else {
+        	velho.orientacaoVelho = false;
         }
         
         repaint();
