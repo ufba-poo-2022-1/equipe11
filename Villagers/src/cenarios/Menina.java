@@ -28,15 +28,11 @@ public class Menina {
 	//Cada unidade multiplica o delay (TrocaPosicao = delay * unidade)
 	public int TrocaPosicao = 15;
 	
-	int estado;
-	//Estado 1 para menina normal, 2 para endiabrada, maluca, surtada
 	//Parâmetros x e y para definir posição inicial
-	public Menina(int estado, int x ,int y) {
-		this.estado = estado;
+	public Menina(int x ,int y) {
 		this.x = x;
 		this.y = y;
-		
-		//Menina normal
+
 		MeninaDireita01 = new ImageIcon(MeninaDireita01Path).getImage();
 		MeninaDireita02 = new ImageIcon(MeninaDireita02Path).getImage();
 		MeninaEsquerda01 = new ImageIcon(MeninaEsquerda01Path).getImage();

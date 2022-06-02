@@ -2,7 +2,6 @@ package fases;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,7 +37,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	Player player = new Player(0,500, "Direita");
 	
 	//Inicializar menina
-	Menina menina = new Menina(1,500,300);
+	Menina menina = new Menina(500,300);
 
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
 	Caminhos caminhos = new Caminhos(1);
