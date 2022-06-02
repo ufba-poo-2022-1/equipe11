@@ -1,7 +1,5 @@
 package Interface;
 
-import javax.swing.SwingUtilities;
-
 public class Exe {
 
 	public static Janela janela;
@@ -9,5 +7,5 @@ public class Exe {
 	public static void main(String[] args) {
 		janela = new Janela();
 	} 
-
+	
 }

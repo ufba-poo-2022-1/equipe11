@@ -1,4 +1,4 @@
-package cenários;
+package cenarios;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -8,15 +8,19 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class Player extends JPanel  {
-	//Parametrização animação personagem
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	//Parametrizacao animação personagem
 	public int personagemDelay = 0;
-	//Intervalo de tempo entre frames da animação do personagem
-	//Cada unidade multiplica o delay (TrocaPosição = delay * unidade)
-	public int TrocaPosição = 15;
+	//Intervalo de tempo entre frames da animacao do personagem
+	//Cada unidade multiplica o delay (TrocaPosicao = delay * unidade)
+	public int TrocaPosicao = 15;
 	
 	//Imagens e seus caminhos
 	//Player parado
-	Image parado01;
+	public Image parado01;
 	String pathParado01 = "images//player//parado//player_parado1.png";
 	Image parado02;
 	String pathParado02 = "images//player//parado//player_parado2.png";
@@ -53,20 +57,21 @@ public class Player extends JPanel  {
 	public int y;
 	public int velx = 0;
 	public int vely = 0;
+	public int velMax = 4;
 	public boolean w = false, s = false, a = false, d = false, aaux = false, daux = false;
 	
 	
 	public boolean direita = false;
-	String orientação;
+	String orientacao;
 	//
 	//Parâmetros x e y para definir posição inicial
 	//Orientação indica a direção que o player inicia, caso "Direita" a orientação é direita
-	public Player(int x, int y, String orientação) {
+	public Player(int x, int y, String orientacao) {
 		this.x = x;
 		this.y = y;
-		this.orientação = orientação;
+		this.orientacao = orientacao;
 		
-		if(orientação == "Direita") {
+		if(orientacao == "Direita") {
 			direita = true;
 		}		
 				
@@ -107,64 +112,64 @@ public class Player extends JPanel  {
 		super.paintComponent(cena022D);
 		
 		if (w == true & d == true | s == true & d == true |  daux == true) {
-			if (personagemDelay <= TrocaPosição/2) {
+			if (personagemDelay <= TrocaPosicao/2) {
 				cena022D.drawImage(direita01, x, y, null);
 			}
-			else if (personagemDelay <= (TrocaPosição)) {
+			else if (personagemDelay <= (TrocaPosicao)) {
 				cena022D.drawImage(direita02, x, y, null);
 			}
-			else if (personagemDelay <= TrocaPosição*3/2) {
+			else if (personagemDelay <= TrocaPosicao*3/2) {
 				cena022D.drawImage(direita03, x, y, null);
 			}
-			else if (personagemDelay <= (TrocaPosição*2)) {
+			else if (personagemDelay <= (TrocaPosicao*2)) {
 				cena022D.drawImage(direita04, x, y, null);
 			}	
 		}
 		
 		else if (w == true & a == true | s == true & a == true | aaux == true) {
-			if (personagemDelay <= TrocaPosição/2) {
+			if (personagemDelay <= TrocaPosicao/2) {
 				cena022D.drawImage(esquerda01, x, y, null);
 			}
-			else if (personagemDelay <= (TrocaPosição)) {
+			else if (personagemDelay <= (TrocaPosicao)) {
 				cena022D.drawImage(esquerda02, x, y, null);
 			}
-			else if (personagemDelay <= TrocaPosição*3/2) {
+			else if (personagemDelay <= TrocaPosicao*3/2) {
 				cena022D.drawImage(esquerda03, x, y, null);
 			}
-			else if (personagemDelay <= (TrocaPosição*2)) {
+			else if (personagemDelay <= (TrocaPosicao*2)) {
 				cena022D.drawImage(esquerda04, x, y, null);
 			}	
 		}
 		
 		else if (w == true | s == true) {
-			if (personagemDelay <= TrocaPosição/2) {
+			if (personagemDelay <= TrocaPosicao/2) {
 				cena022D.drawImage(direita01, x, y, null);
 			}
-			else if (personagemDelay <= (TrocaPosição)) {
+			else if (personagemDelay <= (TrocaPosicao)) {
 				cena022D.drawImage(direita02, x, y, null);
 			}
-			else if (personagemDelay <= TrocaPosição*3/2) {
+			else if (personagemDelay <= TrocaPosicao*3/2) {
 				cena022D.drawImage(direita03, x, y, null);
 			}
-			else if (personagemDelay <= (TrocaPosição*2)) {
+			else if (personagemDelay <= (TrocaPosicao*2)) {
 				cena022D.drawImage(direita04, x, y, null);
 			}	
 		}
 		
 		else {	
 			if(direita) {
-				if (personagemDelay <= TrocaPosição) {
+				if (personagemDelay <= TrocaPosicao) {
 					cena022D.drawImage(parado01, x, y, null);
 				}
-				else if (personagemDelay <= (TrocaPosição*2)) {
+				else if (personagemDelay <= (TrocaPosicao*2)) {
 					cena022D.drawImage(parado02, x, y, null);
 				}
 			}
 			else {
-				if (personagemDelay <= TrocaPosição) {
+				if (personagemDelay <= TrocaPosicao) {
 					cena022D.drawImage(paradoEsquerda01, x, y, null);
 				}
-				else if (personagemDelay <= (TrocaPosição*2)) {
+				else if (personagemDelay <= (TrocaPosicao*2)) {
 					cena022D.drawImage(paradoEsquerda02, x, y, null);
 				}
 				
