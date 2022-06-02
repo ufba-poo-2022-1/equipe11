@@ -28,19 +28,40 @@ public class Menina {
 	//Cada unidade multiplica o delay (TrocaPosicao = delay * unidade)
 	public int TrocaPosicao = 15;
 	
-	int estado;
-	//Estado 1 para menina normal, 2 para endiabrada, maluca, surtada
 	//Parâmetros x e y para definir posição inicial
-	public Menina(int estado, int x ,int y) {
-		this.estado = estado;
+	public Menina(int x ,int y) {
 		this.x = x;
 		this.y = y;
-		
-		//Menina normal
+
 		MeninaDireita01 = new ImageIcon(MeninaDireita01Path).getImage();
 		MeninaDireita02 = new ImageIcon(MeninaDireita02Path).getImage();
 		MeninaEsquerda01 = new ImageIcon(MeninaEsquerda01Path).getImage();
 		MeninaEsquerda02 = new ImageIcon(MeninaEsquerda02Path).getImage();
+	}
+
+	public void proximidade(Player player, Menina menina) {
+		//Algoritmo de checar proximidade
+		if((player.x >= menina.x - 150 && player.x <= menina.x + 150) &&
+				(player.y >= menina.y - 150 && player.y <= menina.y +150)) {
+			menina.proxima = true;
+		}
+		else {
+			menina.proxima = false;			
+		}
+	}
+	
+	public void animacao(Player player, Menina menina) {
+		//Animacao menina
+		menina.personagemDelay += 1;
+		if(menina.personagemDelay > (menina.TrocaPosicao*2)) {
+			menina.personagemDelay = 0;
+		}
+		if(player.x > menina.x) {
+			menina.orientacaoMenina = true;
+		}
+		else {
+			menina.orientacaoMenina = false;
+		}
 	}
 	
 	public void colisao(Player player, Menina menina) {

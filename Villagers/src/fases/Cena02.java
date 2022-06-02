@@ -2,7 +2,6 @@ package fases;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,10 +12,12 @@ import javax.swing.*;
 
 import Interface.Exe;
 import Interface.Intro;
+import cenarios.BotaoE;
 import cenarios.Caminhos;
 import cenarios.Decorativos;
 import cenarios.Menina;
 import cenarios.Player;
+import cenarios.Velho;
 
 public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	/**
@@ -30,24 +31,22 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		
 	//Timer ajustes, delay define intervalo(ms) em que ações são percebidas
 	Timer timer;
-	int delay = 10; 
-	
-	//fonte do texto
-	int fontSize = 20, contador = 0;
-    Font f = new Font("Comic Sans MS", Font.BOLD, fontSize);
-    String Frase = "";
-    String Letras = "Pressione [E]";
-    
-
+	int delay = 10;  
 	
 	//Inicializando player
 	Player player = new Player(0,500, "Direita");
 	
 	//Inicializar menina
-	Menina menina = new Menina(1,500,300);
+	Menina menina = new Menina(500,300);
 
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
 	Caminhos caminhos = new Caminhos(1);
+	
+	//Inicializar velho
+	Velho velho = new Velho(700, 300);
+	
+	//Inicializar botao
+	BotaoE botao = new BotaoE(menina.x +40, menina.y - 50);
 	
 	Decorativos decorativos = new Decorativos(0, 300, 400);
 	Decorativos decorativos2 = new Decorativos(0, 400, 300);
@@ -105,72 +104,35 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		decorativos14.draw(g);
 		decorativos15.draw(g);
 		decorativos16.draw(g);
+		
 		menina.draw(g);
+		velho.draw(g);
+		
 		player.draw(g);
+		
 
-		//Imprimir frase letra por letra
-		if((menina.proxima && Frase.length() < Letras.length()) &&
-				(menina.personagemDelay <= menina.TrocaPosicao*2)) {
-			Frase = Frase + Letras.charAt(contador);
-			contador++;			
-			
-		}
-		g.setColor(Color.white);
-		g.setFont(f);
-		g.drawString(Frase, menina.x, menina.y);
+		if(menina.proxima) {
+			botao.draw(g);			
+		}	
 		
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//Algoritmo de checar proximidade
-		if((player.x >= menina.x - 150 && player.x <= menina.x + 150) &&
-				(player.y >= menina.y - 150 && player.y <= menina.y +150)) {
-			menina.proxima = true;
-		}
-		else {
-			menina.proxima = false;
-			contador = 0;
-			Frase = "";
-		}
+		botao.animacao(botao);
 		
+		player.animacao(player);
+		player.colisaoTotalTela(player);
+		
+		velho.colisao(player, velho);
+		velho.animacao(player, velho);
+		
+		menina.proximidade(player, menina);
 		menina.colisao(player, menina);
+		menina.animacao(player, menina);
+		
 		decorativos.colisaoD(player, decorativos16, 01);
 		
-		//Colisao com bordas da tela
-		if(player.x >= Intro.SCREEN_WIDTH - player.parado01.getWidth(null)) {
-			player.x = player.x - player.velMax;
-		}
-		else if(player.x <= -1) {
-			player.x = player.x + player.velMax;
-		}
-		if(player.y >= Intro.SCREEN_HEIGHT - player.parado01.getHeight(null) ) {
-			player.y = player.y - player.velMax;
-		}
-		else if(player.y <= -1) {
-			player.y = player.y + player.velMax;
-		}
-		
-		//Animacao player
-		player.x = player.x + player.velx;
-		player.y = player.y + player.vely;
-		player.personagemDelay += 1;
-        if(player.personagemDelay > (player.TrocaPosicao*2)) {
-        	player.personagemDelay = 0;
-        }
-        
-        //Animacao menina
-        menina.personagemDelay += 1;
-        if(menina.personagemDelay > (menina.TrocaPosicao*2)) {
-        	menina.personagemDelay = 0;
-        }
-        if(player.x > menina.x) {
-        	menina.orientacaoMenina = true;
-        }
-        else {
-        	menina.orientacaoMenina = false;
-        }
-        
         repaint();
 		
 	}
