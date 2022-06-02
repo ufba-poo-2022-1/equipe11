@@ -7,6 +7,8 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import Interface.Intro;
+
 public class Player extends JPanel  {
 	/**
 	 * 
@@ -138,6 +140,32 @@ public class Player extends JPanel  {
 		esquerda02Adaga = new ImageIcon(pathEsquerda02Adaga).getImage();
 		esquerda03Adaga = new ImageIcon(pathEsquerda03Adaga).getImage();
 		esquerda04Adaga = new ImageIcon(pathEsquerda04Adaga).getImage();
+	}
+	
+	public void colisaoTotalTela(Player player){
+		//Colisao com bordas da tela
+		if(player.x >= Intro.SCREEN_WIDTH - player.parado01.getWidth(null)) {
+			player.x = player.x - player.velMax;
+		}
+		else if(player.x <= -1) {
+			player.x = player.x + player.velMax;
+		}
+		if(player.y >= Intro.SCREEN_HEIGHT - player.parado01.getHeight(null) ) {
+			player.y = player.y - player.velMax;
+		}
+		else if(player.y <= -1) {
+			player.y = player.y + player.velMax;
+		}
+	}
+	
+	public void animacao(Player player) {
+		//Animacao player
+		player.x = player.x + player.velx;
+		player.y = player.y + player.vely;
+		player.personagemDelay += 1;
+        if(player.personagemDelay > (player.TrocaPosicao*2)) {
+        	player.personagemDelay = 0;
+        }
 	}
 	
 	public void up() {

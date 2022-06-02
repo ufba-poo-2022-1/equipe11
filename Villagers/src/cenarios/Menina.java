@@ -42,6 +42,31 @@ public class Menina {
 		MeninaEsquerda01 = new ImageIcon(MeninaEsquerda01Path).getImage();
 		MeninaEsquerda02 = new ImageIcon(MeninaEsquerda02Path).getImage();
 	}
+
+	public void proximidade(Player player, Menina menina) {
+		//Algoritmo de checar proximidade
+		if((player.x >= menina.x - 150 && player.x <= menina.x + 150) &&
+				(player.y >= menina.y - 150 && player.y <= menina.y +150)) {
+			menina.proxima = true;
+		}
+		else {
+			menina.proxima = false;			
+		}
+	}
+	
+	public void animacao(Player player, Menina menina) {
+		//Animacao menina
+		menina.personagemDelay += 1;
+		if(menina.personagemDelay > (menina.TrocaPosicao*2)) {
+			menina.personagemDelay = 0;
+		}
+		if(player.x > menina.x) {
+			menina.orientacaoMenina = true;
+		}
+		else {
+			menina.orientacaoMenina = false;
+		}
+	}
 	
 	public void colisao(Player player, Menina menina) {
 		//Algoritmo de colisão com a menina.

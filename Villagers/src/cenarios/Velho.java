@@ -41,6 +41,20 @@ public class Velho {
 		VelhoEsquerda02 = new ImageIcon(VelhoEsquerda02Path).getImage();
 	}
 	
+	public void animacao(Player player, Velho velho) {
+		//Animacao Velho
+	    velho.personagemDelay += 1;
+	    if(velho.personagemDelay > (velho.TrocaPosicao*2)) {
+	    	velho.personagemDelay = 0;
+	    }
+	    if(player.x > velho.x) {
+	    	velho.orientacaoVelho = true;
+	    }
+	    else {
+	    	velho.orientacaoVelho = false;
+	    }
+	}
+	
 	public void colisao(Player player, Velho velho) {
 		//Algoritmo de colisão com a menina.
 		if (player.x >= velho.x - velho.VelhoEsquerda01.getWidth(null)/2 && 
@@ -80,7 +94,7 @@ public class Velho {
 				g.drawImage(VelhoDireita01, x, y, null);
 			}
 			else if (personagemDelay <= (TrocaPosicao*2)) {
-				g.drawImage(VelhoDireita01, x, y, null);
+				g.drawImage(VelhoDireita02, x, y, null);
 			}
 		}
 		else {
