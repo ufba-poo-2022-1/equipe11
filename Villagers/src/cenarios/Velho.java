@@ -26,7 +26,7 @@ public class Velho {
 	public int personagemDelay = 0;
 	//Intervalo de tempo entre frames da animacao do personagem
 	//Cada unidade multiplica o delay (TrocaPosicao = delay * unidade)
-	public int TrocaPosicao = 15;
+	public int TrocaPosicao = 11;
 
 
 	//Parâmetros x e y para definir posição inicial

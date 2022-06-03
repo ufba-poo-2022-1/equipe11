@@ -35,8 +35,6 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 	MeninaBatalha menina = new MeninaBatalha(SCREEN_WIDTH/3*2 -120, SCREEN_HEIGHT/3);
 	PlayerBatalha player = new PlayerBatalha(0, SCREEN_HEIGHT/3);
 	
-	//REMOVER
-	BotaoE botao = new BotaoE(SCREEN_WIDTH/3 -100, player.y -50);
 	boolean aparecerbotao = false;
 	
 	public Batalha(){ 
@@ -60,46 +58,53 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 		super.paint(g);	
 		
 		caminhos.draw(g);
-		player.draw(g);
-		menina.draw(g);
 		
-		
-		//REMOVER
-		if(aparecerbotao) {
-			botao.draw(g);
+
+		if(player.sobreposto) {
+			menina.draw(g);
+			player.draw(g);
+			
+		}
+		else {
+			player.draw(g);
+			menina.draw(g);			
 		}
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		//REMOVER
-		if(player.caminhando == false && player.iniciandoAtaque ==false && player.atacando ==false) {
-			aparecerbotao = true;
-			botao.animacao(botao);
-		}
-		else {
-			aparecerbotao = false;
-		}
-		
 		//MENINA
 		menina.animacao(menina);
 		
 		if(menina.iniciandoAtaque) {
 			menina.ataque01(menina, player.x + 100);
+			if(menina.atacando) {
+				player.dano = true;
+			}
+		}
+		if(menina.voltando) {
+			menina.caminhaPosicaoInicial(menina, SCREEN_WIDTH/3*2 -120, player);
+			
 		}
 		
+		
 		//Player
-		player.animacao(player);		
+		player.animacao(player);
 		
 		if(player.caminhando) {
-			player.caminhaPosiçãoX(player, SCREEN_WIDTH/3 -120);
+			player.caminhaPosicaoX(player, SCREEN_WIDTH/3 -120);
 		}			
 		if(player.iniciandoAtaque) {
 			player.ataque01(player, menina.x - 100);
+			if(player.atacando) {
+				menina.dano = true;	
+			}
 		}
-		player.animacao(player);
-		
+		if(player.voltando) {
+			player.caminhaPosicaoInicial(player, SCREEN_WIDTH/3 -120, menina);
+			
+		}		
         repaint();
 		
 	}
@@ -108,6 +113,13 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 	public void keyPressed(KeyEvent e) {	
 		if (e.getKeyCode() == KeyEvent.VK_E) {
 			if (player.caminhando == false) {
+				player.sobreposto = true;
+				player.iniciandoAtaque = true;
+			}			
+		}
+		else if (e.getKeyCode() == KeyEvent.VK_R) {
+			if (player.caminhando == false) {
+				player.sobreposto = false;
 				menina.iniciandoAtaque = true;
 			}			
 		}

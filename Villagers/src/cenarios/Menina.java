@@ -26,7 +26,7 @@ public class Menina {
 	public int personagemDelay = 0;
 	//Intervalo de tempo entre frames da animacao do personagem
 	//Cada unidade multiplica o delay (TrocaPosicao = delay * unidade)
-	public int TrocaPosicao = 15;
+	public int TrocaPosicao = 16;
 	
 	//Parâmetros x e y para definir posição inicial
 	public Menina(int x ,int y) {
