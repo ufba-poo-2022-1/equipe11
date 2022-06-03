@@ -26,13 +26,13 @@ public class Player extends JPanel  {
 	
 	public boolean direita = false;
 	String orientacao;
-	public boolean adaga = true;
+	public boolean adaga = false;
 		
 	//Parametrizacao animação personagem
 	public int personagemDelay = 0;
 	//Intervalo de tempo entre frames da animacao do personagem
 	//Cada unidade multiplica o delay (TrocaPosicao = delay * unidade)
-	public int TrocaPosicao = 15;
+	public int TrocaPosicao = 13;
 	
 	//Imagens e seus caminhos
 	//Player parado
