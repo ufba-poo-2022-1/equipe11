@@ -40,7 +40,7 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 	Menina menina = new Menina(500,300);
 
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
-	Caminhos caminhos = new Caminhos(4);
+	Caminhos caminhos = new Caminhos(5);
 	
 	//Inicializar velho
 	Velho velho = new Velho(700, 300);
