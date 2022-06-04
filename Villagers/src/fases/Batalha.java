@@ -90,7 +90,6 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 		
 		
 		//Player
-		//Teste github desktop
 		player.animacao(player);
 		
 		if(player.caminhando) {
