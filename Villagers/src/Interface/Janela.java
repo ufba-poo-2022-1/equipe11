@@ -36,7 +36,7 @@ public class Janela extends JFrame{
 		panelBase.add(cena02, "cena02");
 		panelBase.add(cena06, "cena06");
 		panelBase.add(batalha, "batalha");
-		cl.show(panelBase, "cena06");
+		cl.show(panelBase, "batalha");
 		
 		this.setTitle(TituloJanela);		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
