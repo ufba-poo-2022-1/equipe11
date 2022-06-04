@@ -20,8 +20,10 @@ public class Janela extends JFrame{
 		static Intro intro = new Intro();
 		static animacao animacao = new animacao();
 		static Cena02 cena02 = new Cena02();
+		static Cena06 cena06 = new Cena06();
 		static Cena01Pergaminho cena01Pergaminho = new Cena01Pergaminho();
 		static Batalha batalha = new Batalha();
+		
 		
 		String TituloJanela = "The Villager's Journey";
 		
@@ -32,8 +34,9 @@ public class Janela extends JFrame{
 		panelBase.add(animacao, "animacao");
 		panelBase.add(cena01Pergaminho, "cena01Pergaminho");
 		panelBase.add(cena02, "cena02");
+		panelBase.add(cena06, "cena06");
 		panelBase.add(batalha, "batalha");
-		cl.show(panelBase, "cena02");
+		cl.show(panelBase, "cena06");
 		
 		this.setTitle(TituloJanela);		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
