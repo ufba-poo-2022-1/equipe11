@@ -19,7 +19,7 @@ import cenarios.Menina;
 import cenarios.Player;
 import cenarios.Velho;
 
-public class Cena03 extends JPanel implements ActionListener, KeyListener{
+public class Cena08 extends JPanel implements ActionListener, KeyListener{
 	/**
 	 * 
 	 */
@@ -34,13 +34,13 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 	int delay = 10;  
 	
 	//Inicializando player
-	Player player = new Player(0,500, "Direita");
+	Player player = new Player(450,0, "Direita");
 	
 	//Inicializar menina
 	Menina menina = new Menina(500,300);
 
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
-	Caminhos caminhos = new Caminhos(2);
+	Caminhos caminhos = new Caminhos(7);
 	
 	//Inicializar velho
 	Velho velho = new Velho(700, 300);
@@ -65,7 +65,7 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos15 = new Decorativos(0, 1100, 400);
 	Decorativos decorativos16 = new Decorativos(1, 1250, 400);
 	
-	public Cena03(){ 
+	public Cena08(){ 
 		//
 		//Inicialização do painel	
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
