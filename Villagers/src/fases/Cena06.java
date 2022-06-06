@@ -34,7 +34,7 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 	int delay = 10;  
 	
 	//Inicializando player
-	Player player = new Player(0,500, "Direita");
+	Player player = new Player(0,320, "Direita");
 	
 	//Inicializar menina
 	Menina menina = new Menina(500,300);
