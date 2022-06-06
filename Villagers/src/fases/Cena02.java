@@ -1,8 +1,10 @@
 package fases;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -18,6 +20,7 @@ import cenarios.Decorativos;
 import cenarios.Menina;
 import cenarios.Player;
 import cenarios.Velho;
+import dialogos.Caixa;
 
 public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	/**
@@ -28,11 +31,13 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	//Resolução da tela
 	final static int SCREEN_WIDTH = Intro.SCREEN_WIDTH;
 	final static int SCREEN_HEIGHT = Intro.SCREEN_HEIGHT;
-		
+	
+	
 	//Timer ajustes, delay define intervalo(ms) em que ações são percebidas
 	Timer timer;
 	int delay = 10;  
 	
+    public static int auxPassagemdeDialogo = 0;
 	//Inicializando player
 	Player player = new Player(0,500, "Direita");
 	
@@ -65,6 +70,9 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos15 = new Decorativos(0, 1100, 400);
 	Decorativos decorativos16 = new Decorativos(1, 1250, 400);
 	
+	//Selecionando fala da menina
+	
+	Caixa caixa = new Caixa(0,1);
 	public Cena02(){ 
 		//
 		//Inicialização do painel	
@@ -84,7 +92,8 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	public void paint(Graphics g) {
-		requestFocusInWindow();
+		//Graphics2D g2 = (Graphics2D) g;
+		//requestFocusInWindow();
 		super.paint(g);
 		
 		caminhos.draw(g);
@@ -109,17 +118,35 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		velho.draw(g);
 		
 		player.draw(g);
-		
 
 		if(menina.proxima) {
 			botao.draw(g);			
 		}	
 		
+		// Se dialogo da menina estiver disponivel e  tecla E foi pressionada, desenhe a caixa de dialogo
+		if(Menina.proxima == true && CaixaMenina == true) {
+			Caixa.drawDialogueScreen(g);
+		}
+		
+		Menina.Suporte(g,500,300);
 	}
+	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		botao.animacao(botao);
+
+		//Verificar como passar o algoritmo para classe de diálogo >>> caua
+		//Algoritmo de checar proximidade
+		if((player.x >= Menina.x - 150 && player.x <= Menina.x + 150) &&
+				(player.y >= Menina.y - 150 && player.y <= Menina.y +150)) {
+			Menina.proxima = true;
+		}
+		else {
+			Menina.proxima = false;
+			Menina.contador = 0;
+			Menina.Frase = "";
+			CaixaMenina = false;
+		}
 		
 		player.animacao(player);
 		player.colisaoTotalTela(player);
@@ -163,18 +190,38 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		}
 		
 		if (e.getKeyCode() == KeyEvent.VK_E) {
-			if(menina.proxima) {
+			if(Menina.proxima) {
+				player.velMax = 0;
+				player.velx = 0;
+				if(auxPassagemdeDialogo != 0) {
+					Caixa.currentDialog = "";
+					Caixa.auxiliar = "";	
+					Caixa.contador = 0;
+					Caixa.fala++;
+				}
+				CaixaMenina = true;
+				
+				auxPassagemdeDialogo++;
+
+							
+				
 				System.out.println("Botao E pressionado proximo a menina.");
-				Exe.janela.cl.show(Exe.janela.panelBase, "menu");
-				player.x = 0;
-				player.y = 500;
+			//Exe.janela.cl.show(Exe.janela.panelBase, "menu");
+				
+				//drawDialogueScreen();
+				//player.x = 0;
+				//player.y = 500;
 			}
 			else {
 				System.out.println("Botao E pressionado longe da menina.");
+				CaixaMenina =false;
 			}
 			
 		}
+
 	}
+	
+	
 		
 	
 	
