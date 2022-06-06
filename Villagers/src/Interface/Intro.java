@@ -59,7 +59,7 @@ public class Intro extends JPanel{
 		clip.open(stream);
 		clip.start();
 		}
-		
+
 		catch(Exception e){
 			e.printStackTrace();
 		}
