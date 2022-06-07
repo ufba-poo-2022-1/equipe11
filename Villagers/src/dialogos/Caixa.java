@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import Interface.Intro;
 import cenarios.Caminhos;
 import cenarios.Menina;
+import cenarios.Velho;
 import fases.Cena02;
 
 
@@ -18,6 +19,11 @@ public class Caixa {
 	public static int fala =0;
 	//Se alternancia for 1, serão utilizados falas da menina, 2, do guerreiro.
 	public static int Alternancia = 0; 
+	
+	//Boolean para verificar interação com a menina
+	public static boolean CaixaMenina = false;
+	public static int auxPassagemdeDialogo = 0;
+		
 	static int fontSize = 20;
 	public static int contador = 0;
     static Font f = new Font("Comic Sans MS", Font.BOLD, fontSize);
@@ -40,7 +46,7 @@ public class Caixa {
 		}
 	}
 	
-	public static void drawDialogueScreen(Graphics g) {
+	public static void DialogoM(Graphics g, Menina menina) {
 		
 		//Window
 		Graphics2D g2 = (Graphics2D) g;
@@ -50,8 +56,48 @@ public class Caixa {
 		drawSubWindow(g2,x, y, width, height);
 		
 		//Imprimir frase letra por letra na caixa
-		if((Menina.proxima && auxiliar.length() < currentDialog.length()) &&
-			(Menina.personagemDelay <= Menina.TrocaPosicao*2)) {
+		if((menina.proxima && auxiliar.length() < currentDialog.length()) &&
+			(menina.personagemDelay <= menina.TrocaPosicao*2)) {
+			auxiliar = auxiliar + currentDialog.charAt(contador);
+			contador++;			
+			Menina.dialogM = true;
+			}
+		g.setColor(Color.white);
+		g.setFont(f);
+		
+		for(String line : currentDialog.split("\n")) {
+			if(cena == 0  && dialogosMenina[cena][fala] != null) {
+				g.drawString(line, x+30, y+35);
+				y+= 45;
+				x+= 10;
+		
+				currentDialog = dialogosMenina[cena][fala];
+			}
+			
+			else {
+				contador = 0;
+				currentDialog = "";
+				auxiliar = "";
+				fala = 0;
+				auxPassagemdeDialogo = 0;
+				CaixaMenina = false;
+			}
+		}
+		
+	}
+	
+	public static void DialogoV(Graphics g, Velho velho) {
+		
+		//Window
+		Graphics2D g2 = (Graphics2D) g;
+		
+		//Janela de texto
+		int x = 50, y = 500, width = 1250, height= Intro.SCREEN_HEIGHT/4;
+		drawSubWindow(g2,x, y, width, height);
+		
+		//Imprimir frase letra por letra na caixa
+		if((velho.proximo && auxiliar.length() < currentDialog.length()) &&
+			(velho.personagemDelay <= velho.TrocaPosicao*2)) {
 			auxiliar = auxiliar + currentDialog.charAt(contador);
 			contador++;			
 			Menina.dialogM = true;
@@ -64,15 +110,15 @@ public class Caixa {
 				y+= 45;
 				x+= 10;
 		
-				currentDialog = dialogosMenina[cena][fala];
+				currentDialog = dialogosGuerreiro[cena][fala];
 			}
 			else {
 				contador = 0;
 				currentDialog = "";
 				auxiliar = "";
 				fala = 0;
-				Cena02.auxPassagemdeDialogo = 0;
-				Cena02.CaixaMenina = false;
+				auxPassagemdeDialogo = 0;
+				CaixaMenina = false;
 			}
 		}
 		

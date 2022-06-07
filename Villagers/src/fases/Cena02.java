@@ -37,7 +37,8 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	Timer timer;
 	int delay = 10;  
 	
-    public static int auxPassagemdeDialogo = 0;
+	
+    
 	//Inicializando player
 	Player player = new Player(0,500, "Direita");
 	
@@ -124,11 +125,16 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		}	
 		
 		// Se dialogo da menina estiver disponivel e  tecla E foi pressionada, desenhe a caixa de dialogo
-		if(Menina.proxima == true && CaixaMenina == true) {
-			Caixa.drawDialogueScreen(g);
+		if(menina.proxima == true && Caixa.CaixaMenina == true) {
+			Caixa.DialogoM(g, menina);
+			player.velMax = 0;
+			player.velx = 0;
+		}
+		else{
+			player.velMax = 13;
 		}
 		
-		Menina.Suporte(g,500,300);
+		//Menina.Suporte(g,500,300);
 	}
 	
 	
@@ -137,15 +143,15 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 
 		//Verificar como passar o algoritmo para classe de diálogo >>> caua
 		//Algoritmo de checar proximidade
-		if((player.x >= Menina.x - 150 && player.x <= Menina.x + 150) &&
-				(player.y >= Menina.y - 150 && player.y <= Menina.y +150)) {
-			Menina.proxima = true;
+		if((player.x >= menina.x - 150 && player.x <= menina.x + 150) &&
+				(player.y >= menina.y - 150 && player.y <= menina.y +150)) {
+			menina.proxima = true;
 		}
 		else {
-			Menina.proxima = false;
-			Menina.contador = 0;
-			Menina.Frase = "";
-			CaixaMenina = false;
+			menina.proxima = false;
+			menina.contador = 0;
+			menina.Frase = "";
+			Caixa.CaixaMenina = false;
 		}
 		
 		player.animacao(player);
@@ -190,18 +196,16 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		}
 		
 		if (e.getKeyCode() == KeyEvent.VK_E) {
-			if(Menina.proxima) {
-				player.velMax = 0;
-				player.velx = 0;
-				if(auxPassagemdeDialogo != 0) {
+			if(menina.proxima) {
+				if(Caixa.auxPassagemdeDialogo != 0) {
 					Caixa.currentDialog = "";
 					Caixa.auxiliar = "";	
 					Caixa.contador = 0;
 					Caixa.fala++;
 				}
-				CaixaMenina = true;
+				Caixa.CaixaMenina = true;
 				
-				auxPassagemdeDialogo++;
+				Caixa.auxPassagemdeDialogo++;
 
 							
 				
@@ -214,7 +218,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 			}
 			else {
 				System.out.println("Botao E pressionado longe da menina.");
-				CaixaMenina =false;
+				Caixa.CaixaMenina = false;
 			}
 			
 		}

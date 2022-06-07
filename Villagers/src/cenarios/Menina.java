@@ -20,21 +20,23 @@ public class Menina {
 	String MeninaEsquerda02Path = "images//Menina//michica_parada_left3.png";
 	
 	//Posição inicial da menina
-	public static int x;
-	public static int y;
+	public int x;
+	public int y;
 	public boolean orientacaoMenina = false;
-	public static boolean proxima = false;
+	public boolean proxima = false;
+	
+	
 	
 	static int fontSize = 20;
-	public static int contador = 0;
+	public int contador = 0;
     static Font f = new Font("Comic Sans MS", Font.BOLD, fontSize);
-    public static String Frase = "";
+    public String Frase = "";
     static String Letras = "Pressione [E]";
     
     public static boolean dialogM = false;
 	
 	//Parametrizacao animação personagem
-	public static int personagemDelay = 0;
+	public int personagemDelay = 0;
 	//Intervalo de tempo entre frames da animacao do personagem
 	//Cada unidade multiplica o delay (TrocaPosicao = delay * unidade)
 
@@ -78,33 +80,33 @@ public class Menina {
 	
 	public void colisao(Player player, Menina menina) {
 		//Algoritmo de colisão com a menina.
-		if (player.x >= Menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
-				(player.y >= Menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 && 
-				player.y <= Menina.y + menina.MeninaEsquerda01.getHeight(null)*0.7 ) &&
-				player.x <= Menina.x) {
+		if (player.x >= menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
+				(player.y >= menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 && 
+				player.y <= menina.y + menina.MeninaEsquerda01.getHeight(null)*0.7 ) &&
+				player.x <= menina.x) {
 			
 			player.x = player.x - player.velMax;
 		}
 
-		else if (player.x <= Menina.x + menina.MeninaEsquerda01.getWidth(null)/2 && 
-				(player.y >= Menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 &&
-				player.y <= Menina.y + menina.MeninaEsquerda01.getHeight(null)*0.7 ) &&
-				player.x >= Menina.x) {
+		else if (player.x <= menina.x + menina.MeninaEsquerda01.getWidth(null)/2 && 
+				(player.y >= menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 &&
+				player.y <= menina.y + menina.MeninaEsquerda01.getHeight(null)*0.7 ) &&
+				player.x >= menina.x) {
 			 
 			player.x = player.x + player.velMax;
 		}
 
-		if (player.y >= Menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 - player.velMax &&
-				(player.x >= Menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
-				player.x <= Menina.x + menina.MeninaEsquerda01.getWidth(null)/2) &&
-				player.y <= Menina.y) {
+		if (player.y >= menina.y - menina.MeninaEsquerda01.getHeight(null)*0.7 - player.velMax &&
+				(player.x >= menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
+				player.x <= menina.x + menina.MeninaEsquerda01.getWidth(null)/2) &&
+				player.y <= menina.y) {
 			player.y = player.y - player.velMax;
 		}
 			
-		else if (player.y <= Menina.y + menina.MeninaEsquerda01.getHeight(null)*0.7+ player.velMax &&
-				(player.x >= Menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
-				player.x <= Menina.x + menina.MeninaEsquerda01.getWidth(null)/2) &&
-				player.y >= Menina.y) {
+		else if (player.y <= menina.y + menina.MeninaEsquerda01.getHeight(null)*0.7+ player.velMax &&
+				(player.x >= menina.x - menina.MeninaEsquerda01.getWidth(null)/2 && 
+				player.x <= menina.x + menina.MeninaEsquerda01.getWidth(null)/2) &&
+				player.y >= menina.y) {
 			player.y = player.y + player.velMax;
 		}
 	}
@@ -129,7 +131,7 @@ public class Menina {
 		}
 		
 	}
-   public static void Suporte(Graphics g, int x, int y) {
+   /*public static void Suporte(Graphics g, int x, int y) {
 	 //Imprimir frase letra por letra
 	 		if((proxima && Frase.length() < Letras.length()) &&
 	 				(personagemDelay <= TrocaPosicao*2)) {
@@ -140,7 +142,7 @@ public class Menina {
 	 		g.setColor(Color.white);
 			g.setFont(f);
 			g.drawString(Frase, x, y);
-   }
+   } */
 
 }
 	
