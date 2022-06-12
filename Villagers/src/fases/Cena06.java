@@ -70,7 +70,7 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 		//Inicialização do painel	
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		this.setBackground(Color.black);
-				
+		
 		//Timer iniciado
 		timer = new Timer(delay, this);
 		timer.start();
