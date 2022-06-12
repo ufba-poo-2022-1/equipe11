@@ -48,9 +48,9 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 	//Inicializar botao
 	BotaoE botao = new BotaoE(menina.x +40, menina.y - 50);
 	
-	Decorativos decorativos = new Decorativos(0, 300, 400);
+	Decorativos decorativos = new Decorativos(0, 300, 500);
 	Decorativos decorativos2 = new Decorativos(0, 400, 300);
-	Decorativos decorativos3 = new Decorativos(0, 300, 400);
+	Decorativos decorativos3 = new Decorativos(0, 300, 700);
 	Decorativos decorativos4 = new Decorativos(0, 0, 300);
 	Decorativos decorativos5 = new Decorativos(0, 100, 200);
 	Decorativos decorativos6 = new Decorativos(0, 650, 300);
@@ -60,10 +60,10 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos10 = new Decorativos(0, 800, 650);
 	Decorativos decorativos11 = new Decorativos(0, 500, 450);
 	Decorativos decorativos12 = new Decorativos(0, 1200, 650);
-	Decorativos decorativos13 = new Decorativos(0, 800, 350);
+	Decorativos decorativos13 = new Decorativos(0, 800, 450);
 	Decorativos decorativos14 = new Decorativos(0, 1200, 100);
 	Decorativos decorativos15 = new Decorativos(0, 1100, 400);
-	Decorativos decorativos16 = new Decorativos(1, 1250, 400);
+	Decorativos decorativos16 = new Decorativos(1, 1250, 250);
 	
 	public Cena06(){ 
 		//

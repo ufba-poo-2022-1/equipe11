@@ -75,11 +75,16 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 		timer = new Timer(delay, this);
 		timer.start();
 		
+		//Passagem de cena
+		
+		
+		
 		//Parâmetros para detecção do teclado
 		requestFocusInWindow();
 		addKeyListener(this);
 		setFocusable(true);
 		setFocusTraversalKeysEnabled(false);
+
 		
 	}
 	
@@ -114,7 +119,9 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 		if(menina.proxima) {
 			botao.draw(g);			
 		}	
-		
+	// PassagemDeCena(int numeroCaminho) {
+			//if ()
+		//}
 	}
 	
 	@Override
@@ -232,7 +239,4 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 		}
 	}
 
-
-	
-	
 }
