@@ -22,6 +22,8 @@ public class Velho {
 	public int y;
 	public boolean orientacaoVelho = false, proximo = false;
 	
+	public static boolean dialogV = false;
+	
 	//Parametrizacao animação personagem
 	public int personagemDelay = 0;
 	//Intervalo de tempo entre frames da animacao do personagem

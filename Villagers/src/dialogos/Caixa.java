@@ -23,6 +23,7 @@ public class Caixa {
 	//Boolean para verificar interação com a menina
 	public static boolean CaixaMenina = false;
 	public static int auxPassagemdeDialogo = 0;
+	
 		
 	static int fontSize = 20;
 	public static int contador = 0;
@@ -33,17 +34,25 @@ public class Caixa {
 	public static String dialogosMenina[] [] = new String[12][10];
 	public static String dialogosGuerreiro[] [] = new String[12][10];
 
-	public Caixa(int cena,int Alternancia) {
+	public Caixa(int Alternancia) {
 		
-		Caixa.cena = cena;
 		Caixa.Alternancia = Alternancia;
+		
 		if(Alternancia == 1) {
-		dialogosMenina[0][0] = "Menina \n Não";
-		dialogosMenina[0][1] = "Menina \n Falas";
+		// Dialogos da cena 3
+			dialogosMenina[3][0] = "Menina \n Oi, licença, sei que parece estranho, mas posso te pedir um favor?";
+			dialogosMenina[3][1] = "Menina \n Estou um pouco longe de casa e me perdi...";
+	     	dialogosMenina[3][2] = "Menina \n Posso ir com você por enquanto?";
+			
+		// Dialogos da cena 4
+			dialogosMenina[4][0] = "Menina \n Moro em uma vila próxima daqui sabe, ela foi destruída recentemente e os moradores sumiram, junto com minha \nfamília.";
+			dialogosMenina[4][1] = "Menina \n Não consigo lembrar de nada daquele dia, tudo é tão confuso, não sei o que fazer."; 
 		}
+		
 		if(Alternancia == 2) {
-		dialogosGuerreiro[0][0] = ""; 
+			dialogosGuerreiro[0][0] = ""; 
 		}
+		
 	}
 	
 	public static void DialogoM(Graphics g, Menina menina) {
@@ -57,16 +66,17 @@ public class Caixa {
 		
 		//Imprimir frase letra por letra na caixa
 		if((menina.proxima && auxiliar.length() < currentDialog.length()) &&
-			(menina.personagemDelay <= menina.TrocaPosicao*2)) {
+		(menina.personagemDelay <= menina.TrocaPosicao*2)) {
 			auxiliar = auxiliar + currentDialog.charAt(contador);
 			contador++;			
 			Menina.dialogM = true;
-			}
+		}
+		
 		g.setColor(Color.white);
 		g.setFont(f);
 		
 		for(String line : currentDialog.split("\n")) {
-			if(cena == 0  && dialogosMenina[cena][fala] != null) {
+			if(cena >= 0  && dialogosMenina[cena][fala] != null) {
 				g.drawString(line, x+30, y+35);
 				y+= 45;
 				x+= 10;
@@ -100,12 +110,14 @@ public class Caixa {
 			(velho.personagemDelay <= velho.TrocaPosicao*2)) {
 			auxiliar = auxiliar + currentDialog.charAt(contador);
 			contador++;			
-			Menina.dialogM = true;
-			}
+			Velho.dialogV = true;
+		}
+		
 		g.setColor(Color.white);
 		g.setFont(f);
+		
 		for(String line : currentDialog.split("\n")) {
-			if(cena == 0  && dialogosMenina[cena][fala] != null) {
+			if(cena >= 0  && dialogosMenina[cena][fala] != null) {
 				g.drawString(line, x+30, y+35);
 				y+= 45;
 				x+= 10;
