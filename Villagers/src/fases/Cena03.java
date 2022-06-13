@@ -12,6 +12,7 @@ import javax.swing.*;
 
 import Interface.Exe;
 import Interface.Intro;
+import Interface.Janela;
 import cenarios.BotaoE;
 import cenarios.Caminhos;
 import cenarios.Decorativos;
@@ -139,6 +140,7 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 		menina.animacao(player, menina);
 		
 		decorativos.colisaoD(player, decorativos16, 01);
+		passagemDeCaminho();
 		
         repaint();
 		
@@ -172,7 +174,7 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode() == KeyEvent.VK_E) {
 			if(menina.proxima) {
 				System.out.println("Botao E pressionado proximo a menina.");
-				Exe.janela.cl.show(Exe.janela.panelBase, "menu");
+				Janela.cl.show(Exe.janela.panelBase, "menu");
 				player.x = 0;
 				player.y = 500;
 			}
@@ -238,5 +240,10 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 			player.right();
 		}
 	}
+	public void passagemDeCaminho() {
+        if(player.y < Intro.SCREEN_HEIGHT - 761) {
+            Janela.cl.show(Janela.panelBase, "cena04");
+        }
+    }
 
 }

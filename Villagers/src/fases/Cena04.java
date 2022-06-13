@@ -12,6 +12,7 @@ import javax.swing.*;
 
 import Interface.Exe;
 import Interface.Intro;
+import Interface.Janela;
 import cenarios.BotaoE;
 import cenarios.Caminhos;
 import cenarios.Decorativos;
@@ -132,6 +133,7 @@ public class Cena04 extends JPanel implements ActionListener, KeyListener{
 		menina.animacao(player, menina);
 		
 		decorativos.colisaoD(player, decorativos16, 01);
+		passagemDeCaminho();
 		
         repaint();
 		
@@ -232,7 +234,11 @@ public class Cena04 extends JPanel implements ActionListener, KeyListener{
 		}
 	}
 
-
+	public void passagemDeCaminho() {
+        if(player.y < Intro.SCREEN_HEIGHT - 761) {
+            Janela.cl.show(Janela.panelBase, "cena05");
+        }
+    }
 	
 	
 }
