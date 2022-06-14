@@ -55,25 +55,25 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	BotaoE botao = new BotaoE(menina.x +40, menina.y - 50);
 	
 	Decorativos decorativos = new Decorativos(0, 300, 400);
-	Decorativos decorativos2 = new Decorativos(0, 400, 300);
-	Decorativos decorativos3 = new Decorativos(0, 300, 400);
-	Decorativos decorativos4 = new Decorativos(0, 0, 300);
-	Decorativos decorativos5 = new Decorativos(0, 100, 200);
-	Decorativos decorativos6 = new Decorativos(0, 650, 300);
-	Decorativos decorativos7 = new Decorativos(0, 300, 100);
-	Decorativos decorativos8 = new Decorativos(0, 400, 650);
-	Decorativos decorativos9 = new Decorativos(0, 900, 200);
-	Decorativos decorativos10 = new Decorativos(0, 800, 650);
-	Decorativos decorativos11 = new Decorativos(0, 500, 450);
-	Decorativos decorativos12 = new Decorativos(0, 1200, 650);
-	Decorativos decorativos13 = new Decorativos(0, 800, 350);
-	Decorativos decorativos14 = new Decorativos(0, 1200, 100);
-	Decorativos decorativos15 = new Decorativos(0, 1100, 400);
+	Decorativos decorativos2 = new Decorativos(1, 400, 300);
+	Decorativos decorativos3 = new Decorativos(2, 300, 400);
+	Decorativos decorativos4 = new Decorativos(3, 0, 300);
+	Decorativos decorativos5 = new Decorativos(4, 100, 200);
+	Decorativos decorativos6 = new Decorativos(5, 650, 300);
+	Decorativos decorativos7 = new Decorativos(6, 300, 100);
+	Decorativos decorativos8 = new Decorativos(7, 400, 650);
+	Decorativos decorativos9 = new Decorativos(8, 900, 200);
+	Decorativos decorativos10 = new Decorativos(9, 800, 650);
+	Decorativos decorativos11 = new Decorativos(10, 500, 450);
+	Decorativos decorativos12 = new Decorativos(11, 1200, 650);
+	Decorativos decorativos13 = new Decorativos(12, 800, 350);
+	Decorativos decorativos14 = new Decorativos(13, 1200, 100);
+	Decorativos decorativos15 = new Decorativos(14, 1100, 400);
 	Decorativos decorativos16 = new Decorativos(1, 1250, 400);
 	
 	//Selecionando fala da menina
 	
-	Caixa caixa = new Caixa(0,1);
+	Caixa caixa = new Caixa(1);
 	public Cena02(){ 
 		//
 		//Inicialização do painel	

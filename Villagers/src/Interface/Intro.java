@@ -18,7 +18,7 @@ public class Intro extends JPanel{
 	//Inicializar audio
 	public static AudioInputStream stream;
 	public static Clip clip;
-	String audioFileName = "sounds//Undetale--Compact.wav";
+	String audioFileName = "sounds//UndetaleCompact.wav";
 	
 	//Delay para fechar introdução
 	static int wait = 1500;
@@ -57,7 +57,7 @@ public class Intro extends JPanel{
 		stream = AudioSystem.getAudioInputStream(audioPath);
 		clip = AudioSystem.getClip();
 		clip.open(stream);
-		clip.start();
+		//clip.start();
 		}
 
 		catch(Exception e){
