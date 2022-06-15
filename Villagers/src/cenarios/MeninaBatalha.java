@@ -71,7 +71,7 @@ public class MeninaBatalha {
 	
 	public void caminhaPosicaoInicial(MeninaBatalha menina, int x, PlayerBatalha player) {
 		menina.voltarDelay++;
-
+		System.out.println("voltarDelay = " + menina.voltarDelay);
         if(menina.voltarDelay > (menina.voltar*2)) {
         	if(menina.x <= x) {
         		player.dano = false;	

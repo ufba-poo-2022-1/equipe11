@@ -107,7 +107,7 @@ public class PlayerBatalha extends JPanel  {
 	
 	public void caminhaPosicaoX(PlayerBatalha player, int x) {
 		if(player.x <= x) {
-			player.x = player.x + 1;
+			player.x = player.x + 10;
 			
 			caminhando = true;
 		}

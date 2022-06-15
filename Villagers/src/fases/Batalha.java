@@ -10,10 +10,10 @@ import java.awt.event.KeyListener;
 
 import javax.swing.*;
 import Interface.Intro;
-import cenarios.BotaoE;
 import cenarios.Caminhos;
 import cenarios.MeninaBatalha;
 import cenarios.PlayerBatalha;
+import dialogos.Caixa;
 
 
 public class Batalha extends JPanel implements ActionListener, KeyListener{
@@ -54,7 +54,7 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	public void paint(Graphics g) {
-		requestFocusInWindow();
+		//requestFocusInWindow();
 		super.paint(g);	
 		
 		caminhos.draw(g);
@@ -69,6 +69,9 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 			player.draw(g);
 			menina.draw(g);			
 		}
+		
+		Caixa.cena = 11;
+		Caixa.DialogoSemProximidade(g, menina);
 	}
 	
 	@Override
@@ -112,28 +115,36 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {	
 		if (e.getKeyCode() == KeyEvent.VK_E) {
-			if (player.caminhando == false) {
-				player.sobreposto = true;
-				player.iniciandoAtaque = true;
-			}			
+			if((menina.iniciandoAtaque == false && menina.voltando == false) &&
+					player.iniciandoAtaque == false && player.voltando == false){
+				
+				//Player ataca
+				if(Caixa.fala == 1 || Caixa.fala == 3 ) {
+					player.sobreposto = true;
+					player.iniciandoAtaque = true;
+				}
+				
+				//Menina ataca
+				else if(Caixa.fala == 2 || Caixa.fala == 4 ) {
+					player.sobreposto = false;
+					menina.iniciandoAtaque = true;
+				}
+				
+				if(Caixa.auxPassagemdeDialogo != 0) {
+					Caixa.currentDialog = "";
+					Caixa.auxiliar = "";	
+					Caixa.contador = 0;
+					Caixa.fala++;
+				}
+				Caixa.CaixaMenina = true;				
+				Caixa.auxPassagemdeDialogo++;
+			}
+			
 		}
-		else if (e.getKeyCode() == KeyEvent.VK_R) {
-			if (player.caminhando == false) {
-				player.sobreposto = false;
-				menina.iniciandoAtaque = true;
-			}			
-		}
-	}
-		
-	
-	
+	}	
 	
 	public void keyTyped(KeyEvent e) {}
 	
-	public void keyReleased(KeyEvent e) {}
-	
-
-
-	
+	public void keyReleased(KeyEvent e) {}	
 	
 }
