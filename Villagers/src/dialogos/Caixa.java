@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import Interface.Intro;
 import cenarios.Caminhos;
 import cenarios.Menina;
+import cenarios.MeninaBatalha;
 import cenarios.Velho;
 import fases.Cena02;
 
@@ -47,7 +48,21 @@ public class Caixa {
 		// Dialogos da cena 4
 			dialogosMenina[4][0] = "Menina \n Moro em uma vila próxima daqui sabe, ela foi destruída recentemente e os moradores sumiram, junto com minha \nfamília.";
 			dialogosMenina[4][1] = "Menina \n Não consigo lembrar de nada daquele dia, tudo é tão confuso, não sei o que fazer."; 
+					
+		// Teste cena batalha
+			dialogosMenina[11][0] = "Menina \n 1";
+			dialogosMenina[11][1] = "Menina \n 2"; 
+			dialogosMenina[11][2] = "Menina \n 3"; 
+			dialogosMenina[11][3] = "Menina \n 4"; 
+			dialogosMenina[11][4] = "Menina \n 5"; 
+			dialogosMenina[11][5] = "Menina \n 6"; 
+			dialogosMenina[11][6] = "Menina \n 7"; 
+			dialogosMenina[11][7] = "Menina \n 8"; 
+			dialogosMenina[11][8] = "Menina \n 9"; 
+		
+		
 		}
+
 		
 		if(Alternancia == 2) {
 			dialogosGuerreiro[0][0] = ""; 
@@ -66,6 +81,47 @@ public class Caixa {
 		
 		//Imprimir frase letra por letra na caixa
 		if((menina.proxima && auxiliar.length() < currentDialog.length()) &&
+		(menina.personagemDelay <= menina.TrocaPosicao*2)) {
+			auxiliar = auxiliar + currentDialog.charAt(contador);
+			contador++;			
+			Menina.dialogM = true;
+		}
+		
+		g.setColor(Color.white);
+		g.setFont(f);
+		
+		for(String line : currentDialog.split("\n")) {
+			if(cena >= 0  && dialogosMenina[cena][fala] != null) {
+				g.drawString(line, x+30, y+35);
+				y+= 45;
+				x+= 10;
+		
+				currentDialog = dialogosMenina[cena][fala];
+			}
+			
+			else {
+				contador = 0;
+				currentDialog = "";
+				auxiliar = "";
+				fala = 0;
+				auxPassagemdeDialogo = 0;
+				CaixaMenina = false;
+			}
+		}
+		
+	}
+	
+	public static void DialogoSemProximidade(Graphics g, MeninaBatalha menina) {
+		
+		//Window
+		Graphics2D g2 = (Graphics2D) g;
+		
+		//Janela de texto
+		int x = 50, y = 500, width = 1250, height= Intro.SCREEN_HEIGHT/4;
+		drawSubWindow(g2,x, y, width, height);
+		
+		//Imprimir frase letra por letra na caixa
+		if((auxiliar.length() < currentDialog.length()) &&
 		(menina.personagemDelay <= menina.TrocaPosicao*2)) {
 			auxiliar = auxiliar + currentDialog.charAt(contador);
 			contador++;			

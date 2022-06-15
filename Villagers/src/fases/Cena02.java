@@ -123,7 +123,8 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		if(menina.proxima) {
 			botao.draw(g);			
 		}	
-		
+		Caixa.cena = 3;
+
 		// Se dialogo da menina estiver disponivel e  tecla E foi pressionada, desenhe a caixa de dialogo
 		if(menina.proxima == true && Caixa.CaixaMenina == true) {
 			Caixa.DialogoM(g, menina);
