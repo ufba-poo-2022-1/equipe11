@@ -14,6 +14,7 @@ import javax.swing.*;
 
 import Interface.Exe;
 import Interface.Intro;
+import Interface.Janela;
 import cenarios.BotaoE;
 import cenarios.Caminhos;
 import cenarios.Decorativos;
@@ -82,7 +83,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 				
 		//Timer iniciado
 		timer = new Timer(delay, this);
-		timer.start();
+		//timer.start();
 		
 		//Parâmetros para detecção do teclado
 		requestFocusInWindow();
@@ -93,6 +94,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	public void paint(Graphics g) {
+		requestFocusInWindow();
 		//Graphics2D g2 = (Graphics2D) g;
 		//requestFocusInWindow();
 		super.paint(g);
@@ -141,7 +143,6 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
 		//Verificar como passar o algoritmo para classe de diálogo >>> caua
 		//Algoritmo de checar proximidade
 		if((player.x >= menina.x - 150 && player.x <= menina.x + 150) &&
@@ -160,6 +161,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		
 		velho.colisao(player, velho);
 		velho.animacao(player, velho);
+		velho.proximidade(player, velho);
 		
 		menina.proximidade(player, menina);
 		menina.colisao(player, menina);

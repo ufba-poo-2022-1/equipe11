@@ -49,7 +49,7 @@ public class Cena01Pergaminho extends JPanel implements ActionListener, KeyListe
 				
 		//Timer iniciado
 		timer = new Timer(delay, this);
-		timer.start();
+		//timer.start();
 		
 		//Parâmetros para detecção do teclado
 		requestFocusInWindow();

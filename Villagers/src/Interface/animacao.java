@@ -29,7 +29,7 @@ public class animacao extends JPanel implements ActionListener {
 		Laser = new ImageIcon(LaserPath).getImage();
 		Background = new ImageIcon(BackgroundPath).getImage();
 		timer = new Timer(delay,this);
-		timer.start();
+		//timer.start();
 	}
 	
 	public void paint(Graphics g) {
