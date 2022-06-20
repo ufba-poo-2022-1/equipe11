@@ -74,7 +74,7 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 				
 		//Timer iniciado
 		timer = new Timer(delay, this);
-		timer.start();
+		//timer.start();
 		
 		//Passagem de cena
 		

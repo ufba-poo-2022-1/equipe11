@@ -40,6 +40,16 @@ public class Caixa {
 		Caixa.Alternancia = Alternancia;
 		
 		if(Alternancia == 1) {
+			dialogosMenina[10][0] = "Menina \n 1";
+			dialogosMenina[10][1] = "Menina \n 2"; 
+			dialogosMenina[10][2] = "Menina \n 3"; 
+			dialogosMenina[10][3] = "Menina \n 4"; 
+			dialogosMenina[10][4] = "Menina \n 5"; 
+			dialogosMenina[10][5] = "Menina \n 6"; 
+			dialogosMenina[10][6] = "Menina \n 7"; 
+			dialogosMenina[10][7] = "Menina \n 8"; 
+			dialogosMenina[10][8] = "Menina \n 9"; 
+			
 		// Dialogos da cena 3
 			dialogosMenina[3][0] = "Menina \n Oi, licença, sei que parece estranho, mas posso te pedir um favor?";
 			dialogosMenina[3][1] = "Menina \n Estou um pouco longe de casa e me perdi...";
@@ -60,12 +70,17 @@ public class Caixa {
 			dialogosMenina[11][7] = "Menina \n 8"; 
 			dialogosMenina[11][8] = "Menina \n 9"; 
 		
-		
 		}
 
 		
 		if(Alternancia == 2) {
-			dialogosGuerreiro[0][0] = ""; 
+			dialogosGuerreiro[10][0] = "Guerreiro \n"; 
+			dialogosGuerreiro[10][1] = "Guerreiro \n"; 
+			dialogosGuerreiro[10][2] = "Velho \n"; 
+			dialogosGuerreiro[10][3] = "Velho \n"; 
+			dialogosGuerreiro[10][4] = "Velho "; 
+			dialogosGuerreiro[10][5] = "Velho "; 
+			dialogosGuerreiro[10][6] = "Velho "; 
 		}
 		
 	}
@@ -173,7 +188,7 @@ public class Caixa {
 		g.setFont(f);
 		
 		for(String line : currentDialog.split("\n")) {
-			if(cena >= 0  && dialogosMenina[cena][fala] != null) {
+			if(cena >= 0  && dialogosGuerreiro[cena][fala] != null) {
 				g.drawString(line, x+30, y+35);
 				y+= 45;
 				x+= 10;
