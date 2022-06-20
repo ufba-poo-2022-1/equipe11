@@ -17,6 +17,7 @@ import cenarios.Caminhos;
 import cenarios.Decorativos;
 import cenarios.Menina;
 import cenarios.Player;
+import cenarios.PlayerBatalha;
 import cenarios.Velho;
 
 public class Cena10 extends JPanel implements ActionListener, KeyListener{
@@ -37,33 +38,41 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 	Player player = new Player(0,370, "Direita");
 	
 	//Inicializar menina
-	Menina menina = new Menina(500,300);
+	Menina menina = new Menina(520,250);
 
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
 	Caminhos caminhos = new Caminhos(9);
 	
 	//Inicializar velho
-	Velho velho = new Velho(700, 300);
+	Velho velho = new Velho(800, 250);
+	
+	//Inicializar playerBatalha
+	PlayerBatalha playerBatalha = new PlayerBatalha(10, 10);
 	
 	//Inicializar botao
 	BotaoE botao = new BotaoE(menina.x +40, menina.y - 50);
+	BotaoE botao2 = new BotaoE(playerBatalha.x +40, playerBatalha.y -50);
 	
-	Decorativos decorativos = new Decorativos(0, 300, 400);
-	Decorativos decorativos2 = new Decorativos(0, 400, 300);
-	Decorativos decorativos3 = new Decorativos(0, 300, 400);
-	Decorativos decorativos4 = new Decorativos(0, 0, 300);
-	Decorativos decorativos5 = new Decorativos(0, 100, 200);
-	Decorativos decorativos6 = new Decorativos(0, 650, 300);
-	Decorativos decorativos7 = new Decorativos(0, 300, 100);
-	Decorativos decorativos8 = new Decorativos(0, 400, 650);
-	Decorativos decorativos9 = new Decorativos(0, 900, 200);
-	Decorativos decorativos10 = new Decorativos(0, 800, 650);
-	Decorativos decorativos11 = new Decorativos(0, 500, 450);
-	Decorativos decorativos12 = new Decorativos(0, 1200, 650);
-	Decorativos decorativos13 = new Decorativos(0, 800, 350);
-	Decorativos decorativos14 = new Decorativos(0, 1200, 100);
-	Decorativos decorativos15 = new Decorativos(0, 1100, 400);
-	Decorativos decorativos16 = new Decorativos(1, 1250, 400);
+	Decorativos decorativos = new Decorativos(2, 30, 100);
+	Decorativos decorativos2 = new Decorativos(2, 100, 100);
+	Decorativos decorativos3 = new Decorativos(2, 170, 100);
+	Decorativos decorativos4 = new Decorativos(6, 320, 200);
+	Decorativos decorativos5 = new Decorativos(5, 540, 90);
+	Decorativos decorativos6 = new Decorativos(6, 400, 10);
+	Decorativos decorativos7 = new Decorativos(7, 900, 20);
+	Decorativos decorativos8 = new Decorativos(7, 1100, 100);
+	Decorativos decorativos9 = new Decorativos(7, 950, 250);
+	Decorativos decorativos10 = new Decorativos(6, 0, 600);
+	Decorativos decorativos11 = new Decorativos(6, 150, 600);
+	Decorativos decorativos12 = new Decorativos(6, 300, 600);
+	Decorativos decorativos13 = new Decorativos(6, 900, 600);
+	Decorativos decorativos14 = new Decorativos(6, 1050, 600);
+	Decorativos decorativos15 = new Decorativos(6, 1200, 600);
+	Decorativos decorativos16 = new Decorativos(1, 780, 10);
+	Decorativos decorativos17 = new Decorativos(3, 550, 650);
+	Decorativos decorativos18 = new Decorativos(3, 650, 650);
+	Decorativos decorativos19 = new Decorativos(3, 750, 650);
+	
 	
 	public Cena10(){ 
 		//
@@ -104,16 +113,20 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 		decorativos14.draw(g);
 		decorativos15.draw(g);
 		decorativos16.draw(g);
+		decorativos17.draw(g);
+		decorativos18.draw(g);
+		decorativos19.draw(g);
 		
 		menina.draw(g);
 		velho.draw(g);
 		
 		player.draw(g);
-		
+		playerBatalha.draw(g);
 
 		if(menina.proxima) {
 			botao.draw(g);			
 		}	
+	
 		
 	}
 	
@@ -131,9 +144,12 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 		menina.colisao(player, menina);
 		menina.animacao(player, menina);
 		
+	
 		decorativos.colisaoD(player, decorativos16, 01);
-		
-        repaint();
+		decorativos.colisaoD(player, decorativos, 01);
+		decorativos.colisaoD(player, decorativos2, 01);
+		decorativos.colisaoD(player, decorativos3, 01);
+		repaint();
 		
 	}
 
