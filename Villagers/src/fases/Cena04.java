@@ -35,7 +35,7 @@ public class Cena04 extends JPanel implements ActionListener, KeyListener{
 	int delay = 10;  
 	
 	//Inicializando player
-	Player player = new Player(670,800, "Direita");
+	Player player = new Player(670,600, "Direita");
 	
 	//Inicializar menina
 	Menina menina = new Menina(500,300);
@@ -234,11 +234,13 @@ public class Cena04 extends JPanel implements ActionListener, KeyListener{
 		}
 	}
 
-	public void passagemDeCaminho() {
-        if(player.y < Intro.SCREEN_HEIGHT - 761) {
-            Janela.cl.show(Janela.panelBase, "cena05");
-        }
-    }
+	 public void passagemDeCaminho() {
+	        if(player.y > 610) {
+	            Janela.cl.show(Janela.panelBase, "cena03");
+	        }
+	            else if(player.y < 10) {
+	        	Janela.cl.show(Janela.panelBase, "cena05");
+	        }
 	
-	
+	 }	
 }
