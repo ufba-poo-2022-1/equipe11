@@ -12,6 +12,7 @@ import javax.swing.*;
 
 import Interface.Exe;
 import Interface.Intro;
+import Interface.Janela;
 import cenarios.BotaoE;
 import cenarios.Caminhos;
 import cenarios.Decorativos;
@@ -34,7 +35,7 @@ public class Cena07 extends JPanel implements ActionListener, KeyListener{
 	int delay = 10;  
 	
 	//Inicializando player
-	Player player = new Player(0,300, "Direita");
+	Player player = new Player(15,300, "Direita");
 	
 	//Inicializar menina
 	Menina menina = new Menina(500,300);
@@ -132,6 +133,7 @@ public class Cena07 extends JPanel implements ActionListener, KeyListener{
 		menina.animacao(player, menina);
 		
 		decorativos.colisaoD(player, decorativos16, 01);
+		passagemDeCaminho();
 		
         repaint();
 		
@@ -232,7 +234,16 @@ public class Cena07 extends JPanel implements ActionListener, KeyListener{
 		}
 	}
 
-
+	 public void passagemDeCaminho() {
+	        if(player.x < 3) {
+	            Janela.cl.show(Janela.panelBase, "cena06");
+	        }
+	            else if(player.y > 610) {
+	        	Janela.cl.show(Janela.panelBase, "cena08");
+	        }
 	
-	
+	 }	
 }
+	
+	
+
