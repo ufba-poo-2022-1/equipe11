@@ -32,27 +32,18 @@ public class Caixa {
   	public static String currentDialog = "";
   	public static String auxiliar = "";
 	public static String dialogosMenina[] [] = new String[12][10];
-	public static String dialogosGuerreiro[] [] = new String[12][10];
+	public static String dialogos[] [] = new String[12][10];
 
-	public Caixa(int Alternancia) {
+	public Caixa() {
 		
-		Caixa.Alternancia = Alternancia;
-		
-		if(Alternancia == 1) {
-		// Dialogos da cena 3
-			dialogosMenina[3][0] = "Menina \n Oi, licença, sei que parece estranho, mas posso te pedir um favor?";
-			dialogosMenina[3][1] = "Menina \n Estou um pouco longe de casa e me perdi...";
-	     	dialogosMenina[3][2] = "Menina \n Posso ir com você por enquanto?";
+	// Dialogos da cena 3
+		dialogos[3][0] = "Menina \n Oi, licença, sei que parece estranho, mas posso te pedir um favor?";
+		dialogos[3][1] = "Menina \n Estou um pouco longe de casa e me perdi...";
+		dialogos[3][2] = "Menina \n Posso ir com você por enquanto?";
 			
-		// Dialogos da cena 4
-			dialogosMenina[4][0] = "Menina \n Moro em uma vila próxima daqui sabe, ela foi destruída recentemente e os moradores sumiram, junto com minha \nfamília.";
-			dialogosMenina[4][1] = "Menina \n Não consigo lembrar de nada daquele dia, tudo é tão confuso, não sei o que fazer."; 
-		}
-		
-		if(Alternancia == 2) {
-			dialogosGuerreiro[0][0] = ""; 
-		}
-		
+	// Dialogos da cena 4
+		dialogos[4][0] = "Menina \n Moro em uma vila próxima daqui sabe, ela foi destruída recentemente e os moradores sumiram, junto com minha \nfamília.";
+		dialogos[4][1] = "Menina \n Não consigo lembrar de nada daquele dia, tudo é tão confuso, não sei o que fazer."; 
 	}
 	
 	public static void DialogoM(Graphics g, Menina menina) {
@@ -76,12 +67,12 @@ public class Caixa {
 		g.setFont(f);
 		
 		for(String line : currentDialog.split("\n")) {
-			if(cena >= 0  && dialogosMenina[cena][fala] != null) {
+			if(cena >= 0  && dialogos[cena][fala] != null) {
 				g.drawString(line, x+30, y+35);
 				y+= 45;
 				x+= 10;
 		
-				currentDialog = dialogosMenina[cena][fala];
+				currentDialog = dialogos[cena][fala];
 			}
 			
 			else {
@@ -117,12 +108,12 @@ public class Caixa {
 		g.setFont(f);
 		
 		for(String line : currentDialog.split("\n")) {
-			if(cena >= 0  && dialogosMenina[cena][fala] != null) {
+			if(cena >= 0  && dialogos[cena][fala] != null) {
 				g.drawString(line, x+30, y+35);
 				y+= 45;
 				x+= 10;
 		
-				currentDialog = dialogosGuerreiro[cena][fala];
+				currentDialog = dialogos[cena][fala];
 			}
 			else {
 				contador = 0;
