@@ -20,6 +20,7 @@ import cenarios.Menina;
 import cenarios.Player;
 import cenarios.PlayerBatalha;
 import cenarios.Velho;
+import dialogos.Caixa;
 
 public class Cena10 extends JPanel implements ActionListener, KeyListener{
 	/**
@@ -73,7 +74,16 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos17 = new Decorativos(3, 550, 650);
 	Decorativos decorativos18 = new Decorativos(3, 650, 650);
 	Decorativos decorativos19 = new Decorativos(3, 750, 650);
+
+	/*
+	beto
+	Velho velho = new Velho(325, 250);
 	
+	//Inicializar botao
+	BotaoE botao = new BotaoE(velho.x +40, velho.y - 50);
+	
+	Decorativos decorativos = new Decorativos(14, 300, 100);
+	*/
 	
 	public Cena10(){ 
 		//
@@ -83,7 +93,7 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 				
 		//Timer iniciado
 		timer = new Timer(delay, this);
-		timer.start();
+		//timer.start();
 		
 		//Parâmetros para detecção do teclado
 		requestFocusInWindow();
@@ -123,12 +133,28 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 		
 		player.draw(g);
 		playerBatalha.draw(g);
-
-		if(menina.proxima) {
-			botao.draw(g);			
-		}	
 	
+		/*
+		beto
+		velho.draw(g);		
+		player.draw(g);		
 		
+		// Se dialogo da menina estiver disponivel e  tecla E foi pressionada, desenhe a caixa de dialogo
+		if(velho.proximo == true && Caixa.CaixaMenina == true) {
+			Caixa.DialogoV(g, velho);
+			player.velMax = 0;
+			player.velx = 0;
+		}
+		else{
+			player.velMax = 13;
+		}
+		
+		if(velho.proximo) {
+			botao.draw(g);				
+		}
+		
+		Caixa.cena = 10;
+		*/
 	}
 	
 	@Override
@@ -140,7 +166,8 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 		
 		velho.colisao(player, velho);
 		velho.animacao(player, velho);
-		
+		velho.proximidade(player, velho);
+
 		menina.proximidade(player, menina);
 		menina.colisao(player, menina);
 		menina.animacao(player, menina);
@@ -182,16 +209,26 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 		}
 		
 		if (e.getKeyCode() == KeyEvent.VK_E) {
-			if(menina.proxima) {
+
+			if(velho.proximo) {
+				if(Caixa.auxPassagemdeDialogo != 0) {
+					Caixa.currentDialog = "";
+					Caixa.auxiliar = "";	
+					Caixa.contador = 0;
+					Caixa.fala++;
+				}
+				Caixa.CaixaMenina = true;
+				
+				Caixa.auxPassagemdeDialogo++;
+
+							
+				
 				System.out.println("Botao E pressionado proximo a menina.");
-				Exe.janela.cl.show(Exe.janela.panelBase, "menu");
-				player.x = 0;
-				player.y = 500;
 			}
 			else {
 				System.out.println("Botao E pressionado longe da menina.");
-			}
-			
+				Caixa.CaixaMenina = false;
+			}			
 		}
 	}
 		

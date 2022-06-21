@@ -75,7 +75,7 @@ public class Cena09 extends JPanel implements ActionListener, KeyListener{
 				
 		//Timer iniciado
 		timer = new Timer(delay, this);
-		timer.start();
+		//timer.start();
 		
 		//Parâmetros para detecção do teclado
 		requestFocusInWindow();
