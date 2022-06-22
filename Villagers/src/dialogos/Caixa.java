@@ -81,7 +81,15 @@ public class Caixa {
 		dialogos[10][1] = "Menina \n Eu não consigo controlar meu corpo, espero que esteja preparado.";
 		dialogos[10][2] = "Menina \n Pelo menos tive uma pessoa para passsar meus ultimos suspiros, lhe agradeço por isso";
 		dialogos[10][3] = "Menina \n Me perdoe pelo que irá acontecer agora";
-		
+		// Primeira Batida
+		dialogos[10][4] = "Menina \n Argh, essa espada daquele guerreiro é forte!";
+		// Segunda Batida
+		dialogos[10][5] = "Menina \n Continue! Acho que o ser não deve aguentar muito mais!";
+		// Terceira Batida
+		dialogos[10][6] = "Menina \n Finalmente, vejo o fim desse sofrimento";
+		dialogos[10][7] = "Menina \n O fim que você, aldeão, quiser me dar, aceitarei.";
+		//Escolha
+		dialogos [10][6] = "Deseja poupar a menina com a oração ou mata-la com a espada? \n \n  POUPAR[P]                                             MATAR[M]";
 	}
 	
 	public static void DialogoM(Graphics g, Menina menina) {
