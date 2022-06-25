@@ -72,9 +72,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos15 = new Decorativos(14, 1100, 400);
 	Decorativos decorativos16 = new Decorativos(1, 1250, 400);
 	
-	//Selecionando fala da menina
-	
-	Caixa caixa = new Caixa(1);
+	Caixa caixa = new Caixa();
 	public Cena02(){ 
 		//
 		//Inicialização do painel	
@@ -121,6 +119,8 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		velho.draw(g);
 		
 		player.draw(g);
+		
+		Caixa.cena = 3;
 
 		if(menina.proxima) {
 			botao.draw(g);			
@@ -153,7 +153,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 			menina.proxima = false;
 			menina.contador = 0;
 			menina.Frase = "";
-			Caixa.CaixaMenina = false;
+			//Caixa.CaixaMenina = false;
 		}
 		
 		player.animacao(player);
@@ -221,7 +221,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 			}
 			else {
 				System.out.println("Botao E pressionado longe da menina.");
-				Caixa.CaixaMenina = false;
+				//Caixa.CaixaMenina = false;
 			}
 			
 		}
