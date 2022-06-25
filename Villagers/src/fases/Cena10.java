@@ -74,6 +74,8 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos17 = new Decorativos(3, 550, 650);
 	Decorativos decorativos18 = new Decorativos(3, 650, 650);
 	Decorativos decorativos19 = new Decorativos(3, 750, 650);
+	
+	Caixa caixa = new Caixa();
 
 	/*
 	beto
@@ -134,6 +136,22 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 		player.draw(g);
 		playerBatalha.draw(g);
 	
+		Caixa.cena = 9;
+
+		if(menina.proxima) {
+			botao.draw(g);			
+		}	
+		
+		// Se dialogo da menina estiver disponivel e  tecla E foi pressionada, desenhe a caixa de dialogo
+		if(menina.proxima == true && Caixa.CaixaMenina == true) {
+			Caixa.DialogoM(g, menina);
+			player.velMax = 0;
+			player.velx = 0;
+		}
+		else{
+			player.velMax = 13;
+		}	
+		
 		/*
 		beto
 		velho.draw(g);		
@@ -159,6 +177,18 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//Verificar como passar o algoritmo para classe de diálogo >>> caua
+		//Algoritmo de checar proximidade
+		if((player.x >= menina.x - 150 && player.x <= menina.x + 150) &&
+				(player.y >= menina.y - 150 && player.y <= menina.y +150)) {
+			menina.proxima = true;
+		}
+		else {
+			menina.proxima = false;
+			menina.contador = 0;
+			menina.Frase = "";
+		}
+		
 		botao.animacao(botao);
 		
 		player.animacao(player);
@@ -209,8 +239,7 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 		}
 		
 		if (e.getKeyCode() == KeyEvent.VK_E) {
-
-			if(velho.proximo) {
+			if(menina.proxima) {
 				if(Caixa.auxPassagemdeDialogo != 0) {
 					Caixa.currentDialog = "";
 					Caixa.auxiliar = "";	
@@ -218,17 +247,15 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 					Caixa.fala++;
 				}
 				Caixa.CaixaMenina = true;
+				System.out.println("Botao E pressionado proximo a menina.");
 				
 				Caixa.auxPassagemdeDialogo++;
 
-							
-				
-				System.out.println("Botao E pressionado proximo a menina.");
 			}
 			else {
 				System.out.println("Botao E pressionado longe da menina.");
-				Caixa.CaixaMenina = false;
-			}			
+			}
+			
 		}
 	}
 		

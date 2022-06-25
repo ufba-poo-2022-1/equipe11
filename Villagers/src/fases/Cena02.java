@@ -75,7 +75,6 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos18 = new Decorativos(6, 839, 80);
 	Decorativos decorativos19 = new Decorativos(2, 339, 590);
 	
-	Caixa caixa = new Caixa();
 	public Cena02(){ 
 		//
 		//Inicialização do painel	
@@ -126,23 +125,9 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		
 		player.draw(g);
 		
-		Caixa.cena = 3;
-
 		if(menina.proxima) {
 			botao.draw(g);			
 		}	
-		Caixa.cena = 3;
-
-		// Se dialogo da menina estiver disponivel e  tecla E foi pressionada, desenhe a caixa de dialogo
-		if(menina.proxima == true && Caixa.CaixaMenina == true) {
-			Caixa.DialogoM(g, menina);
-			player.velMax = 0;
-			player.velx = 0;
-		}
-		else{
-			player.velMax = 13;
-		}
-		
 		//Menina.Suporte(g,500,300);
 	}
 	
@@ -159,7 +144,6 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 			menina.proxima = false;
 			menina.contador = 0;
 			menina.Frase = "";
-			//Caixa.CaixaMenina = false;
 		}
 		
 		player.animacao(player);
@@ -215,19 +199,11 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 				Caixa.CaixaMenina = true;
 				
 				Caixa.auxPassagemdeDialogo++;
-
-							
-				
+	
 				System.out.println("Botao E pressionado proximo a menina.");
-			//Exe.janela.cl.show(Exe.janela.panelBase, "menu");
-				
-				//drawDialogueScreen();
-				//player.x = 0;
-				//player.y = 500;
 			}
 			else {
 				System.out.println("Botao E pressionado longe da menina.");
-				//Caixa.CaixaMenina = false;
 			}
 			
 		}
