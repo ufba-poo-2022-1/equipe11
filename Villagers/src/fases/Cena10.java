@@ -49,11 +49,11 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 	Velho velho = new Velho(800, 250);
 	
 	//Inicializar playerBatalha
-	PlayerBatalha playerBatalha = new PlayerBatalha(10, 10);
+	//PlayerBatalha playerBatalha = new PlayerBatalha(10, 10);
 	
 	//Inicializar botao
 	BotaoE botao = new BotaoE(menina.x +40, menina.y - 50);
-	BotaoE botao2 = new BotaoE(playerBatalha.x +40, playerBatalha.y -50);
+	//BotaoE botao2 = new BotaoE(playerBatalha.x +40, playerBatalha.y -50);
 	
 	Decorativos decorativos = new Decorativos(2, 30, 100);
 	Decorativos decorativos2 = new Decorativos(2, 100, 100);
@@ -134,7 +134,7 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 		velho.draw(g);
 		
 		player.draw(g);
-		playerBatalha.draw(g);
+		//playerBatalha.draw(g);
 	
 		Caixa.cena = 9;
 
@@ -316,10 +316,15 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 	}
 
 	public void passagemDeCaminho() {
-        if(player.y < 11) {
-            Janela.cl.show(Janela.panelBase, "batalha");
+        if(player.y < Intro.SCREEN_HEIGHT - 761) {
+        	Janela.cena11.timer.start();
+        	Janela.cena10.timer.stop();
+            Janela.cl.show(Janela.panelBase, "cena11");
         }
+        
             else if(player.x < 10) {
+        	Janela.cena09.timer.start();
+        	Janela.cena10.timer.stop();
         	Janela.cl.show(Janela.panelBase, "cena09");
         }
 
