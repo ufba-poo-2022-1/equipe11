@@ -50,23 +50,53 @@ public class Cena05 extends JPanel implements ActionListener, KeyListener{
 	//Inicializar botao
 	BotaoE botao = new BotaoE(menina.x +40, menina.y - 50);
 	
-	Decorativos decorativos = new Decorativos(0, 300, 400);
-	Decorativos decorativos2 = new Decorativos(0, 400, 300);
-	Decorativos decorativos3 = new Decorativos(0, 300, 400);
-	Decorativos decorativos4 = new Decorativos(0, 0, 300);
-	Decorativos decorativos5 = new Decorativos(0, 100, 200);
-	Decorativos decorativos6 = new Decorativos(0, 650, 300);
-	Decorativos decorativos7 = new Decorativos(0, 300, 100);
-	Decorativos decorativos8 = new Decorativos(0, 400, 650);
-	Decorativos decorativos9 = new Decorativos(0, 900, 200);
-	Decorativos decorativos10 = new Decorativos(0, 800, 650);
-	Decorativos decorativos11 = new Decorativos(0, 500, 450);
-	Decorativos decorativos12 = new Decorativos(0, 1200, 650);
-	Decorativos decorativos13 = new Decorativos(0, 800, 250);
-	Decorativos decorativos14 = new Decorativos(0, 1200, 100);
-	Decorativos decorativos15 = new Decorativos(0, 1100, 400);
-	Decorativos decorativos16 = new Decorativos(0, 1100, 400);
-	Decorativos decorativos17 = new Decorativos(1, 1250, 400);
+	Decorativos decorativos = new Decorativos(5, 300, 400);
+	Decorativos decorativos2 = new Decorativos(5, 400, 300);
+	Decorativos decorativos3 = new Decorativos(5, 300, 400);
+	Decorativos decorativos4 = new Decorativos(6, 0, 300);
+	Decorativos decorativos5 = new Decorativos(6, 100, 200);
+	Decorativos decorativos6 = new Decorativos(9, 650, 0);
+	Decorativos decorativos7 = new Decorativos(5, 300, 100);
+	Decorativos decorativos8 = new Decorativos(5, 400, 650);
+	Decorativos decorativos9 = new Decorativos(5, 900, 300);
+	Decorativos decorativos10 = new Decorativos(3, 900, 650);
+	Decorativos decorativos11 = new Decorativos(2, 1000, 450);
+	Decorativos decorativos12 = new Decorativos(6, 1200, 650);
+	Decorativos decorativos13 = new Decorativos(4, 800, 250);
+	Decorativos decorativos14 = new Decorativos(4, 1200, 100);
+	Decorativos decorativos15 = new Decorativos(3, 1100, 400);
+	Decorativos decorativos16 = new Decorativos(6, 1100, 400);
+	Decorativos decorativos17 = new Decorativos(4, 750, 200);
+	Decorativos decorativos18 = new Decorativos(4, 650, 200);
+	Decorativos decorativos19 = new Decorativos(8, 550, 200);
+	Decorativos decorativos20 = new Decorativos(8, 950, 100);
+	Decorativos decorativos21 = new Decorativos(6, 20, 630);
+	Decorativos decorativos22 = new Decorativos(2, 200, 600);
+	Decorativos decorativos23 = new Decorativos(3, 300, 700);
+	Decorativos decorativos24 = new Decorativos(6, 750, 500);
+	
+
+	
+	
+	/*
+	 *Lista de decorativos:
+	 	0 - Cogumelos
+	 	1 - Placa de perigo
+	 	2 - Arbusto
+	 	3 - Arbusto com frutas
+	 	4 - Arbusto em chamas
+	 	5 - Arvore com frutos
+	 	6 - Arvore 
+	 	7 - Arvore seca
+	 	8 - Arvore seca em chamas
+	 	9 - Casa 01
+	 	10 - Casa 02
+	 	11 - Casa 03
+	 	12 - Casa 04
+	 	13 - Casa 05
+	 	14 - Mercado Guerreiro
+	 	
+	 */
 	
 	Caixa caixa = new Caixa();
 	
@@ -110,6 +140,13 @@ public class Cena05 extends JPanel implements ActionListener, KeyListener{
 		decorativos15.draw(g);
 		decorativos16.draw(g);
 		decorativos17.draw(g);
+		decorativos18.draw(g);
+		decorativos19.draw(g);
+		decorativos20.draw(g);
+		decorativos21.draw(g);
+		decorativos22.draw(g);
+		decorativos23.draw(g);
+		decorativos24.draw(g);
 		
 		menina.draw(g);
 		velho.draw(g);
