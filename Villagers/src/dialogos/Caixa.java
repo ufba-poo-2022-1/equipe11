@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import Interface.Intro;
 import cenarios.Caminhos;
 import cenarios.Menina;
+import cenarios.MeninaBatalha;
 import cenarios.Velho;
 import fases.Cena02;
 
@@ -54,6 +55,7 @@ public class Caixa {
 		dialogos[5][1] = "Menina \n Um dia, ele chegou com um saco de riquezas, e atraiu a atenção de toda a vila.";
 		dialogos[5][2] = "Menina \n Ao abrir o saco, eu me senti atraída por um anel muito bonito. Acho que o guerreiro viu minha curiosidade e \nme presenteou com ele.";
 		dialogos[5][3] = "Menina \n Parando pra pensar, foi ali que minha mente ficou estranha.";
+
 		
 	// Dialogos sexta tela (Cena07)
 		dialogos[6][0] = "Menina \n Depois desse dia, eu começei a ter pensamentos estranhos.";
@@ -119,6 +121,47 @@ public class Caixa {
 				x+= 10;
 		
 				currentDialog = dialogos[cena][fala];
+			}
+			
+			else {
+				contador = 0;
+				currentDialog = "";
+				auxiliar = "";
+				fala = 0;
+				auxPassagemdeDialogo = 0;
+				CaixaMenina = false;
+			}
+		}
+		
+	}
+	
+	public static void DialogoSemProximidade(Graphics g, MeninaBatalha menina) {
+		
+		//Window
+		Graphics2D g2 = (Graphics2D) g;
+		
+		//Janela de texto
+		int x = 50, y = 500, width = 1250, height= Intro.SCREEN_HEIGHT/4;
+		drawSubWindow(g2,x, y, width, height);
+		
+		//Imprimir frase letra por letra na caixa
+		if((auxiliar.length() < currentDialog.length()) &&
+		(menina.personagemDelay <= menina.TrocaPosicao*2)) {
+			auxiliar = auxiliar + currentDialog.charAt(contador);
+			contador++;			
+			Menina.dialogM = true;
+		}
+		
+		g.setColor(Color.white);
+		g.setFont(f);
+		
+		for(String line : currentDialog.split("\n")) {
+			if(cena >= 0  && dialogosMenina[cena][fala] != null) {
+				g.drawString(line, x+30, y+35);
+				y+= 45;
+				x+= 10;
+		
+				currentDialog = dialogosMenina[cena][fala];
 			}
 			
 			else {

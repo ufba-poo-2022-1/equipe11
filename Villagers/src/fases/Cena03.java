@@ -12,6 +12,7 @@ import javax.swing.*;
 
 import Interface.Exe;
 import Interface.Intro;
+import Interface.Janela;
 import cenarios.BotaoE;
 import cenarios.Caminhos;
 import cenarios.Decorativos;
@@ -49,12 +50,12 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 	BotaoE botao = new BotaoE(menina.x +40, menina.y - 50);
 	
 	Decorativos decorativos = new Decorativos(0, 300, 400);
-	Decorativos decorativos2 = new Decorativos(0, 400, 300);
+	Decorativos decorativos2 = new Decorativos(0, 800, 100);
 	Decorativos decorativos3 = new Decorativos(0, 300, 400);
 	Decorativos decorativos4 = new Decorativos(0, 0, 300);
 	Decorativos decorativos5 = new Decorativos(0, 100, 200);
-	Decorativos decorativos6 = new Decorativos(0, 650, 300);
-	Decorativos decorativos7 = new Decorativos(0, 300, 100);
+	Decorativos decorativos6 = new Decorativos(0, 400, 300);
+	Decorativos decorativos7 = new Decorativos(0, 500, 100);
 	Decorativos decorativos8 = new Decorativos(0, 400, 650);
 	Decorativos decorativos9 = new Decorativos(0, 900, 200);
 	Decorativos decorativos10 = new Decorativos(0, 800, 650);
@@ -63,7 +64,7 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos13 = new Decorativos(0, 800, 350);
 	Decorativos decorativos14 = new Decorativos(0, 1200, 100);
 	Decorativos decorativos15 = new Decorativos(0, 1100, 400);
-	Decorativos decorativos16 = new Decorativos(1, 1250, 400);
+	Decorativos decorativos16 = new Decorativos(1, 725, 0);
 	
 	public Cena03(){ 
 		//
@@ -73,13 +74,18 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 				
 		//Timer iniciado
 		timer = new Timer(delay, this);
-		timer.start();
+		//timer.start();
+		
+		//Passagem de cena
+		
+		
 		
 		//Parâmetros para detecção do teclado
 		requestFocusInWindow();
 		addKeyListener(this);
 		setFocusable(true);
 		setFocusTraversalKeysEnabled(false);
+
 		
 	}
 	
@@ -114,7 +120,9 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 		if(menina.proxima) {
 			botao.draw(g);			
 		}	
-		
+	// PassagemDeCena(int numeroCaminho) {
+			//if ()
+		//}
 	}
 	
 	@Override
@@ -132,6 +140,7 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 		menina.animacao(player, menina);
 		
 		decorativos.colisaoD(player, decorativos16, 01);
+		passagemDeCaminho();
 		
         repaint();
 		
@@ -165,7 +174,7 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode() == KeyEvent.VK_E) {
 			if(menina.proxima) {
 				System.out.println("Botao E pressionado proximo a menina.");
-				Exe.janela.cl.show(Exe.janela.panelBase, "menu");
+				Janela.cl.show(Exe.janela.panelBase, "menu");
 				player.x = 0;
 				player.y = 500;
 			}
@@ -231,8 +240,10 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 			player.right();
 		}
 	}
+	public void passagemDeCaminho() {
+        if(player.y < Intro.SCREEN_HEIGHT - 761) {
+            Janela.cl.show(Janela.panelBase, "cena04");
+        }
+    }
 
-
-	
-	
 }
