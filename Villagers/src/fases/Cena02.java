@@ -14,6 +14,7 @@ import javax.swing.*;
 
 import Interface.Exe;
 import Interface.Intro;
+import Interface.Janela;
 import cenarios.BotaoE;
 import cenarios.Caminhos;
 import cenarios.Decorativos;
@@ -71,9 +72,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos15 = new Decorativos(14, 1100, 400);
 	Decorativos decorativos16 = new Decorativos(1, 1250, 400);
 	
-	//Selecionando fala da menina
-	
-	Caixa caixa = new Caixa(1);
+	Caixa caixa = new Caixa();
 	public Cena02(){ 
 		//
 		//Inicialização do painel	
@@ -82,7 +81,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 				
 		//Timer iniciado
 		timer = new Timer(delay, this);
-		timer.start();
+		//timer.start();
 		
 		//Parâmetros para detecção do teclado
 		requestFocusInWindow();
@@ -93,6 +92,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	public void paint(Graphics g) {
+		requestFocusInWindow();
 		//Graphics2D g2 = (Graphics2D) g;
 		//requestFocusInWindow();
 		super.paint(g);
@@ -119,6 +119,8 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		velho.draw(g);
 		
 		player.draw(g);
+		
+		Caixa.cena = 3;
 
 		if(menina.proxima) {
 			botao.draw(g);			
@@ -141,7 +143,6 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
 		//Verificar como passar o algoritmo para classe de diálogo >>> caua
 		//Algoritmo de checar proximidade
 		if((player.x >= menina.x - 150 && player.x <= menina.x + 150) &&
@@ -152,7 +153,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 			menina.proxima = false;
 			menina.contador = 0;
 			menina.Frase = "";
-			Caixa.CaixaMenina = false;
+			//Caixa.CaixaMenina = false;
 		}
 		
 		player.animacao(player);
@@ -160,6 +161,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		
 		velho.colisao(player, velho);
 		velho.animacao(player, velho);
+		velho.proximidade(player, velho);
 		
 		menina.proximidade(player, menina);
 		menina.colisao(player, menina);
@@ -219,7 +221,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 			}
 			else {
 				System.out.println("Botao E pressionado longe da menina.");
-				Caixa.CaixaMenina = false;
+				//Caixa.CaixaMenina = false;
 			}
 			
 		}

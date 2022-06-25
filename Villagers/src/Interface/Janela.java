@@ -15,11 +15,11 @@ public class Janela extends JFrame{
 		public static CardLayout cl = new CardLayout();
 		public static JPanel panelBase = new JPanel();
 		
-		//Cenas a serem inseridas na janela
+		//cenas a serem inseridas na janela
 		static Menu menu = new Menu();
 		static Intro intro = new Intro();
 		static animacao animacao = new animacao();
-		static Cena02 cena02 = new Cena02();
+		public static Cena02 cena02 = new Cena02();
 		static Cena03 cena03 = new Cena03();
 		static Cena04 cena04 = new Cena04();
 		static Cena05 cena05 = new Cena05();
@@ -51,8 +51,8 @@ public class Janela extends JFrame{
 		panelBase.add(cena09, "cena09");
 		panelBase.add(cena10, "cena10");
 		panelBase.add(batalha, "batalha");
-		cl.show(panelBase, "cena05");
-		
+		cl.show(panelBase, "cena10");
+
 		this.setTitle(TituloJanela);		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.add(panelBase);

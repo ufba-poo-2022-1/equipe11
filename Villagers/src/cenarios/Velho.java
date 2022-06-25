@@ -43,6 +43,17 @@ public class Velho {
 		VelhoEsquerda02 = new ImageIcon(VelhoEsquerda02Path).getImage();
 	}
 	
+	public void proximidade(Player player, Velho velho) {
+		//Algoritmo de checar proximidade
+		if((player.x >= velho.x - 150 && player.x <= velho.x + 150) &&
+				(player.y >= velho.y - 150 && player.y <= velho.y +150)) {
+			velho.proximo = true;
+		}
+		else {
+			velho.proximo = false;	
+		}
+	}
+	
 	public void animacao(Player player, Velho velho) {
 		//Animacao Velho
 	    velho.personagemDelay += 1;
