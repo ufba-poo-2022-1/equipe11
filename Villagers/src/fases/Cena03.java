@@ -1,8 +1,10 @@
 package fases;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -18,6 +20,7 @@ import cenarios.Decorativos;
 import cenarios.Menina;
 import cenarios.Player;
 import cenarios.Velho;
+import dialogos.Caixa;
 
 public class Cena03 extends JPanel implements ActionListener, KeyListener{
 	/**
@@ -28,11 +31,14 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 	//Resolução da tela
 	final static int SCREEN_WIDTH = Intro.SCREEN_WIDTH;
 	final static int SCREEN_HEIGHT = Intro.SCREEN_HEIGHT;
-		
+	
+	
 	//Timer ajustes, delay define intervalo(ms) em que ações são percebidas
 	Timer timer;
 	int delay = 10;  
 	
+	
+    
 	//Inicializando player
 	Player player = new Player(0,500, "Direita");
 	
@@ -43,7 +49,7 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 	Caminhos caminhos = new Caminhos(2);
 	
 	//Inicializar velho
-	Velho velho = new Velho(700, 300);
+	//Velho velho = new Velho(700, 300);
 	
 	//Inicializar botao
 	BotaoE botao = new BotaoE(menina.x +40, menina.y - 50);
@@ -65,6 +71,9 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos15 = new Decorativos(0, 1100, 400);
 	Decorativos decorativos16 = new Decorativos(1, 1250, 400);
 	
+	
+	
+	Caixa caixa = new Caixa();
 	public Cena03(){ 
 		//
 		//Inicialização do painel	
@@ -84,7 +93,8 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	public void paint(Graphics g) {
-		requestFocusInWindow();
+		//Graphics2D g2 = (Graphics2D) g;
+		//requestFocusInWindow();
 		super.paint(g);
 		
 		caminhos.draw(g);
@@ -106,26 +116,52 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 		decorativos16.draw(g);
 		
 		menina.draw(g);
-		velho.draw(g);
+	//	velho.draw(g);
 		
 		player.draw(g);
 		
+		Caixa.cena = 4;
 
 		if(menina.proxima) {
 			botao.draw(g);			
 		}	
 		
+		// Se dialogo da menina estiver disponivel e  tecla E foi pressionada, desenhe a caixa de dialogo
+		if(menina.proxima == true && Caixa.CaixaMenina == true) {
+			Caixa.DialogoM(g, menina);
+			System.out.println("Botao E pressionado proximo a menina.");
+			player.velMax = 0;
+			player.velx = 0;
+		}
+		else{
+			player.velMax = 13;
+		}
+		
+		//Menina.Suporte(g,500,300);
 	}
+	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		botao.animacao(botao);
+
+		//Verificar como passar o algoritmo para classe de diálogo >>> caua
+		//Algoritmo de checar proximidade
+		if((player.x >= menina.x - 150 && player.x <= menina.x + 150) &&
+				(player.y >= menina.y - 150 && player.y <= menina.y +150)) {
+			menina.proxima = true;
+		}
+		else {
+			menina.proxima = false;
+			menina.contador = 0;
+			menina.Frase = "";
+			//Caixa.CaixaMenina = false;
+		}
 		
 		player.animacao(player);
 		player.colisaoTotalTela(player);
 		
-		velho.colisao(player, velho);
-		velho.animacao(player, velho);
+	//	velho.colisao(player, velho);
+	//	velho.animacao(player, velho);
 		
 		menina.proximidade(player, menina);
 		menina.colisao(player, menina);
@@ -164,17 +200,35 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 		
 		if (e.getKeyCode() == KeyEvent.VK_E) {
 			if(menina.proxima) {
-				System.out.println("Botao E pressionado proximo a menina.");
-				Exe.janela.cl.show(Exe.janela.panelBase, "menu");
-				player.x = 0;
-				player.y = 500;
+				if(Caixa.auxPassagemdeDialogo != 0) {
+					Caixa.currentDialog = "";
+					Caixa.auxiliar = "";	
+					Caixa.contador = 0;
+					Caixa.fala++;
+				}
+				Caixa.CaixaMenina = true;
+				
+				Caixa.auxPassagemdeDialogo++;
+
+							
+				
+				
+			//Exe.janela.cl.show(Exe.janela.panelBase, "menu");
+				
+				//drawDialogueScreen();
+				//player.x = 0;
+				//player.y = 500;
 			}
 			else {
 				System.out.println("Botao E pressionado longe da menina.");
+				//Caixa.CaixaMenina = false;
 			}
 			
 		}
+
 	}
+	
+	
 		
 	
 	

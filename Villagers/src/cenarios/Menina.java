@@ -53,6 +53,11 @@ public class Menina {
 		MeninaEsquerda02 = new ImageIcon(MeninaEsquerda02Path).getImage();
 	}
 
+	/**
+	 * Verifica a relação de proximidade entre o jogador e a menina.
+	 * @param instanciar um player e menina 
+	 * @return se há proximidade
+	 */
 	public void proximidade(Player player, Menina menina) {
 		//Algoritmo de checar proximidade
 		if((player.x >= menina.x - 150 && player.x <= menina.x + 150) &&
