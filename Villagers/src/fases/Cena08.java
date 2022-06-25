@@ -278,11 +278,19 @@ public class Cena08 extends JPanel implements ActionListener, KeyListener{
 	}
 	 public void passagemDeCaminho() {
         if(player.x > 1219) {
+        	/*
+        	Janela.cena09.player.x = 30;
+        	Janela.cena09.player.y = 300;
+        	*/
+        	Janela.cena09.timer.start();
+        	Janela.cena08.timer.stop();
             Janela.cl.show(Janela.panelBase, "cena09");
-        }
+        }/*
             else if(player.y < 10) {
+            	Janela.cena07.timer.start();
+	        	Janela.cena08.timer.stop();
         	Janela.cl.show(Janela.panelBase, "cena07");
-        }
+        }*/
         	
         
     

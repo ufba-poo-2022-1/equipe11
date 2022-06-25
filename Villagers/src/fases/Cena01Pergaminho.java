@@ -30,7 +30,7 @@ public class Cena01Pergaminho extends JPanel implements ActionListener, KeyListe
 	int x = 100, y = 100;
 	  
 	//Timer ajustes, delay define intervalo(ms) em que ações são percebidas
-	Timer timer;
+	public Timer timer;
 	int delay = 10; 
 	
 	Image Pergaminho01;
@@ -68,6 +68,7 @@ public class Cena01Pergaminho extends JPanel implements ActionListener, KeyListe
 	}
 	
 	public void paint(Graphics g) {
+		requestFocusInWindow();
 		super.paint(g);
 		
 		if(TrocaFrame <= delay) {
@@ -95,7 +96,9 @@ public class Cena01Pergaminho extends JPanel implements ActionListener, KeyListe
 
 	@Override
 	public void keyPressed(KeyEvent e) {		
-		if (e.getKeyCode() == KeyEvent.VK_E) {			
+		if (e.getKeyCode() == KeyEvent.VK_E) {	
+			Janela.cena02.timer.start();
+			Janela.cena01Pergaminho.timer.stop();
 			Janela.cl.show(Janela.panelBase, "cena02");	
 		}
 	}

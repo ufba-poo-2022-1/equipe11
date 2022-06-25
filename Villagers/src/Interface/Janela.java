@@ -20,17 +20,18 @@ public class Janela extends JFrame{
 		static Intro intro = new Intro();
 		static animacao animacao = new animacao();
 		public static Cena02 cena02 = new Cena02();
-		static Cena03 cena03 = new Cena03();
-		static Cena04 cena04 = new Cena04();
-		static Cena05 cena05 = new Cena05();
-		static Cena06 cena06 = new Cena06();
-		static Cena07 cena07 = new Cena07();
-		static Cena08 cena08 = new Cena08();
-		static Cena09 cena09 = new Cena09();
-		static Cena10 cena10 = new Cena10();
+		public static Cena03 cena03 = new Cena03();
+		public static Cena04 cena04 = new Cena04();
+		public static Cena05 cena05 = new Cena05();
+		public static Cena06 cena06 = new Cena06();
+		public static Cena07 cena07 = new Cena07();
+		public static Cena08 cena08 = new Cena08();
+		public static Cena09 cena09 = new Cena09();
+		public static Cena10 cena10 = new Cena10();
+		public static Cena11 cena11 = new Cena11();
 		
-		static Cena01Pergaminho cena01Pergaminho = new Cena01Pergaminho();
-		static Batalha batalha = new Batalha();
+		public static Cena01Pergaminho cena01Pergaminho = new Cena01Pergaminho();
+		public static Batalha batalha = new Batalha();
 		
 		
 		String TituloJanela = "The Villager's Journey";
@@ -50,8 +51,9 @@ public class Janela extends JFrame{
 		panelBase.add(cena08, "cena08");
 		panelBase.add(cena09, "cena09");
 		panelBase.add(cena10, "cena10");
+		panelBase.add(cena11, "cena11");
 		panelBase.add(batalha, "batalha");
-		cl.show(panelBase, "cena10");
+		cl.show(panelBase, "intro");
 
 		this.setTitle(TituloJanela);		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

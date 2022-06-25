@@ -41,6 +41,7 @@ public class Menu extends JPanel{
 		botaoJogar.setBounds(SCREEN_WIDTH-500, 175, 360, 100);		
 		botaoJogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Janela.cena01Pergaminho.timer.start();
 				Janela.cl.show(Janela.panelBase, "cena01Pergaminho");					
 			}
 		});
