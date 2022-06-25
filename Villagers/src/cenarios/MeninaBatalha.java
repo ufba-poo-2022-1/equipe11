@@ -14,6 +14,8 @@ public class MeninaBatalha {
 	public boolean atacando = false;
 	public boolean dano = false;
 	public boolean voltando = false;
+	public boolean meninaDerrotada = false , manterDerrotada = false;
+	public int tipoAtaque = -1;
 	
 	//Parametrizacao animação personagem
 	public int personagemDelay = 0, voltarDelay = 0;
@@ -37,6 +39,17 @@ public class MeninaBatalha {
 	Image Ataque05;
 	String Ataque05Path = "images//Menina//ataque01//michica-attack-05.png";
 	
+	Image Ataque06;
+	String Ataque06Path = "images//Menina//ataque02//michica-attack-03.png";
+	Image Ataque07;
+	String Ataque07Path = "images//Menina//ataque02//michica-attack-04.png";
+	Image Ataque08;
+	String Ataque08Path = "images//Menina//ataque02//michica-attack-05.png";
+	Image Ataque09;
+	String Ataque09Path = "images//Menina//ataque02//michica-attack-06.png";
+	Image Ataque10;
+	String Ataque10Path = "images//Menina//ataque02//michica-attack-07.png";
+	
 	Image Dano01;
 	String Dano01Path = "images//Menina//dano//michica-attack-03.png";
 	Image Dano02;
@@ -45,6 +58,17 @@ public class MeninaBatalha {
 	String Dano03Path = "images//Menina//Dano//michica-attack-05.png";
 	Image Dano04;
 	String Dano04Path = "images//Menina//Dano//michica-attack-06.png";	
+	
+	Image Derrota01;
+	String Derrota01Path = "images//Menina//derrotada//michica-defeat1.png";
+	Image Derrota02;
+	String Derrota02Path = "images//Menina//derrotada//michica-defeat2.png";
+	Image Derrota03;
+	String Derrota03Path = "images//Menina//derrotada//michica-defeat3.png";
+	Image Derrota04;
+	String Derrota04Path = "images//Menina//derrotada//michica-defeat4.png";
+	Image Derrota05;
+	String Derrota05Path = "images//Menina//derrotada//michica-defeat5.png";
 
 	
 	//Parâmetros x e y para definir posição inicial
@@ -61,17 +85,28 @@ public class MeninaBatalha {
 		Ataque04 = new ImageIcon(Ataque04Path).getImage();
 		Ataque05 = new ImageIcon(Ataque05Path).getImage();
 		
+		Ataque06 = new ImageIcon(Ataque06Path).getImage();
+		Ataque07 = new ImageIcon(Ataque07Path).getImage();
+		Ataque08 = new ImageIcon(Ataque08Path).getImage();
+		Ataque09 = new ImageIcon(Ataque09Path).getImage();
+		Ataque10 = new ImageIcon(Ataque10Path).getImage();
+		
 		Dano01 = new ImageIcon(Dano01Path).getImage();
 		Dano02 = new ImageIcon(Dano02Path).getImage();
 		Dano03 = new ImageIcon(Dano03Path).getImage();
 		Dano04 = new ImageIcon(Dano04Path).getImage();
-
+		
+		Derrota01 = new ImageIcon(Derrota01Path).getImage();
+		Derrota02 = new ImageIcon(Derrota02Path).getImage();
+		Derrota03 = new ImageIcon(Derrota03Path).getImage();
+		Derrota04 = new ImageIcon(Derrota04Path).getImage();
+		Derrota05 = new ImageIcon(Derrota05Path).getImage();
 
 	}
 	
 	public void caminhaPosicaoInicial(MeninaBatalha menina, int x, PlayerBatalha player) {
 		menina.voltarDelay++;
-
+		System.out.println("voltarDelay = " + menina.voltarDelay);
         if(menina.voltarDelay > (menina.voltar*2)) {
         	if(menina.x <= x) {
         		player.dano = false;	
@@ -108,71 +143,122 @@ public class MeninaBatalha {
 	}
 	
 	public void draw(Graphics g) {	
-		if(dano == false) {
-			if(iniciandoAtaque == false && atacando == false) {
-				if (personagemDelay <= TrocaPosicao) {
-					g.drawImage(Parada01, x, y, null);
+		if(meninaDerrotada == false) {
+			if(dano == false) {
+				if(iniciandoAtaque == false && atacando == false) {
+					if (personagemDelay <= TrocaPosicao) {
+						g.drawImage(Parada01, x, y, null);
+					}
+					else if (personagemDelay <= (TrocaPosicao*2)) {
+						g.drawImage(Parada02, x, y, null);
+					}
 				}
-				else if (personagemDelay <= (TrocaPosicao*2)) {
-					g.drawImage(Parada02, x, y, null);
+				
+				else if (iniciandoAtaque == true && atacando == false) {
+					if (personagemDelay <= TrocaPosicao/2) {
+						g.drawImage(Ataque01, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+					}
+					else if (personagemDelay <= (TrocaPosicao)) {
+						g.drawImage(Ataque01, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+					}
+					else if (personagemDelay <= TrocaPosicao*3/2) {
+						g.drawImage(Ataque01, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+					}
+					else if (personagemDelay <= (TrocaPosicao*2)) {
+						g.drawImage(Ataque01, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+					}
+				}
+				else if (atacando) {
+					if(tipoAtaque == 0) {
+						if (personagemDelay <= TrocaPosicao/4) {
+							g.drawImage(Ataque02, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+						}
+						else if (personagemDelay <= (TrocaPosicao*2/4)) {
+							g.drawImage(Ataque03, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+						}
+						else if (personagemDelay <= TrocaPosicao*3/4) {
+							g.drawImage(Ataque04, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+						}
+						else if (personagemDelay <= (TrocaPosicao*4/4)) {
+							g.drawImage(Ataque05, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+						}
+						else if (personagemDelay <= TrocaPosicao*5/4) {
+							g.drawImage(Ataque02, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+						}
+						else if (personagemDelay <= (TrocaPosicao*6/4)) {
+							g.drawImage(Ataque03, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+						}
+						else if (personagemDelay <= TrocaPosicao*7/4) {
+							g.drawImage(Ataque04, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+						}
+						else if (personagemDelay <= (TrocaPosicao*8/4)) {
+							g.drawImage(Ataque05, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+						}
+					}
+					else {
+						if (personagemDelay <= TrocaPosicao*2/5) {
+							g.drawImage(Ataque06, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+						}
+						else if (personagemDelay <= (TrocaPosicao*4/5)) {
+							g.drawImage(Ataque07, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+						}
+						else if (personagemDelay <= TrocaPosicao*6/5) {
+							g.drawImage(Ataque08, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+						}
+						else if (personagemDelay <= (TrocaPosicao*8/5)) {
+							g.drawImage(Ataque09, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+						}
+						else if (personagemDelay <= TrocaPosicao*2) {
+							g.drawImage(Ataque10, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+						}					
+					}
 				}
 			}
-			
-			else if (iniciandoAtaque == true && atacando == false) {
+			else {
 				if (personagemDelay <= TrocaPosicao/2) {
-					g.drawImage(Ataque01, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+					g.drawImage(Dano01, x, y, null);
 				}
 				else if (personagemDelay <= (TrocaPosicao)) {
-					g.drawImage(Ataque01, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+					g.drawImage(Dano02, x, y, null);
 				}
 				else if (personagemDelay <= TrocaPosicao*3/2) {
-					g.drawImage(Ataque01, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+					g.drawImage(Dano03, x, y, null);
 				}
 				else if (personagemDelay <= (TrocaPosicao*2)) {
-					g.drawImage(Ataque01, x-MeninaBatalha.Parada01.getWidth(null), y, null);
-				}
-			}
-			else if (atacando) {
-				if (personagemDelay <= TrocaPosicao/4) {
-					g.drawImage(Ataque02, x-MeninaBatalha.Parada01.getWidth(null), y, null);
-				}
-				else if (personagemDelay <= (TrocaPosicao*2/4)) {
-					g.drawImage(Ataque03, x-MeninaBatalha.Parada01.getWidth(null), y, null);
-				}
-				else if (personagemDelay <= TrocaPosicao*3/4) {
-					g.drawImage(Ataque04, x-MeninaBatalha.Parada01.getWidth(null), y, null);
-				}
-				else if (personagemDelay <= (TrocaPosicao*4/4)) {
-					g.drawImage(Ataque05, x-MeninaBatalha.Parada01.getWidth(null), y, null);
-				}
-				else if (personagemDelay <= TrocaPosicao*5/4) {
-					g.drawImage(Ataque02, x-MeninaBatalha.Parada01.getWidth(null), y, null);
-				}
-				else if (personagemDelay <= (TrocaPosicao*6/4)) {
-					g.drawImage(Ataque03, x-MeninaBatalha.Parada01.getWidth(null), y, null);
-				}
-				else if (personagemDelay <= TrocaPosicao*7/4) {
-					g.drawImage(Ataque04, x-MeninaBatalha.Parada01.getWidth(null), y, null);
-				}
-				else if (personagemDelay <= (TrocaPosicao*8/4)) {
-					g.drawImage(Ataque05, x-MeninaBatalha.Parada01.getWidth(null), y, null);
+					g.drawImage(Dano04, x, y, null);
 				}
 			}
 		}
 		else {
-			if (personagemDelay <= TrocaPosicao/2) {
-				g.drawImage(Dano01, x, y, null);
+			if(manterDerrotada == false) {
+				if (personagemDelay <= TrocaPosicao*2/5) {
+					g.drawImage(Derrota02, x, y, null);
+				}
+				else if (personagemDelay <= (TrocaPosicao*4/5)) {
+					g.drawImage(Derrota02, x, y, null);
+				}
+				else if (personagemDelay <= TrocaPosicao*6/5) {
+					g.drawImage(Derrota03, x, y, null);
+				}
+				else if (personagemDelay <= (TrocaPosicao*8/5)) {
+					g.drawImage(Derrota04, x, y, null);
+				}
+				else if (personagemDelay <= TrocaPosicao*2) {
+					g.drawImage(Derrota05, x, y, null);
+				}
+				manterDerrotada = true;
 			}
-			else if (personagemDelay <= (TrocaPosicao)) {
-				g.drawImage(Dano02, x, y, null);
-			}
-			else if (personagemDelay <= TrocaPosicao*3/2) {
-				g.drawImage(Dano03, x, y, null);
-			}
-			else if (personagemDelay <= (TrocaPosicao*2)) {
-				g.drawImage(Dano04, x, y, null);
-			}
+			else {
+				if (personagemDelay <= TrocaPosicao*2/3) {
+					g.drawImage(Derrota03, x, y, null);
+				}
+				else if (personagemDelay <= (TrocaPosicao*4/3)) {
+					g.drawImage(Derrota04, x, y, null);
+				}
+				else if (personagemDelay <= TrocaPosicao*2) {
+					g.drawImage(Derrota05, x, y, null);
+				}
+			}			
 		}
-		
 	}
 }

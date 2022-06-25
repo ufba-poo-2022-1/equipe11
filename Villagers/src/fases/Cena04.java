@@ -12,6 +12,7 @@ import javax.swing.*;
 
 import Interface.Exe;
 import Interface.Intro;
+import Interface.Janela;
 import cenarios.BotaoE;
 import cenarios.Caminhos;
 import cenarios.Decorativos;
@@ -35,7 +36,7 @@ public class Cena04 extends JPanel implements ActionListener, KeyListener{
 	int delay = 10;  
 	
 	//Inicializando player
-	Player player = new Player(670,800, "Direita");
+	Player player = new Player(670,600, "Direita");
 	
 	//Inicializar menina
 	Menina menina = new Menina(500,300);
@@ -54,7 +55,7 @@ public class Cena04 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos3 = new Decorativos(0, 300, 400);
 	Decorativos decorativos4 = new Decorativos(0, 0, 300);
 	Decorativos decorativos5 = new Decorativos(0, 100, 200);
-	Decorativos decorativos6 = new Decorativos(0, 650, 300);
+	Decorativos decorativos6 = new Decorativos(0, 500, 300);
 	Decorativos decorativos7 = new Decorativos(0, 300, 100);
 	Decorativos decorativos8 = new Decorativos(0, 400, 650);
 	Decorativos decorativos9 = new Decorativos(0, 900, 200);
@@ -64,7 +65,9 @@ public class Cena04 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos13 = new Decorativos(0, 800, 350);
 	Decorativos decorativos14 = new Decorativos(0, 1200, 100);
 	Decorativos decorativos15 = new Decorativos(0, 1100, 400);
-	Decorativos decorativos16 = new Decorativos(1, 1250, 400);
+	Decorativos decorativos16 = new Decorativos(1, 735, 0);
+	
+	Caixa caixa = new Caixa();
 	
 	public Cena04(){ 
 		//
@@ -74,7 +77,7 @@ public class Cena04 extends JPanel implements ActionListener, KeyListener{
 				
 		//Timer iniciado
 		timer = new Timer(delay, this);
-		timer.start();
+		//timer.start();
 		
 		//Parâmetros para detecção do teclado
 		requestFocusInWindow();
@@ -112,7 +115,7 @@ public class Cena04 extends JPanel implements ActionListener, KeyListener{
 		player.draw(g);
 		
 
-		Caixa.cena = 4;
+		Caixa.cena = 3;
 
 		if(menina.proxima) {
 			botao.draw(g);			
@@ -142,21 +145,19 @@ public class Cena04 extends JPanel implements ActionListener, KeyListener{
 			menina.proxima = false;
 			menina.contador = 0;
 			menina.Frase = "";
-		//	Caixa.CaixaMenina = false;
 		}
+		
 		botao.animacao(botao);
 		
 		player.animacao(player);
 		player.colisaoTotalTela(player);
-		
-		//velho.colisao(player, velho);
-		//velho.animacao(player, velho);
 		
 		menina.proximidade(player, menina);
 		menina.colisao(player, menina);
 		menina.animacao(player, menina);
 		
 		decorativos.colisaoD(player, decorativos16, 01);
+		passagemDeCaminho();
 		
         repaint();
 		
@@ -200,18 +201,9 @@ public class Cena04 extends JPanel implements ActionListener, KeyListener{
 				
 				Caixa.auxPassagemdeDialogo++;
 
-							
-				
-				
-			//Exe.janela.cl.show(Exe.janela.panelBase, "menu");
-				
-				//drawDialogueScreen();
-				//player.x = 0;
-				//player.y = 500;
 			}
 			else {
 				System.out.println("Botao E pressionado longe da menina.");
-				//Caixa.CaixaMenina = false;
 			}
 			
 		}
@@ -273,7 +265,13 @@ public class Cena04 extends JPanel implements ActionListener, KeyListener{
 		}
 	}
 
-
+	 public void passagemDeCaminho() {
+	        if(player.y > 610) {
+	            Janela.cl.show(Janela.panelBase, "cena03");
+	        }
+	            else if(player.y < 10) {
+	        	Janela.cl.show(Janela.panelBase, "cena05");
+	        }
 	
-	
+	 }	
 }

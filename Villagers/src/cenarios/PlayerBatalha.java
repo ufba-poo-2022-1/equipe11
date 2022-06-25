@@ -24,6 +24,7 @@ public class PlayerBatalha extends JPanel  {
 	public boolean atacando = false;
 	public boolean dano = false;
 	public boolean voltando = false;
+	public int tipoAtaque = -1;
 		
 	//Parametrizacao animação personagem
 	public int personagemDelay = 0, voltarDelay = 0;
@@ -53,6 +54,13 @@ public class PlayerBatalha extends JPanel  {
 	Image Ataque02;
 	String pathAtaque02 = "images//player//ataque01//chico-attack-02.png";
 	
+	Image Ataque03;
+	String pathAtaque03 = "images//player//ataque02//chico-attack-03.png";
+	Image Ataque04;
+	String pathAtaque04 = "images//player//ataque02//chico-attack-04.png";
+	Image Ataque05;
+	String pathAtaque05 = "images//player//ataque02//chico-attack-05.png";	
+	
 	Image Dano01;
 	String Dano01Path = "images//player//dano//chico-attack-03.png";
 	Image Dano02;
@@ -78,6 +86,10 @@ public class PlayerBatalha extends JPanel  {
 		
 		Ataque01 = new ImageIcon(pathAtaque01).getImage();
 		Ataque02 = new ImageIcon(pathAtaque02).getImage();
+		
+		Ataque03 = new ImageIcon(pathAtaque03).getImage();
+		Ataque04 = new ImageIcon(pathAtaque04).getImage();
+		Ataque05 = new ImageIcon(pathAtaque05).getImage();
 		
 		Dano01 = new ImageIcon(Dano01Path).getImage();
 		Dano02 = new ImageIcon(Dano02Path).getImage();
@@ -163,17 +175,33 @@ public class PlayerBatalha extends JPanel  {
 				}
 			}
 			else if (atacando) {
-				if (personagemDelay <= TrocaPosicao/2) {
-					g.drawImage(Ataque01, x, y, null);
+				if(tipoAtaque == 0) {
+					if (personagemDelay <= TrocaPosicao/2) {
+						g.drawImage(Ataque01, x, y, null);
+					}
+					else if (personagemDelay <= (TrocaPosicao)) {
+						g.drawImage(Ataque02, x, y, null);
+					}
+					else if (personagemDelay <= TrocaPosicao*3/2) {
+						g.drawImage(Ataque01, x, y, null);
+					}
+					else if (personagemDelay <= (TrocaPosicao*2)) {
+						g.drawImage(Ataque02, x, y, null);
+					}
 				}
-				else if (personagemDelay <= (TrocaPosicao)) {
-					g.drawImage(Ataque02, x, y, null);
-				}
-				else if (personagemDelay <= TrocaPosicao*3/2) {
-					g.drawImage(Ataque01, x, y, null);
-				}
-				else if (personagemDelay <= (TrocaPosicao*2)) {
-					g.drawImage(Ataque02, x, y, null);
+				else {
+					if (personagemDelay <= TrocaPosicao/2) {
+						g.drawImage(Ataque03, x, y, null);
+					}
+					else if (personagemDelay <= (TrocaPosicao)) {
+						g.drawImage(Ataque04, x, y, null);
+					}
+					else if (personagemDelay <= TrocaPosicao*3/2) {
+						g.drawImage(Ataque05, x, y, null);
+					}
+					else if (personagemDelay <= (TrocaPosicao*2)) {
+						g.drawImage(Ataque03, x, y, null);
+					}
 				}
 			}
 		}

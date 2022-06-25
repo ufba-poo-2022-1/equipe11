@@ -25,7 +25,6 @@ public class Cena01Pergaminho extends JPanel implements ActionListener, KeyListe
 	final static int SCREEN_WIDTH = Intro.SCREEN_WIDTH;
 	final static int SCREEN_HEIGHT = Intro.SCREEN_HEIGHT;
 	
-	String frasePergaminho = "Você que está lendo este pergaminho \n Seja um rei, cavaleiro, ou um aldeão desajeitado. \nAqui irá encontrar o caminho para um tesouro lendário. Se deseja adentrar essa aventura, entenda que o perigo também esta a altura. \nEssa recompensa tão antes cobiçada, se encontra longe, na floresta amaldiçoada.";
 	static int fontSize = 10;
 	static Font f = new Font("Comic Sans MS", Font.BOLD, fontSize);
 	int x = 100, y = 100;
@@ -58,7 +57,7 @@ public class Cena01Pergaminho extends JPanel implements ActionListener, KeyListe
 				
 		//Timer iniciado
 		timer = new Timer(delay, this);
-		timer.start();
+		//timer.start();
 		
 		//Parâmetros para detecção do teclado
 		requestFocusInWindow();

@@ -12,13 +12,13 @@ import javax.swing.*;
 
 public class Intro extends JPanel{
 	//Resolução da tela
-	public final static int SCREEN_WIDTH = 1366;
-	public final static int SCREEN_HEIGHT = 768;
+	public final static int SCREEN_WIDTH = 1366;//y - largura
+	public final static int SCREEN_HEIGHT = 768;//x - altura
 	
 	//Inicializar audio
 	public static AudioInputStream stream;
 	public static Clip clip;
-	String audioFileName = "sounds//Undetale--Compact.wav";
+	String audioFileName = "sounds//UndetaleCompact.wav";
 	
 	//Delay para fechar introdução
 	static int wait = 1500;
@@ -57,7 +57,7 @@ public class Intro extends JPanel{
 		stream = AudioSystem.getAudioInputStream(audioPath);
 		clip = AudioSystem.getClip();
 		clip.open(stream);
-		clip.start();
+		//clip.start();
 		}
 
 		catch(Exception e){

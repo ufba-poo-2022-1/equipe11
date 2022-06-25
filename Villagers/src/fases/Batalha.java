@@ -10,10 +10,10 @@ import java.awt.event.KeyListener;
 
 import javax.swing.*;
 import Interface.Intro;
-import cenarios.BotaoE;
 import cenarios.Caminhos;
 import cenarios.MeninaBatalha;
 import cenarios.PlayerBatalha;
+import dialogos.Caixa;
 
 
 public class Batalha extends JPanel implements ActionListener, KeyListener{
@@ -28,7 +28,7 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 		
 	//Timer ajustes, delay define intervalo(ms) em que ações são percebidas
 	Timer timer;
-	int delay = 10;  
+	int delay = 15;  
 	
 	
 	Caminhos caminhos = new Caminhos(11);
@@ -44,7 +44,7 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 				
 		//Timer iniciado
 		timer = new Timer(delay, this);
-		timer.start();
+		//timer.start();
 		
 		//Parâmetros para detecção do teclado
 		requestFocusInWindow();
@@ -69,10 +69,15 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 			player.draw(g);
 			menina.draw(g);			
 		}
+		
+		Caixa.cena = 11;
+		Caixa.DialogoSemProximidade(g, menina);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//Pedir para java ativar garbage collector
+		System.gc();
 		
 		//MENINA
 		menina.animacao(menina);
@@ -85,9 +90,8 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 		}
 		if(menina.voltando) {
 			menina.caminhaPosicaoInicial(menina, SCREEN_WIDTH/3*2 -120, player);
-			
-		}
-		
+		}		
+				
 		
 		//Player
 		player.animacao(player);
@@ -98,11 +102,18 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 		if(player.iniciandoAtaque) {
 			player.ataque01(player, menina.x - 100);
 			if(player.atacando) {
-				menina.dano = true;	
+				menina.dano = true;					
 			}
 		}
 		if(player.voltando) {
-			player.caminhaPosicaoInicial(player, SCREEN_WIDTH/3 -120, menina);
+			if(player.atacando == false && Caixa.fala >= 4) {
+				menina.meninaDerrotada = true;
+				player.caminhando = false;    			    			
+				player.voltando = false;
+			}
+			else {
+				player.caminhaPosicaoInicial(player, SCREEN_WIDTH/3 -120, menina);
+			}
 			
 		}		
         repaint();
@@ -112,28 +123,47 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {	
 		if (e.getKeyCode() == KeyEvent.VK_E) {
-			if (player.caminhando == false) {
-				player.sobreposto = true;
-				player.iniciandoAtaque = true;
-			}			
+			if((menina.iniciandoAtaque == false && menina.voltando == false) &&
+					player.iniciandoAtaque == false && player.voltando == false){
+
+				//Player ataca
+				if(Caixa.fala == 1 || Caixa.fala == 3 ) {
+					player.sobreposto = true;
+					player.iniciandoAtaque = true;
+					
+					player.tipoAtaque++;
+					if(player.tipoAtaque > 1) {
+						player.tipoAtaque = 0;
+					}					
+				}
+				
+				//Menina ataca
+				else if(Caixa.fala == 2 || Caixa.fala == 4 ) {
+					player.sobreposto = false;
+					menina.iniciandoAtaque = true;
+					
+					menina.tipoAtaque++;
+					if(menina.tipoAtaque > 1) {
+						menina.tipoAtaque = 0;
+					}
+				}
+				
+				if(Caixa.auxPassagemdeDialogo != 0) {
+					Caixa.currentDialog = "";
+					Caixa.auxiliar = "";	
+					Caixa.contador = 0;
+					Caixa.fala++;
+				}
+				Caixa.CaixaMenina = true;				
+				Caixa.auxPassagemdeDialogo++;
+
+			}
+			
 		}
-		else if (e.getKeyCode() == KeyEvent.VK_R) {
-			if (player.caminhando == false) {
-				player.sobreposto = false;
-				menina.iniciandoAtaque = true;
-			}			
-		}
-	}
-		
-	
-	
+	}	
 	
 	public void keyTyped(KeyEvent e) {}
 	
-	public void keyReleased(KeyEvent e) {}
-	
-
-
-	
+	public void keyReleased(KeyEvent e) {}	
 	
 }
