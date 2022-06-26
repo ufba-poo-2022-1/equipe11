@@ -2,6 +2,7 @@ package fases;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -12,7 +13,7 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 import Interface.Intro;
 import Interface.Janela;
-
+import dialogos.Pergaminho;
 
 public class Cena01Pergaminho extends JPanel implements ActionListener, KeyListener{
 	/**
@@ -23,9 +24,13 @@ public class Cena01Pergaminho extends JPanel implements ActionListener, KeyListe
 	//Resolução da tela
 	final static int SCREEN_WIDTH = Intro.SCREEN_WIDTH;
 	final static int SCREEN_HEIGHT = Intro.SCREEN_HEIGHT;
-		
+	
+	static int fontSize = 10;
+	static Font f = new Font("Comic Sans MS", Font.BOLD, fontSize);
+	int x = 100, y = 100;
+	  
 	//Timer ajustes, delay define intervalo(ms) em que ações são percebidas
-	Timer timer;
+	public Timer timer;
 	int delay = 10; 
 	
 	Image Pergaminho01;
@@ -43,13 +48,16 @@ public class Cena01Pergaminho extends JPanel implements ActionListener, KeyListe
 		Pergaminho03 = new ImageIcon(Pergaminho03Path).getImage();
 		
 		
+		
+		
+		
 		//Inicialização do painel	
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		this.setBackground(Color.black);
 				
 		//Timer iniciado
 		timer = new Timer(delay, this);
-		timer.start();
+		//timer.start();
 		
 		//Parâmetros para detecção do teclado
 		requestFocusInWindow();
@@ -71,8 +79,10 @@ public class Cena01Pergaminho extends JPanel implements ActionListener, KeyListe
 		}
 		else {
 			g.drawImage(Pergaminho03, Pergaminho01.getWidth(null)/5, 0, null);
+			Pergaminho.perg(g);
 		}
 
+		
 	}
 	
 	@Override
@@ -86,7 +96,9 @@ public class Cena01Pergaminho extends JPanel implements ActionListener, KeyListe
 
 	@Override
 	public void keyPressed(KeyEvent e) {		
-		if (e.getKeyCode() == KeyEvent.VK_E) {			
+		if (e.getKeyCode() == KeyEvent.VK_E) {	
+			Janela.cena02.timer.start();
+			Janela.cena01Pergaminho.timer.stop();
 			Janela.cl.show(Janela.panelBase, "cena02");	
 		}
 	}

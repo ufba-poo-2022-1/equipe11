@@ -1,8 +1,10 @@
 package fases;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -12,12 +14,14 @@ import javax.swing.*;
 
 import Interface.Exe;
 import Interface.Intro;
+import Interface.Janela;
 import cenarios.BotaoE;
 import cenarios.Caminhos;
 import cenarios.Decorativos;
 import cenarios.Menina;
 import cenarios.Player;
 import cenarios.Velho;
+import dialogos.Caixa;
 
 public class Cena03 extends JPanel implements ActionListener, KeyListener{
 	/**
@@ -28,11 +32,14 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 	//Resolução da tela
 	final static int SCREEN_WIDTH = Intro.SCREEN_WIDTH;
 	final static int SCREEN_HEIGHT = Intro.SCREEN_HEIGHT;
-		
+	
+	
 	//Timer ajustes, delay define intervalo(ms) em que ações são percebidas
 	Timer timer;
 	int delay = 10;  
 	
+	
+    
 	//Inicializando player
 	Player player = new Player(0,500, "Direita");
 	
@@ -42,28 +49,58 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
 	Caminhos caminhos = new Caminhos(2);
 	
-	//Inicializar velho
-	Velho velho = new Velho(700, 300);
-	
 	//Inicializar botao
 	BotaoE botao = new BotaoE(menina.x +40, menina.y - 50);
 	
 	Decorativos decorativos = new Decorativos(0, 300, 400);
-	Decorativos decorativos2 = new Decorativos(0, 400, 300);
-	Decorativos decorativos3 = new Decorativos(0, 300, 400);
-	Decorativos decorativos4 = new Decorativos(0, 0, 300);
-	Decorativos decorativos5 = new Decorativos(0, 100, 200);
-	Decorativos decorativos6 = new Decorativos(0, 650, 300);
-	Decorativos decorativos7 = new Decorativos(0, 300, 100);
-	Decorativos decorativos8 = new Decorativos(0, 400, 650);
+	Decorativos decorativos2 = new Decorativos(3, 800, 100);
+	Decorativos decorativos3 = new Decorativos(3, 200, 400);
+	Decorativos decorativos4 = new Decorativos(3, 0, 300);
+	Decorativos decorativos5 = new Decorativos(2, 100, 200);
+	Decorativos decorativos6 = new Decorativos(2, 150, 300);
+	Decorativos decorativos7 = new Decorativos(6, 750, 100);
+	Decorativos decorativos8 = new Decorativos(6, 750, 400);
 	Decorativos decorativos9 = new Decorativos(0, 900, 200);
-	Decorativos decorativos10 = new Decorativos(0, 800, 650);
-	Decorativos decorativos11 = new Decorativos(0, 500, 450);
+	Decorativos decorativos10 = new Decorativos(2, 800, 650);
+	Decorativos decorativos11 = new Decorativos(2, 500, 450);
 	Decorativos decorativos12 = new Decorativos(0, 1200, 650);
 	Decorativos decorativos13 = new Decorativos(0, 800, 350);
 	Decorativos decorativos14 = new Decorativos(0, 1200, 100);
 	Decorativos decorativos15 = new Decorativos(0, 1100, 400);
-	Decorativos decorativos16 = new Decorativos(1, 1250, 400);
+	Decorativos decorativos16 = new Decorativos(1, 725, 0);
+	Decorativos decorativos17 = new Decorativos(5, 300, 300);
+	Decorativos decorativos18 = new Decorativos(5, 400, 0);
+	Decorativos decorativos19 = new Decorativos(6, 500, 200);
+	Decorativos decorativos20 = new Decorativos(5, 100, 550);//
+	Decorativos decorativos21 = new Decorativos(5, 500, 550);
+	Decorativos decorativos22 = new Decorativos(2, 750, 300);
+	Decorativos decorativos23 = new Decorativos(2, 900, 400);
+	Decorativos decorativos24 = new Decorativos(3, 900, 100);
+	Decorativos decorativos25 = new Decorativos(2, 1000, 300);
+	Decorativos decorativos26 = new Decorativos(6, 1000, 500);
+	Decorativos decorativos27 = new Decorativos(3,900, 500);
+	/*
+	 *Lista de decorativos:
+	 	0 - Cogumelos
+	 	1 - Placa de perigo
+	 	2 - Arbusto
+	 	3 - Arbusto com frutas
+	 	4 - Arbusto em chamas
+	 	5 - Arvore com frutos
+	 	6 - Arvore 
+	 	7 - Arvore seca
+	 	8 - Arvore seca em chamas
+	 	9 - Casa 01
+	 	10 - Casa 02
+	 	11 - Casa 03
+	 	12 - Casa 04
+	 	13 - Casa 05
+	 	14 - Mercado Guerreiro
+	 	
+	 */
+
+	
+	Caixa caixa = new Caixa();
 	
 	public Cena03(){ 
 		//
@@ -73,13 +110,18 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 				
 		//Timer iniciado
 		timer = new Timer(delay, this);
-		timer.start();
+		//timer.start();
+		
+		//Passagem de cena
+		
+		
 		
 		//Parâmetros para detecção do teclado
 		requestFocusInWindow();
 		addKeyListener(this);
 		setFocusable(true);
 		setFocusTraversalKeysEnabled(false);
+
 		
 	}
 	
@@ -104,34 +146,71 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 		decorativos14.draw(g);
 		decorativos15.draw(g);
 		decorativos16.draw(g);
+		decorativos17.draw(g);
+		decorativos18.draw(g);
+		decorativos19.draw(g);
+		decorativos20.draw(g);
+		decorativos21.draw(g);
+		decorativos22.draw(g);
+		decorativos23.draw(g);
+		decorativos24.draw(g);
+		decorativos25.draw(g);
+		decorativos26.draw(g);
+		decorativos27.draw(g);
 		
 		menina.draw(g);
-		velho.draw(g);
 		
 		player.draw(g);
 		
+		Caixa.cena = 2;
 
 		if(menina.proxima) {
 			botao.draw(g);			
 		}	
-		
+		// Se dialogo da menina estiver disponivel e  tecla E foi pressionada, desenhe a caixa de dialogo
+		if(menina.proxima == true && Caixa.CaixaMenina == true) {
+			Caixa.DialogoM(g, menina);
+			System.out.println("Botao E pressionado proximo a menina.");
+			player.velMax = 0;
+			player.velx = 0;
+		}
+		else{
+			player.velMax = 13;
+		}
 	}
+		
+		//Menina.Suporte(g,500,300);
+	
+	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		botao.animacao(botao);
+
+		//Verificar como passar o algoritmo para classe de diálogo >>> caua
+		//Algoritmo de checar proximidade
+		if((player.x >= menina.x - 150 && player.x <= menina.x + 150) &&
+				(player.y >= menina.y - 150 && player.y <= menina.y +150)) {
+			menina.proxima = true;
+		}
+		else {
+			menina.proxima = false;
+			menina.contador = 0;
+			menina.Frase = "";
+			//Caixa.CaixaMenina = false;
+		}
 		
 		player.animacao(player);
 		player.colisaoTotalTela(player);
 		
-		velho.colisao(player, velho);
-		velho.animacao(player, velho);
+	//	velho.colisao(player, velho);
+	//	velho.animacao(player, velho);
 		
 		menina.proximidade(player, menina);
 		menina.colisao(player, menina);
 		menina.animacao(player, menina);
 		
 		decorativos.colisaoD(player, decorativos16, 01);
+		passagemDeCaminho();
 		
         repaint();
 		
@@ -164,17 +243,35 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 		
 		if (e.getKeyCode() == KeyEvent.VK_E) {
 			if(menina.proxima) {
-				System.out.println("Botao E pressionado proximo a menina.");
-				Exe.janela.cl.show(Exe.janela.panelBase, "menu");
-				player.x = 0;
-				player.y = 500;
+				if(Caixa.auxPassagemdeDialogo != 0) {
+					Caixa.currentDialog = "";
+					Caixa.auxiliar = "";	
+					Caixa.contador = 0;
+					Caixa.fala++;
+				}
+				Caixa.CaixaMenina = true;
+				
+				Caixa.auxPassagemdeDialogo++;
+
+							
+				
+				
+			//Exe.janela.cl.show(Exe.janela.panelBase, "menu");
+				
+				//drawDialogueScreen();
+				//player.x = 0;
+				//player.y = 500;
 			}
 			else {
 				System.out.println("Botao E pressionado longe da menina.");
+				//Caixa.CaixaMenina = false;
 			}
 			
 		}
+
 	}
+	
+	
 		
 	
 	
@@ -231,8 +328,14 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 			player.right();
 		}
 	}
-
-
 	
-	
+	public void passagemDeCaminho() {
+        if(player.y < Intro.SCREEN_HEIGHT - 761) {
+        	Janela.cena04.timer.start();
+        	Janela.cena03.timer.stop();
+            Janela.cl.show(Janela.panelBase, "cena04");
+            
+        }
+    }
+
 }

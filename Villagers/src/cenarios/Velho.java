@@ -22,6 +22,8 @@ public class Velho {
 	public int y;
 	public boolean orientacaoVelho = false, proximo = false;
 	
+	public static boolean dialogV = false;
+	
 	//Parametrizacao animação personagem
 	public int personagemDelay = 0;
 	//Intervalo de tempo entre frames da animacao do personagem
@@ -39,6 +41,17 @@ public class Velho {
 		VelhoDireita02 = new ImageIcon(VelhoDireita02Path).getImage();
 		VelhoEsquerda01 = new ImageIcon(VelhoEsquerda01Path).getImage();
 		VelhoEsquerda02 = new ImageIcon(VelhoEsquerda02Path).getImage();
+	}
+	
+	public void proximidade(Player player, Velho velho) {
+		//Algoritmo de checar proximidade
+		if((player.x >= velho.x - 150 && player.x <= velho.x + 150) &&
+				(player.y >= velho.y - 150 && player.y <= velho.y +150)) {
+			velho.proximo = true;
+		}
+		else {
+			velho.proximo = false;	
+		}
 	}
 	
 	public void animacao(Player player, Velho velho) {

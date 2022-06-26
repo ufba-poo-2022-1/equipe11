@@ -12,12 +12,14 @@ import javax.swing.*;
 
 import Interface.Exe;
 import Interface.Intro;
+import Interface.Janela;
 import cenarios.BotaoE;
 import cenarios.Caminhos;
 import cenarios.Decorativos;
 import cenarios.Menina;
 import cenarios.Player;
 import cenarios.Velho;
+import dialogos.Caixa;
 
 public class Cena06 extends JPanel implements ActionListener, KeyListener{
 	/**
@@ -34,7 +36,7 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 	int delay = 10;  
 	
 	//Inicializando player
-	Player player = new Player(0,320, "Direita");
+	Player player = new Player(15,320, "Direita");
 	
 	//Inicializar menina
 	Menina menina = new Menina(500,300);
@@ -48,9 +50,9 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 	//Inicializar botao
 	BotaoE botao = new BotaoE(menina.x +40, menina.y - 50);
 	
-	Decorativos decorativos = new Decorativos(0, 300, 400);
+	Decorativos decorativos = new Decorativos(0, 300, 500);
 	Decorativos decorativos2 = new Decorativos(0, 400, 300);
-	Decorativos decorativos3 = new Decorativos(0, 300, 400);
+	Decorativos decorativos3 = new Decorativos(0, 300, 700);
 	Decorativos decorativos4 = new Decorativos(0, 0, 300);
 	Decorativos decorativos5 = new Decorativos(0, 100, 200);
 	Decorativos decorativos6 = new Decorativos(0, 650, 300);
@@ -60,20 +62,22 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos10 = new Decorativos(0, 800, 650);
 	Decorativos decorativos11 = new Decorativos(0, 500, 450);
 	Decorativos decorativos12 = new Decorativos(0, 1200, 650);
-	Decorativos decorativos13 = new Decorativos(0, 800, 350);
+	Decorativos decorativos13 = new Decorativos(0, 800, 450);
 	Decorativos decorativos14 = new Decorativos(0, 1200, 100);
 	Decorativos decorativos15 = new Decorativos(0, 1100, 400);
-	Decorativos decorativos16 = new Decorativos(1, 1250, 400);
+	Decorativos decorativos16 = new Decorativos(1, 1250, 250);
+	
+	Caixa caixa = new Caixa();
 	
 	public Cena06(){ 
 		//
 		//Inicialização do painel	
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		this.setBackground(Color.black);
-				
+		
 		//Timer iniciado
 		timer = new Timer(delay, this);
-		timer.start();
+		//timer.start();
 		
 		//Parâmetros para detecção do teclado
 		requestFocusInWindow();
@@ -110,15 +114,39 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 		
 		player.draw(g);
 		
+		Caixa.cena = 5;
 
 		if(menina.proxima) {
 			botao.draw(g);			
 		}	
 		
+		// Se dialogo da menina estiver disponivel e  tecla E foi pressionada, desenhe a caixa de dialogo
+		if(menina.proxima == true && Caixa.CaixaMenina == true) {
+			Caixa.DialogoM(g, menina);
+			player.velMax = 0;
+			player.velx = 0;
+		}
+		else{
+			player.velMax = 13;
+		}	
+			
+		
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//Verificar como passar o algoritmo para classe de diálogo >>> caua
+		//Algoritmo de checar proximidade
+		if((player.x >= menina.x - 150 && player.x <= menina.x + 150) &&
+				(player.y >= menina.y - 150 && player.y <= menina.y +150)) {
+			menina.proxima = true;
+		}
+		else {
+			menina.proxima = false;
+			menina.contador = 0;
+			menina.Frase = "";
+		}
+		
 		botao.animacao(botao);
 		
 		player.animacao(player);
@@ -132,8 +160,9 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 		menina.animacao(player, menina);
 		
 		decorativos.colisaoD(player, decorativos16, 01);
-		
-        repaint();
+		passagemDeCaminho();
+        
+		repaint();
 		
 	}
 
@@ -164,10 +193,17 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 		
 		if (e.getKeyCode() == KeyEvent.VK_E) {
 			if(menina.proxima) {
+				if(Caixa.auxPassagemdeDialogo != 0) {
+					Caixa.currentDialog = "";
+					Caixa.auxiliar = "";	
+					Caixa.contador = 0;
+					Caixa.fala++;
+				}
+				Caixa.CaixaMenina = true;
 				System.out.println("Botao E pressionado proximo a menina.");
-				Exe.janela.cl.show(Exe.janela.panelBase, "menu");
-				player.x = 0;
-				player.y = 500;
+				
+				Caixa.auxPassagemdeDialogo++;
+
 			}
 			else {
 				System.out.println("Botao E pressionado longe da menina.");
@@ -232,7 +268,19 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 		}
 	}
 
-
+	 public void passagemDeCaminho() {
+	        if(player.x > 1210) {
+	        	Janela.cena07.timer.start();
+	        	Janela.cena06.timer.stop();
+	            Janela.cl.show(Janela.panelBase, "cena07");
+	        }/*
+	            else if(player.x < 3) {
+            	Janela.cena05.timer.start();
+	        	Janela.cena06.timer.stop();
+	        	Janela.cl.show(Janela.panelBase, "cena05");
+	        }*/
+	
+	 }	
 	
 	
 }
