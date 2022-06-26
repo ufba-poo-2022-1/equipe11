@@ -235,9 +235,9 @@ public class Cena09 extends JPanel implements ActionListener, KeyListener{
 			player.right();
 		}
 	}
-
+	//Mudar de cena ao chegar no fim do caminho.
 	 public void passagemDeCaminho() {
-	        if(player.x > 1219) {
+	        if(player.x > 1219 && player.y == 383) {
 	            Janela.cl.show(Janela.panelBase, "cena10");
 	        }
 	            else if(player.x < 3) {
