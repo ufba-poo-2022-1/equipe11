@@ -64,7 +64,7 @@ public class Cena08 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos13 = new Decorativos(4, 100, 600);
 	Decorativos decorativos14 = new Decorativos(4, 0, 600);
 	Decorativos decorativos15 = new Decorativos(4, 0, 600);
-	Decorativos decorativos16 = new Decorativos(1, 1250, 490);
+	Decorativos decorativos16 = new Decorativos(1, 1250, 499);
 	Decorativos decorativos17 = new Decorativos(4, 500, 600);
 	Decorativos decorativos18 = new Decorativos(4, 600, 600);
 	Decorativos decorativos19 = new Decorativos(4, 700, 600);
@@ -240,17 +240,14 @@ public class Cena08 extends JPanel implements ActionListener, KeyListener{
 			player.right();
 		}
 	}
+	//Mudar de cena ao chegar no fim do caminho.
 	 public void passagemDeCaminho() {
-        if(player.x > 1219) {
+        if(player.x > 1219 && player.y == 364) {
             Janela.cl.show(Janela.panelBase, "cena09");
         }
-            else if(player.y < 10) {
+            else if(player.y < 5 && player.x < 450) {
         	Janela.cl.show(Janela.panelBase, "cena07");
         }
-        	
-        
-    
+
 	}
-	
-	
 }
