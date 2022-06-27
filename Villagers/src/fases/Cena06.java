@@ -57,6 +57,14 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos5 = new Decorativos(13, 290, 161);
 	Decorativos decorativos6 = new Decorativos(0, 1220, 317);
 	Decorativos decorativos7 = new Decorativos(4, 1255, 268);
+	Decorativos decorativos8 = new Decorativos(15, 300, 220);
+	Decorativos decorativos9 = new Decorativos(15, 890, 220);
+	Decorativos decorativos10 = new Decorativos(15, 396, 220);
+	Decorativos decorativos11 = new Decorativos(15, 709, 220);
+	Decorativos decorativos12 = new Decorativos(15, 805, 220);
+	Decorativos decorativos13 = new Decorativos(15, 1105, 220);
+	Decorativos decorativos14 = new Decorativos(15, 1020, 220);
+	
 	
 	Caixa caixa = new Caixa();
 	
@@ -90,9 +98,15 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 		decorativos5.draw(g);
 		decorativos6.draw(g);
 		decorativos7.draw(g);
+		decorativos8.draw(g);
+		decorativos9.draw(g);
+		decorativos10.draw(g);
+		decorativos11.draw(g);
+		decorativos12.draw(g);
+		decorativos13.draw(g);
+		decorativos14.draw(g);
 		
 		menina.draw(g);
-		velho.draw(g);
 		
 		player.draw(g);
 		
@@ -128,12 +142,17 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 		player.animacao(player);
 		player.colisaoTotalTela(player);
 		
-		velho.colisao(player, velho);
-		velho.animacao(player, velho);
-		
 		menina.proximidade(player, menina);
 		menina.colisao(player, menina);
 		menina.animacao(player, menina);
+		
+		decorativos.colisaoD(player, decorativos8, 03);
+		decorativos.colisaoD(player, decorativos9, 03);
+		decorativos.colisaoD(player, decorativos10, 03);
+		decorativos.colisaoD(player, decorativos11, 04);
+		decorativos.colisaoD(player, decorativos12, 03);
+		decorativos.colisaoD(player, decorativos13, 04);
+		decorativos.colisaoD(player, decorativos14, 03);
 		
 		passagemDeCaminho();
         
