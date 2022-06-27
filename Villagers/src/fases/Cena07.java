@@ -95,7 +95,7 @@ public class Cena07 extends JPanel implements ActionListener, KeyListener{
 		decorativos7.draw(g);	
 		decorativos8.draw(g);
 		decorativos9.draw(g);
-		
+
 		menina.draw(g);
 		//velho.draw(g);
 		
