@@ -38,13 +38,14 @@ public class Cena09 extends JPanel implements ActionListener, KeyListener{
 	Player player = new Player(15,370, "Direita");
 	
 	//Inicializar menina
-	Menina menina = new Menina(585, 270);
+	Menina menina = new Menina(625, 270);
 
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
 	Caminhos caminhos = new Caminhos(8);
 	
+	//Velho foi removido da cena
 	//Inicializar velho
-	Velho velho = new Velho(700, 270);
+	//Velho velho = new Velho(700, 270);
 	
 	//Inicializar botao
 	BotaoE botao = new BotaoE(menina.x +40, menina.y - 50);
@@ -109,7 +110,7 @@ public class Cena09 extends JPanel implements ActionListener, KeyListener{
 		decorativos17.draw(g);
 		
 		menina.draw(g);
-		velho.draw(g);
+		//velho.draw(g);
 		
 		player.draw(g);
 		
@@ -127,8 +128,8 @@ public class Cena09 extends JPanel implements ActionListener, KeyListener{
 		player.animacao(player);
 		player.colisaoTotalTela(player);
 		
-		velho.colisao(player, velho);
-		velho.animacao(player, velho);
+		//velho.colisao(player, velho);
+		//velho.animacao(player, velho);
 		
 		menina.proximidade(player, menina);
 		menina.colisao(player, menina);
