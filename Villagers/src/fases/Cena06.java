@@ -39,33 +39,25 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 	Player player = new Player(15,320, "Direita");
 	
 	//Inicializar menina
-	Menina menina = new Menina(500,300);
+	Menina menina = new Menina(545,440);
 
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
 	Caminhos caminhos = new Caminhos(5);
 	
 	//Inicializar velho
-	Velho velho = new Velho(700, 300);
+	Velho velho = new Velho(660, 439);
 	
 	//Inicializar botao
 	BotaoE botao = new BotaoE(menina.x +40, menina.y - 50);
 	
-	Decorativos decorativos = new Decorativos(0, 300, 500);
-	Decorativos decorativos2 = new Decorativos(0, 400, 300);
-	Decorativos decorativos3 = new Decorativos(0, 300, 700);
-	Decorativos decorativos4 = new Decorativos(0, 0, 300);
-	Decorativos decorativos5 = new Decorativos(0, 100, 200);
-	Decorativos decorativos6 = new Decorativos(0, 650, 300);
-	Decorativos decorativos7 = new Decorativos(0, 300, 100);
-	Decorativos decorativos8 = new Decorativos(0, 400, 650);
-	Decorativos decorativos9 = new Decorativos(0, 900, 200);
-	Decorativos decorativos10 = new Decorativos(0, 800, 650);
-	Decorativos decorativos11 = new Decorativos(0, 500, 450);
-	Decorativos decorativos12 = new Decorativos(0, 1200, 650);
-	Decorativos decorativos13 = new Decorativos(0, 800, 450);
-	Decorativos decorativos14 = new Decorativos(0, 1200, 100);
-	Decorativos decorativos15 = new Decorativos(0, 1100, 400);
-	Decorativos decorativos16 = new Decorativos(1, 1250, 250);
+	Decorativos decorativos = new Decorativos(6, 100, 220);
+	Decorativos decorativos2 = new Decorativos(10, 988, 160);
+	Decorativos decorativos3 = new Decorativos(11, 720, 163);
+	Decorativos decorativos4 = new Decorativos(7, 550, 210);
+	Decorativos decorativos5 = new Decorativos(13, 290, 161);
+	Decorativos decorativos6 = new Decorativos(0, 1220, 317);
+	Decorativos decorativos7 = new Decorativos(4, 1255, 268);
+	Decorativos decorativos16 = new Decorativos(1, 1250, 218);
 	
 	Caixa caixa = new Caixa();
 	
@@ -99,14 +91,6 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 		decorativos5.draw(g);
 		decorativos6.draw(g);
 		decorativos7.draw(g);
-		decorativos8.draw(g);
-		decorativos9.draw(g);
-		decorativos10.draw(g);
-		decorativos11.draw(g);
-		decorativos12.draw(g);
-		decorativos13.draw(g);
-		decorativos14.draw(g);
-		decorativos15.draw(g);
 		decorativos16.draw(g);
 		
 		menina.draw(g);
@@ -268,8 +252,9 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 		}
 	}
 
+	//Muda de cena ao chegar no fim do caminho.
 	 public void passagemDeCaminho() {
-	        if(player.x > 1210) {
+	        if(player.x > 1219 && player.y == 320) {
 	        	Janela.cena07.timer.start();
 	        	Janela.cena06.timer.stop();
 	            Janela.cl.show(Janela.panelBase, "cena07");
