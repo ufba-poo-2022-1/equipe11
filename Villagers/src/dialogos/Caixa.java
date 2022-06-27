@@ -91,7 +91,7 @@ public class Caixa {
 		dialogos[10][6] = "Menina \n Finalmente, vejo o fim desse sofrimento";
 		dialogos[10][7] = "Menina \n O fim que você, aldeão, quiser me dar, aceitarei.";
 		//Escolha
-		dialogos [10][6] = "Deseja poupar a menina com a oração ou mata-la com a espada? \n \n  POUPAR[P]                                             MATAR[M]";
+		dialogos [10][8] = "Deseja poupar a menina com a oração ou mata-la com a espada? \n \n  POUPAR[P]                                             MATAR[M]";
 	}
 	
 	public static void DialogoM(Graphics g, Menina menina) {
@@ -156,12 +156,12 @@ public class Caixa {
 		g.setFont(f);
 		
 		for(String line : currentDialog.split("\n")) {
-			if(cena >= 0  && dialogosMenina[cena][fala] != null) {
+			if(cena >= 0  && dialogos[cena][fala] != null) {
 				g.drawString(line, x+30, y+35);
 				y+= 45;
 				x+= 10;
 		
-				currentDialog = dialogosMenina[cena][fala];
+				currentDialog = dialogos[cena][fala];
 			}
 			
 			else {

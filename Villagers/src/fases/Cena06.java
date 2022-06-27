@@ -19,6 +19,7 @@ import cenarios.Decorativos;
 import cenarios.Menina;
 import cenarios.Player;
 import cenarios.Velho;
+import dialogos.Caixa;
 
 public class Cena06 extends JPanel implements ActionListener, KeyListener{
 	/**
@@ -58,6 +59,8 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos7 = new Decorativos(4, 1255, 268);
 	Decorativos decorativos16 = new Decorativos(1, 1250, 218);
 	
+	Caixa caixa = new Caixa();
+	
 	public Cena06(){ 
 		//
 		//Inicialização do painel	
@@ -95,15 +98,39 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 		
 		player.draw(g);
 		
+		Caixa.cena = 5;
 
 		if(menina.proxima) {
 			botao.draw(g);			
 		}	
 		
+		// Se dialogo da menina estiver disponivel e  tecla E foi pressionada, desenhe a caixa de dialogo
+		if(menina.proxima == true && Caixa.CaixaMenina == true) {
+			Caixa.DialogoM(g, menina);
+			player.velMax = 0;
+			player.velx = 0;
+		}
+		else{
+			player.velMax = 13;
+		}	
+			
+		
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//Verificar como passar o algoritmo para classe de diálogo >>> caua
+		//Algoritmo de checar proximidade
+		if((player.x >= menina.x - 150 && player.x <= menina.x + 150) &&
+				(player.y >= menina.y - 150 && player.y <= menina.y +150)) {
+			menina.proxima = true;
+		}
+		else {
+			menina.proxima = false;
+			menina.contador = 0;
+			menina.Frase = "";
+		}
+		
 		botao.animacao(botao);
 		
 		player.animacao(player);
@@ -150,10 +177,17 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 		
 		if (e.getKeyCode() == KeyEvent.VK_E) {
 			if(menina.proxima) {
+				if(Caixa.auxPassagemdeDialogo != 0) {
+					Caixa.currentDialog = "";
+					Caixa.auxiliar = "";	
+					Caixa.contador = 0;
+					Caixa.fala++;
+				}
+				Caixa.CaixaMenina = true;
 				System.out.println("Botao E pressionado proximo a menina.");
-				Exe.janela.cl.show(Exe.janela.panelBase, "menu");
-				player.x = 0;
-				player.y = 500;
+				
+				Caixa.auxPassagemdeDialogo++;
+
 			}
 			else {
 				System.out.println("Botao E pressionado longe da menina.");
@@ -221,11 +255,15 @@ public class Cena06 extends JPanel implements ActionListener, KeyListener{
 	//Muda de cena ao chegar no fim do caminho.
 	 public void passagemDeCaminho() {
 	        if(player.x > 1219 && player.y == 320) {
+	        	Janela.cena07.timer.start();
+	        	Janela.cena06.timer.stop();
 	            Janela.cl.show(Janela.panelBase, "cena07");
-	        }
+	        }/*
 	            else if(player.x < 3) {
+            	Janela.cena05.timer.start();
+	        	Janela.cena06.timer.stop();
 	        	Janela.cl.show(Janela.panelBase, "cena05");
-	        }
+	        }*/
 	
 	 }	
 	

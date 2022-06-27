@@ -1,5 +1,6 @@
 package cenarios;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -21,6 +22,11 @@ public class Velho {
 	public int x;
 	public int y;
 	public boolean orientacaoVelho = false, proximo = false;
+	
+	static int fontSize = 20;
+	public int contador = 0;
+    static Font f = new Font("Comic Sans MS", Font.BOLD, fontSize);
+    public String Frase = "";
 	
 	public static boolean dialogV = false;
 	

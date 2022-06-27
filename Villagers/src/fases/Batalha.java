@@ -10,9 +10,7 @@ import java.awt.event.KeyListener;
 
 import javax.swing.*;
 import Interface.Intro;
-import cenarios.Caminhos;
-import cenarios.MeninaBatalha;
-import cenarios.PlayerBatalha;
+import cenarios.*;
 import dialogos.Caixa;
 
 
@@ -70,7 +68,7 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 			menina.draw(g);			
 		}
 		
-		Caixa.cena = 11;
+		Caixa.cena = 10;
 		Caixa.DialogoSemProximidade(g, menina);
 	}
 	
@@ -123,11 +121,12 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {	
 		if (e.getKeyCode() == KeyEvent.VK_E) {
-			if((menina.iniciandoAtaque == false && menina.voltando == false) &&
+			if((player.caminhando == false &&
+					menina.iniciandoAtaque == false && menina.voltando == false) &&
 					player.iniciandoAtaque == false && player.voltando == false){
 
 				//Player ataca
-				if(Caixa.fala == 1 || Caixa.fala == 3 ) {
+				if(Caixa.fala == 1 || Caixa.fala == 0 ) {
 					player.sobreposto = true;
 					player.iniciandoAtaque = true;
 					
@@ -138,7 +137,7 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 				}
 				
 				//Menina ataca
-				else if(Caixa.fala == 2 || Caixa.fala == 4 ) {
+				else if(Caixa.fala == 2 || Caixa.fala == 3 ) {
 					player.sobreposto = false;
 					menina.iniciandoAtaque = true;
 					
