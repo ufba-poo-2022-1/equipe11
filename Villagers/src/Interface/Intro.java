@@ -18,14 +18,22 @@ public class Intro extends JPanel{
 	//Inicializar audio
 	public static AudioInputStream stream;
 	public static Clip clip;
-	String audioFileName = "sounds//UndetaleCompact.wav";
+	public String audioFileName = "sounds//UndetaleCompact.wav";
+	public String startBotao = "sounds//Intro.wav";
+	public String fundoPadrao = "sounds//DentrodasCenas.wav";
+	public String batalha1 = "sounds//Batalha1.wav";
+	public String batalha2 = "sounds//Batalha2.wav";
+	public String vilaSombrio = "sounds//ChegandonaVila.wav";
+	public String finalTriste = "sounds//Intro.wav";
+	public String finalFeliz = "sounds//Final_feliz.wav";
+
 	
 	//Delay para fechar introdução
 	static int wait = 1500;
 	
 	Intro(){
 		//Panel
-		playAudio();
+		playAudio(audioFileName, 99);
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		this.setBackground(Color.black);
 		this.setLayout(null);
@@ -51,13 +59,14 @@ public class Intro extends JPanel{
 	}	
 	
 	//Leitura de arquivo .wav
-	public void playAudio(){
+	public void playAudio(String caminho, int loop){
 		try {
-		File audioPath = new File(audioFileName);
+		File audioPath = new File(caminho);
 		stream = AudioSystem.getAudioInputStream(audioPath);
 		clip = AudioSystem.getClip();
 		clip.open(stream);
-		//clip.start();
+		clip.start();
+		clip.loop(loop);
 		}
 
 		catch(Exception e){

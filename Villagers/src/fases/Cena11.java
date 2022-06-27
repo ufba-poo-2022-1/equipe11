@@ -121,16 +121,6 @@ public class Cena11 extends JPanel implements ActionListener, KeyListener{
 			botao.draw(g);			
 		}	
 		
-		// Se dialogo da menina estiver disponivel e  tecla E foi pressionada, desenhe a caixa de dialogo
-		if(menina.proxima == true && Caixa.CaixaMenina == true) {
-			Caixa.DialogoM(g, menina);
-			player.velMax = 0;
-			player.velx = 0;
-		}
-		else{
-			player.velMax = 13;
-		}	
-		
 		
 	}
 	@Override
@@ -272,6 +262,8 @@ public class Cena11 extends JPanel implements ActionListener, KeyListener{
         if(player.x > 1219) {
         	Janela.batalha.timer.start();
         	Janela.cena11.timer.stop();
+        	Janela.getIntro().clip.stop();
+        	Janela.getIntro().playAudio(Janela.getIntro().batalha1, 0);
             Janela.cl.show(Janela.panelBase, "batalha");
         }/*
             else if(player.y > 610) {
