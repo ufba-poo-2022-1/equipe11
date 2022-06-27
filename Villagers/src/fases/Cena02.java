@@ -48,7 +48,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	
 	//Inicializar velho
 	Velho velho = new Velho(700, 450);
-	
+
 	Decorativos decorativos = new Decorativos(0, 600, 520);
 	Decorativos decorativos2 = new Decorativos(0, 400, 520);
 	Decorativos decorativos3 = new Decorativos(0, 800, 520);
