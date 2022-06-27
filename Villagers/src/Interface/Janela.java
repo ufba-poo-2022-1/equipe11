@@ -2,6 +2,7 @@ package Interface;
 
 import javax.swing.*;
 
+import dialogos.FinalFeliz;
 import fases.*;
 
 import java.awt.*;
@@ -29,6 +30,8 @@ public class Janela extends JFrame{
 		public static Cena09 cena09 = new Cena09();
 		public static Cena10 cena10 = new Cena10();
 		public static Cena11 cena11 = new Cena11();
+		public static CenaFinalFeliz finalfeliz = new CenaFinalFeliz();
+		public static CenaFinalRuim finalruim = new CenaFinalRuim();
 		
 		public static Cena01Pergaminho cena01Pergaminho = new Cena01Pergaminho();
 		public static Batalha batalha = new Batalha();
@@ -38,7 +41,7 @@ public class Janela extends JFrame{
 		
 	Janela(){
 		panelBase.setLayout(cl);
-		panelBase.add(intro, "intro");		
+		panelBase.add(getIntro(), "intro");		
 		panelBase.add(menu, "menu");
 		panelBase.add(animacao, "animacao");
 		panelBase.add(cena01Pergaminho, "cena01Pergaminho");
@@ -53,7 +56,9 @@ public class Janela extends JFrame{
 		panelBase.add(cena10, "cena10");
 		panelBase.add(cena11, "cena11");
 		panelBase.add(batalha, "batalha");
-		cl.show(panelBase, "intro");
+		panelBase.add(finalfeliz, "finalfeliz");
+		panelBase.add(finalruim, "finalruim");
+		cl.show(panelBase, "batalha");
 
 		this.setTitle(TituloJanela);		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -61,6 +66,10 @@ public class Janela extends JFrame{
 		this.pack();
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
+	}
+
+	public static Intro getIntro() {
+		return intro;
 	}
 
 }

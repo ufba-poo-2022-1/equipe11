@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
 import Interface.Intro;
+import Interface.Janela;
 import cenarios.Caminhos;
 import cenarios.Menina;
 import cenarios.MeninaBatalha;
@@ -28,11 +29,12 @@ public class Caixa {
 		
 	static int fontSize = 20;
 	public static int contador = 0;
+	public static String Frase = "";
     static Font f = new Font("Comic Sans MS", Font.BOLD, fontSize);
 	//Dialogos
   	public static String currentDialog = "";
   	public static String auxiliar = "";
-	public static String dialogos[] [] = new String[12][12];
+	public static String dialogos[] [] = new String[13][12];
 
 	public Caixa() {
 		
@@ -81,8 +83,8 @@ public class Caixa {
 	// Dialogos décima tela (Cena11)
 		dialogos[10][0] = "Menina \n Então agora você já sabe de tudo, está está aqui para me matar?";
 		dialogos[10][1] = "Menina \n Eu não consigo controlar meu corpo, espero que esteja preparado.";
-		dialogos[10][2] = "Menina \n Pelo menos tive uma pessoa para passsar meus ultimos suspiros, lhe agradeço por isso";
-		dialogos[10][3] = "Menina \n Me perdoe pelo que irá acontecer agora";
+		dialogos[10][2] = "Menina \n Pelo menos tive uma pessoa para passsar meus ultimos suspiros, lhe agradeço por isso.";
+		dialogos[10][3] = "Menina \n Me perdoe pelo que irá acontecer agora.";
 		// Primeira Batida(Player)
 		dialogos[10][4] = "Menina \n Argh, essa espada daquele guerreiro é forte!";
 		// Segunda Batida(Menina)
@@ -92,10 +94,11 @@ public class Caixa {
 		// Quarta Batida(Menina)
 		dialogos[10][7] = "Menina \n Por favo resista esse ataque!";
 		// Quinta Batida(Player)
-		dialogos[10][8] = "Menina \n Finalmente, vejo o fim desse sofrimento";
+		dialogos[10][8] = "Menina \n Finalmente, vejo o fim desse sofrimento.";
 		dialogos[10][9] = "Menina \n O fim que você, aldeão, quiser me dar, aceitarei.";
 		//Escolha
-		dialogos [10][10] = "Deseja poupar a menina com a oração ou mata-la com a espada? \n \n  POUPAR[P]                                             MATAR[M]";
+		dialogos[10][10] = "Deseja poupar a menina com a oração ou mata-la com a espada? \n \n  POUPAR[P]                                             MATAR[M]";
+		
 	}
 	
 	public static void DialogoM(Graphics g, Menina menina) {
@@ -107,19 +110,20 @@ public class Caixa {
 		int x = 50, y = 500, width = 1250, height= Intro.SCREEN_HEIGHT/4;
 		drawSubWindow(g2,x, y, width, height);
 		
-		//Imprimir frase letra por letra na caixa
-		if((menina.proxima && auxiliar.length() < currentDialog.length()) &&
-		(menina.personagemDelay <= menina.TrocaPosicao*2)) {
-			auxiliar = auxiliar + currentDialog.charAt(contador);
-			contador++;			
-			Menina.dialogM = true;
-		}
+		
 		
 		g.setColor(Color.white);
 		g.setFont(f);
 		
 		for(String line : currentDialog.split("\n")) {
 			if(cena >= 0  && dialogos[cena][fala] != null) {
+				//Imprimir frase letra por letra na caixa
+				if((menina.proxima && auxiliar.length() < currentDialog.length()) &&
+				(menina.personagemDelay <= menina.TrocaPosicao*2)) {
+					auxiliar = auxiliar + currentDialog.charAt(contador);
+					contador++;			
+					Menina.dialogM = true;
+				}
 				g.drawString(line, x+30, y+35);
 				y+= 45;
 				x+= 10;
@@ -153,7 +157,7 @@ public class Caixa {
 		(menina.personagemDelay <= menina.TrocaPosicao*2)) {
 			auxiliar = auxiliar + currentDialog.charAt(contador);
 			contador++;			
-			Menina.dialogM = true;
+			Velho.dialogV = true;
 		}
 		
 		g.setColor(Color.white);
@@ -178,6 +182,36 @@ public class Caixa {
 			}
 		}
 		
+	}
+	public static void Dialogo(Graphics g) {
+
+		//Window
+		Graphics2D g2 = (Graphics2D) g;
+		
+		//Janela de texto
+		int x = 50, y = 500, width = 1250, height= Intro.SCREEN_HEIGHT/4;
+		drawSubWindow(g2,x, y, width, height);
+		
+		g.setColor(Color.white);
+		g.setFont(f);
+		
+		for(String line : currentDialog.split("\n")) {
+			if(cena >= 0  && dialogos[cena][fala] != null) {
+				g.drawString(line, x+30, y+35);
+				y+= 45;
+				x+= 10;
+		
+				currentDialog = dialogos[cena][fala];
+			}
+			else {
+				contador = 0;
+				currentDialog = "";
+				auxiliar = "";
+				fala = 0;
+				auxPassagemdeDialogo = 0;
+				CaixaMenina = false;
+			}
+		}
 	}
 	
 	public static void DialogoV(Graphics g, Velho velho) {

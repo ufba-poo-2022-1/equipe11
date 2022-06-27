@@ -19,13 +19,14 @@ public class Intro extends JPanel{
 	public static AudioInputStream stream;
 	public static Clip clip;
 	String audioFileName = "sounds//UndetaleCompact.wav";
+	String audioFileNamemenina = "sounds//FaladaMenina.wav";
 	
 	//Delay para fechar introdução
 	static int wait = 1500;
 	
 	Intro(){
 		//Panel
-		playAudio();
+		//playAudio(audioFileName);
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		this.setBackground(Color.black);
 		this.setLayout(null);
@@ -51,13 +52,13 @@ public class Intro extends JPanel{
 	}	
 	
 	//Leitura de arquivo .wav
-	public void playAudio(){
+	public void playAudio(String audioFileName){
 		try {
 		File audioPath = new File(audioFileName);
 		stream = AudioSystem.getAudioInputStream(audioPath);
 		clip = AudioSystem.getClip();
 		clip.open(stream);
-		//clip.start();
+		clip.start();
 		}
 
 		catch(Exception e){

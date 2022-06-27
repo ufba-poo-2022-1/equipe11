@@ -10,6 +10,7 @@ import java.awt.event.KeyListener;
 
 import javax.swing.*;
 import Interface.Intro;
+import Interface.Janela;
 import cenarios.*;
 import dialogos.Caixa;
 
@@ -121,44 +122,61 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {	
 		if (e.getKeyCode() == KeyEvent.VK_E) {
-			if((player.caminhando == false &&
-					menina.iniciandoAtaque == false && menina.voltando == false) &&
-					player.iniciandoAtaque == false && player.voltando == false){
+			if(Caixa.fala != 10) {
+				if((player.caminhando == false &&
+						menina.iniciandoAtaque == false && menina.voltando == false) &&
+						player.iniciandoAtaque == false && player.voltando == false){
 
-				//Player ataca
-				if(Caixa.fala == 1 || Caixa.fala == 0 ) {
-					player.sobreposto = true;
-					player.iniciandoAtaque = true;
+					//Player ataca
+					if(Caixa.fala == 1 || Caixa.fala == 0 ) {
+						player.sobreposto = true;
+						player.iniciandoAtaque = true;
 					
-					player.tipoAtaque++;
-					if(player.tipoAtaque > 1) {
-						player.tipoAtaque = 0;
-					}					
-				}
-				
-				//Menina ataca
-				else if(Caixa.fala == 2 || Caixa.fala == 3 ) {
-					player.sobreposto = false;
-					menina.iniciandoAtaque = true;
-					
-					menina.tipoAtaque++;
-					if(menina.tipoAtaque > 1) {
-						menina.tipoAtaque = 0;
+						player.tipoAtaque++;
+						if(player.tipoAtaque > 1) {
+							player.tipoAtaque = 0;
+						}					
 					}
-				}
 				
-				if(Caixa.auxPassagemdeDialogo != 0) {
-					Caixa.currentDialog = "";
-					Caixa.auxiliar = "";	
-					Caixa.contador = 0;
-					Caixa.fala++;
-				}
-				Caixa.CaixaMenina = true;				
-				Caixa.auxPassagemdeDialogo++;
+					//Menina ataca
+					else if(Caixa.fala == 2 || Caixa.fala == 3 ) {
+						player.sobreposto = false;
+						menina.iniciandoAtaque = true;
+					
+						menina.tipoAtaque++;
+						if(menina.tipoAtaque > 1) {
+							menina.tipoAtaque = 0;
+						}
+					}
+				
+					if(Caixa.auxPassagemdeDialogo != 0) {
+						Caixa.currentDialog = "";
+						Caixa.auxiliar = "";	
+						Caixa.contador = 0;
+						Caixa.fala++;
+					}
+					Caixa.CaixaMenina = true;				
+					Caixa.auxPassagemdeDialogo++;
 
 			}
-			
 		}
+			
+	}
+		
+		if (e.getKeyCode() == KeyEvent.VK_P) {
+			if  (Caixa.fala == 10) {
+				Janela.finalfeliz.timer.start();
+	        	Janela.batalha.timer.stop();
+				Janela.cl.show(Janela.panelBase, "finalfeliz");
+			}
+		}
+		if (e.getKeyCode() == KeyEvent.VK_M) {
+			if  (Caixa.fala == 10) {
+				Janela.finalruim.timer.start();
+	        	Janela.batalha.timer.stop();
+				Janela.cl.show(Janela.panelBase, "finalruim");
+			}
+		} 
 	}	
 	
 	public void keyTyped(KeyEvent e) {}
