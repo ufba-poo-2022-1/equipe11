@@ -10,6 +10,7 @@ import java.awt.event.KeyListener;
 
 import javax.swing.*;
 import Interface.Intro;
+import Interface.Janela;
 import cenarios.*;
 import dialogos.Caixa;
 
@@ -67,15 +68,23 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 			player.draw(g);
 			menina.draw(g);			
 		}
+		if((player.caminhando == false &&
+				menina.iniciandoAtaque == false && menina.voltando == false) &&
+				player.iniciandoAtaque == false && player.voltando == false) {
+			Caixa.cena = 10;
+			Caixa.DialogoSemProximidade(g, menina);
+		}
 		
-		Caixa.cena = 10;
-		Caixa.DialogoSemProximidade(g, menina);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//Pedir para java ativar garbage collector
 		System.gc();
+		
+		if(!Janela.getIntro().clip.isRunning()) {
+			Janela.getIntro().playAudio(Janela.getIntro().batalha2, 99);
+		}
 		
 		//MENINA
 		menina.animacao(menina);
@@ -104,7 +113,7 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 			}
 		}
 		if(player.voltando) {
-			if(player.atacando == false && Caixa.fala >= 4) {
+			if(player.atacando == false && Caixa.fala >= 7) {
 				menina.meninaDerrotada = true;
 				player.caminhando = false;    			    			
 				player.voltando = false;
@@ -126,7 +135,7 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 					player.iniciandoAtaque == false && player.voltando == false){
 
 				//Player ataca
-				if(Caixa.fala == 1 || Caixa.fala == 0 ) {
+				if(Caixa.fala == 3 || Caixa.fala == 5 || Caixa.fala == 7) { 
 					player.sobreposto = true;
 					player.iniciandoAtaque = true;
 					
@@ -137,7 +146,7 @@ public class Batalha extends JPanel implements ActionListener, KeyListener{
 				}
 				
 				//Menina ataca
-				else if(Caixa.fala == 2 || Caixa.fala == 3 ) {
+				else if(Caixa.fala == 4 || Caixa.fala == 6 ) {
 					player.sobreposto = false;
 					menina.iniciandoAtaque = true;
 					
