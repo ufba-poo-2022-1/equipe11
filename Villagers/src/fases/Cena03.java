@@ -66,7 +66,7 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos12 = new Decorativos(5, 300, 300);
 	Decorativos decorativos13 = new Decorativos(5, 400, 0);
 	Decorativos decorativos14 = new Decorativos(6, 500, 200);
-	Decorativos decorativos15 = new Decorativos(5, 100, 550);//
+	Decorativos decorativos15 = new Decorativos(5, 100, 550);
 	Decorativos decorativos16 = new Decorativos(5, 500, 550);
 	Decorativos decorativos17 = new Decorativos(2, 750, 300);
 	Decorativos decorativos18 = new Decorativos(2, 900, 400);
