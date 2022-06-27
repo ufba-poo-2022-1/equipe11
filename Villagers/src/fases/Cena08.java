@@ -44,8 +44,9 @@ public class Cena08 extends JPanel implements ActionListener, KeyListener{
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
 	Caminhos caminhos = new Caminhos(7);
 	
+	//Velho foi removido da cena
 	//Inicializar velho
-	Velho velho = new Velho(700, 240);
+	//Velho velho = new Velho(700, 240);
 	
 	//Inicializar botao
 	BotaoE botao = new BotaoE(menina.x +40, menina.y - 50);
@@ -70,6 +71,10 @@ public class Cena08 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos18 = new Decorativos(4, 600, 600);
 	Decorativos decorativos19 = new Decorativos(4, 700, 600);
 	Decorativos decorativos20 = new Decorativos(4, 1050, 600);
+	Decorativos decorativos21= new Decorativos(15, 820, 560);
+	Decorativos decorativos22= new Decorativos(15, 940, 550);
+	Decorativos decorativos23= new Decorativos(15, 940, 600);
+	Decorativos decorativos24= new Decorativos(15, 880, 550);
 	
 	Caixa caixa = new Caixa();
 	
@@ -81,7 +86,7 @@ public class Cena08 extends JPanel implements ActionListener, KeyListener{
 				
 		//Timer iniciado
 		timer = new Timer(delay, this);
-		//timer.start();
+		timer.start();
 		
 		//Parâmetros para detecção do teclado
 		requestFocusInWindow();
@@ -116,10 +121,13 @@ public class Cena08 extends JPanel implements ActionListener, KeyListener{
 		decorativos18.draw(g);
 		decorativos19.draw(g);
 		decorativos20.draw(g);
+		decorativos21.draw(g);
+		decorativos22.draw(g);
+		decorativos23.draw(g);
+		decorativos24.draw(g);
 		
 		menina.draw(g);
-		velho.draw(g);
-		
+		//velho.draw(g);
 		player.draw(g);
 		
 
@@ -130,11 +138,11 @@ public class Cena08 extends JPanel implements ActionListener, KeyListener{
 		}	
 		
 		// Se dialogo da menina estiver disponivel e  tecla E foi pressionada, desenhe a caixa de dialogo
-		if(velho.proximo == true && Caixa.CaixaMenina == true) {
-			Caixa.DialogoM(g, menina);
-			player.travado(player);
+		//if(velho.proximo == true && Caixa.CaixaMenina == true) {
+			//Caixa.DialogoM(g, menina);
+			//player.travado(player);
 		}	
-	}
+	//}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -155,15 +163,19 @@ public class Cena08 extends JPanel implements ActionListener, KeyListener{
 		player.animacao(player);
 		player.colisaoTotalTela(player);
 		
-		velho.colisao(player, velho);
-		velho.animacao(player, velho);
+		//velho.colisao(player, velho);
+		//velho.animacao(player, velho);
 		
 		menina.proximidade(player, menina);
 		menina.colisao(player, menina);
 		menina.animacao(player, menina);
 		
 		decorativos.colisaoD(player, decorativos16, 01);
-		decorativos.colisaoD(player, decorativos10, 03);
+		//decorativos.colisaoD(player, decorativos10, 04);
+		decorativos.colisaoD(player, decorativos21, 05);
+		decorativos.colisaoD(player, decorativos22, 01);
+		decorativos.colisaoD(player, decorativos23, 01);
+		decorativos.colisaoD(player, decorativos24, 05);
 		
 		passagemDeCaminho();
 		repaint();
