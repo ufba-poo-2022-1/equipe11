@@ -26,7 +26,7 @@ public class Decorativos {
 	 	12 - Casa 04
 	 	13 - Casa 05
 	 	14 - Mercado Guerreiro
-	 	
+	 	15 - Transparente para colisão
 	 */
 
 	
@@ -68,7 +68,8 @@ public class Decorativos {
 	
 	Image Decorativos15;
 	String Decorativos15Path = "images//Decorativos//transparente.png";
-int numeroDecorativo, x, y;
+
+	int numeroDecorativo, x, y;
 	
 	public Decorativos(int numeroDecorativo, int x, int y) {
 		this.numeroDecorativo = numeroDecorativo;
