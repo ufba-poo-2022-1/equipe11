@@ -210,15 +210,21 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 					Caixa.auxiliar = "";	
 					Caixa.contador = 0;
 					Caixa.fala++;
+					if(Caixa.fala == 6) {
+						velho.entregaAdaga = true;
+					}
+					else if(Caixa.fala == 7) {
+						velho.adaga = false;
+						player.adaga = true;
+						Janela.cena11.player.adaga = true;
+					}
 				}
 				Caixa.CaixaMenina = true;
-				System.out.println("Botao E pressionado proximo a menina.");
 				
 				Caixa.auxPassagemdeDialogo++;
 
 			}
 			else {
-				System.out.println("Botao E pressionado longe da menina.");
 			}
 			
 		}
@@ -286,12 +292,12 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
         	Janela.cena10.timer.stop();
             Janela.cl.show(Janela.panelBase, "cena11");
         }
-        
+        /*
             else if(player.x < 10) {
         	Janela.cena09.timer.start();
         	Janela.cena10.timer.stop();
         	Janela.cl.show(Janela.panelBase, "cena09");
-        }
+        }*/
 
 
 	}	
