@@ -57,6 +57,9 @@ public class Cena07 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos5 = new Decorativos(8, 400, 200);
 	Decorativos decorativos6 = new Decorativos(4, 315, 280);
 	Decorativos decorativos7 = new Decorativos(0, 0, 420);
+	Decorativos decorativos8 = new Decorativos(15, 39, 210);
+	Decorativos decorativos9 = new Decorativos(15, 120, 210);
+	
 	
 	Caixa caixa = new Caixa();
 	
@@ -89,10 +92,12 @@ public class Cena07 extends JPanel implements ActionListener, KeyListener{
 		decorativos4.draw(g);
 		decorativos5.draw(g);
 		decorativos6.draw(g);
-		decorativos7.draw(g);
-	
+		decorativos7.draw(g);	
+		decorativos8.draw(g);
+		decorativos9.draw(g);
+		
 		menina.draw(g);
-		velho.draw(g);
+		//velho.draw(g);
 		
 		player.draw(g);
 		
@@ -128,12 +133,15 @@ public class Cena07 extends JPanel implements ActionListener, KeyListener{
 		player.animacao(player);
 		player.colisaoTotalTela(player);
 		
-		velho.colisao(player, velho);
-		velho.animacao(player, velho);
+		/*velho.colisao(player, velho);
+		velho.animacao(player, velho);*/
 		
 		menina.proximidade(player, menina);
 		menina.colisao(player, menina);
 		menina.animacao(player, menina);
+		
+		decorativos.colisaoD(player, decorativos8, 03);
+		decorativos.colisaoD(player, decorativos9, 04);
 		
 		passagemDeCaminho();
 		
