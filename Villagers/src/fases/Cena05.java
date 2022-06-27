@@ -68,6 +68,7 @@ public class Cena05 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos16 = new Decorativos(4, 650, 200);
 	Decorativos decorativos17 = new Decorativos(8, 550, 200);
 	Decorativos decorativos18 = new Decorativos(8, 950, 100);
+	Decorativos decorativos19 = new Decorativos(1, 1242, 240);
 
 	
 
@@ -138,7 +139,7 @@ public class Cena05 extends JPanel implements ActionListener, KeyListener{
 		decorativos16.draw(g);
 		decorativos17.draw(g);
 		decorativos18.draw(g);
-		
+		decorativos19.draw(g);
 	
 		
 		
