@@ -49,16 +49,37 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	//Inicializar velho
 	Velho velho = new Velho(700, 450);
 
-	Decorativos decorativos = new Decorativos(0, 600, 520);
-	Decorativos decorativos2 = new Decorativos(0, 400, 520);
-	Decorativos decorativos3 = new Decorativos(0, 800, 520);
-	Decorativos decorativos4 = new Decorativos(5, 200, 380);
-	Decorativos decorativos5 = new Decorativos(3, 100, 510);
+	Decorativos decorativos = new Decorativos(0, 300, 420);
+	Decorativos decorativos2 = new Decorativos(0, 430, 620);
+	Decorativos decorativos3 = new Decorativos(0, 700, 420);
+	Decorativos decorativos4 = new Decorativos(6, 500, 580);
+	Decorativos decorativos5 = new Decorativos(6, 300, 610);
 	Decorativos decorativos6 = new Decorativos(5, 810, 300);
 	Decorativos decorativos7 = new Decorativos(5, 240, 150);
 	Decorativos decorativos8 = new Decorativos(5, 400, 380);
 	Decorativos decorativos9 = new Decorativos(5, 20, 300);
-	Decorativos decorativos10 = new Decorativos(1, 922, 450);
+	
+	
+	/*
+	 *Lista de decorativos:
+	 	0 - Cogumelos
+	 	1 - Placa de perigo
+	 	2 - Arbusto
+	 	3 - Arbusto com frutas
+	 	4 - Arbusto em chamas
+	 	5 - Arvore com frutos
+	 	6 - Arvore 
+	 	7 - Arvore seca
+	 	8 - Arvore seca em chamas
+	 	9 - Casa 01
+	 	10 - Casa 02
+	 	11 - Casa 03
+	 	12 - Casa 04
+	 	13 - Casa 05
+	 	14 - Mercado Guerreiro
+	 	
+	 */
+
 	
 	public Cena02(){ 
 		//
@@ -92,7 +113,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		decorativos7.draw(g);
 		decorativos8.draw(g);
 		decorativos9.draw(g);
-		decorativos10.draw(g);
+	
 		
 		velho.draw(g);
 		
