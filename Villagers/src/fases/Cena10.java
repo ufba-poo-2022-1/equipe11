@@ -121,7 +121,7 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 		//decorativos16.draw(g);
 		decorativos17.draw(g);
 		decorativos18.draw(g);
-		decorativos19.draw(g);
+		
 		
 		velho.draw(g);
 		
