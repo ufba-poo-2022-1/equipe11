@@ -119,6 +119,7 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		decorativos.colisaoD(player, decorativos13, 6);
 		decorativos.colisaoD(player, decorativos14, 6);
 		
+		passagemDeCaminho();
         repaint();
 		
 	}
@@ -211,6 +212,15 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 			player.right();
 		}
 	}
+	
+	public void passagemDeCaminho() {
+		if(player.x > 1219) {
+	    	Janela.cena03.timer.start();
+	    	Janela.cena02.timer.stop();
+	        Janela.cl.show(Janela.panelBase, "cena03");
+	    }
+	}
+	
 
 
 	

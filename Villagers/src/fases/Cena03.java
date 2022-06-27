@@ -323,9 +323,13 @@ public class Cena03 extends JPanel implements ActionListener, KeyListener{
 			player.right();
 		}
 	}
+	
 	public void passagemDeCaminho() {
         if(player.y < Intro.SCREEN_HEIGHT - 761) {
+        	Janela.cena04.timer.start();
+        	Janela.cena03.timer.stop();
             Janela.cl.show(Janela.panelBase, "cena04");
+            
         }
     }
 
