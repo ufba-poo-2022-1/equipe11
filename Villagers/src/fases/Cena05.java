@@ -21,6 +21,8 @@ import cenarios.Player;
 import cenarios.Velho;
 import dialogos.Caixa;
 
+import Interface.*;
+
 public class Cena05 extends JPanel implements ActionListener, KeyListener{
 	/**
 	 * 
@@ -229,7 +231,6 @@ public class Cena05 extends JPanel implements ActionListener, KeyListener{
 				System.out.println("Botao E pressionado proximo a menina.");
 				
 				Caixa.auxPassagemdeDialogo++;
-
 			}
 			else {
 				System.out.println("Botao E pressionado longe da menina.");
@@ -293,10 +294,13 @@ public class Cena05 extends JPanel implements ActionListener, KeyListener{
 			player.right();
 		}
 	}
+	
 	 public void passagemDeCaminho() {
 	        if(player.x > 1219) {
 	        	Janela.cena06.timer.start();
 	        	Janela.cena05.timer.stop();
+	        	Janela.getIntro().clip.stop();
+	        	Janela.getIntro().playAudio(Janela.getIntro().vilaSombrio, 99);
 	            Janela.cl.show(Janela.panelBase, "cena06");
 	        }/*
 	            else if(player.y > 610) {

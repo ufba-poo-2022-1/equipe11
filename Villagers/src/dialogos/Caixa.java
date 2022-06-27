@@ -41,7 +41,7 @@ public class Caixa {
 		dialogos[2][1] = "Menina \n Estou um pouco longe de casa e me perdi...";
 		dialogos[2][2] = "Menina \n Posso ir com você por enquanto?";
 			
-	// Dialogos terceira tela (Cena04)
+	// Dialogos terceira tela (Cena04) 
 		dialogos[3][0] = "Menina \n Moro em uma vila próxima daqui sabe, ela foi destruída recentemente e os moradores sumiram, junto com minha \nfamília.";
 		dialogos[3][1] = "Menina \n Não consigo lembrar de nada daquele dia, tudo é tão confuso, não sei o que fazer."; 
 	
