@@ -168,6 +168,11 @@ public class Player extends JPanel  {
         }
 	}
 	
+	public void travado(Player player) {
+		player.x = player.x - player.velx;
+		player.y = player.y - player.vely;
+	}
+	
 	public void up() {
         vely = -1*velMax;
     }

@@ -105,16 +105,10 @@ public class Cena07 extends JPanel implements ActionListener, KeyListener{
 		}	
 		
 		// Se dialogo da menina estiver disponivel e  tecla E foi pressionada, desenhe a caixa de dialogo
-		if(menina.proxima == true && Caixa.CaixaMenina == true) {
+		if(velho.proximo == true && Caixa.CaixaMenina == true) {
 			Caixa.DialogoM(g, menina);
-			player.velMax = 0;
-			player.velx = 0;
-		}
-		else{
-			player.velMax = 13;
+			player.travado(player);
 		}	
-		
-		
 	}
 	
 	@Override
