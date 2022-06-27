@@ -32,7 +32,7 @@ public class Caixa {
 	//Dialogos
   	public static String currentDialog = "";
   	public static String auxiliar = "";
-	public static String dialogos[] [] = new String[12][10];
+	public static String dialogos[] [] = new String[12][12];
 
 	public Caixa() {
 		
