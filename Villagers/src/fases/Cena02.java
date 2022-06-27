@@ -43,37 +43,24 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	//Inicializando player
 	Player player = new Player(0,500, "Direita");
 	
-	//Inicializar menina
-	Menina menina = new Menina(500,450);
-
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
 	Caminhos caminhos = new Caminhos(1);
 	
-	//Inicializar velho
-	Velho velho = new Velho(700, 450);
-	
-	//Inicializar botao
-	BotaoE botao = new BotaoE(menina.x +40, menina.y - 50);
-	
-	Decorativos decorativos = new Decorativos(0, 600, 520);
-	Decorativos decorativos2 = new Decorativos(0, 400, 520);
-	Decorativos decorativos3 = new Decorativos(0, 800, 520);
-	Decorativos decorativos4 = new Decorativos(5, 200, 380);
-	Decorativos decorativos5 = new Decorativos(3, 100, 510);
-	Decorativos decorativos6 = new Decorativos(5, 810, 300);
-	Decorativos decorativos7 = new Decorativos(5, 240, 150);
-	Decorativos decorativos8 = new Decorativos(5, 400, 380);
-	Decorativos decorativos9 = new Decorativos(5, 20, 300);
-	Decorativos decorativos10 = new Decorativos(1, 922, 450);
-	Decorativos decorativos11 = new Decorativos(5, 0, 50);
-	Decorativos decorativos12 = new Decorativos(2, 760, 620);
-	Decorativos decorativos13 = new Decorativos(2, 590, 600);
-	Decorativos decorativos14 = new Decorativos(2, 190, 600);
-	Decorativos decorativos15 = new Decorativos(0, 539, 80);
-	Decorativos decorativos16 = new Decorativos(6, 539, 210);
-	Decorativos decorativos17 = new Decorativos(6, 619, 390);
-	Decorativos decorativos18 = new Decorativos(6, 839, 80);
-	Decorativos decorativos19 = new Decorativos(2, 339, 590);
+	Decorativos decorativos = new Decorativos(0, 650, 490);
+	Decorativos decorativos2 = new Decorativos(0, 400, 440);
+	Decorativos decorativos3 = new Decorativos(0, 1120, 400);
+	Decorativos decorativos4 = new Decorativos(5, 810, 300);
+	Decorativos decorativos5 = new Decorativos(5, 240, 150);
+	Decorativos decorativos6 = new Decorativos(5, 20, 300);
+	Decorativos decorativos7 = new Decorativos(5, 0, 50);
+	Decorativos decorativos8 = new Decorativos(2, 760, 620);
+	Decorativos decorativos9 = new Decorativos(2, 590, 600);
+	Decorativos decorativos10 = new Decorativos(2, 190, 600);
+	Decorativos decorativos11 = new Decorativos(0, 539, 80);
+	Decorativos decorativos12 = new Decorativos(6, 539, 210);
+	Decorativos decorativos13 = new Decorativos(6, 1090, 180);
+	Decorativos decorativos14 = new Decorativos(6, 839, 80);
+	Decorativos decorativos15 = new Decorativos(2, 339, 590);
 	
 	public Cena02(){ 
 		//
@@ -95,8 +82,6 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	
 	public void paint(Graphics g) {
 		requestFocusInWindow();
-		//Graphics2D g2 = (Graphics2D) g;
-		//requestFocusInWindow();
 		super.paint(g);
 		
 		caminhos.draw(g);
@@ -115,49 +100,24 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		decorativos13.draw(g);
 		decorativos14.draw(g);
 		decorativos15.draw(g);
-		decorativos16.draw(g);
-		decorativos17.draw(g);
-		decorativos18.draw(g);
-		decorativos19.draw(g);
-		
-		menina.draw(g);
-		velho.draw(g);
 		
 		player.draw(g);
 		
-		if(menina.proxima) {
-			botao.draw(g);			
-		}	
-		//Menina.Suporte(g,500,300);
 	}
 	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//Verificar como passar o algoritmo para classe de diálogo >>> caua
-		//Algoritmo de checar proximidade
-		if((player.x >= menina.x - 150 && player.x <= menina.x + 150) &&
-				(player.y >= menina.y - 150 && player.y <= menina.y +150)) {
-			menina.proxima = true;
-		}
-		else {
-			menina.proxima = false;
-			menina.contador = 0;
-			menina.Frase = "";
-		}
-		
 		player.animacao(player);
 		player.colisaoTotalTela(player);
 		
-		velho.colisao(player, velho);
-		velho.animacao(player, velho);
-		velho.proximidade(player, velho);
-		
-		menina.proximidade(player, menina);
-		menina.colisao(player, menina);
-		menina.animacao(player, menina);
-		
-		decorativos.colisaoD(player, decorativos16, 01);
+		decorativos.colisaoD(player, decorativos4, 5);
+		decorativos.colisaoD(player, decorativos5, 5);
+		decorativos.colisaoD(player, decorativos6, 5);
+		decorativos.colisaoD(player, decorativos7, 5);
+		decorativos.colisaoD(player, decorativos12, 6);
+		decorativos.colisaoD(player, decorativos13, 6);
+		decorativos.colisaoD(player, decorativos14, 6);
 		
 		passagemDeCaminho();
         repaint();
@@ -190,22 +150,6 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		}
 		
 		if (e.getKeyCode() == KeyEvent.VK_E) {
-			if(menina.proxima) {
-				if(Caixa.auxPassagemdeDialogo != 0) {
-					Caixa.currentDialog = "";
-					Caixa.auxiliar = "";	
-					Caixa.contador = 0;
-					Caixa.fala++;
-				}
-				Caixa.CaixaMenina = true;
-				
-				Caixa.auxPassagemdeDialogo++;
-	
-				System.out.println("Botao E pressionado proximo a menina.");
-			}
-			else {
-				System.out.println("Botao E pressionado longe da menina.");
-			}
 			
 		}
 
