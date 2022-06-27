@@ -20,7 +20,7 @@ public class Player extends JPanel  {
 	public int y;
 	public int velx = 0;
 	public int vely = 0;
-	public int velMax = 13;
+	public int velMax = 5;
 	public boolean w = false, s = false, a = false, d = false, aaux = false, daux = false;
 	
 	
@@ -166,6 +166,11 @@ public class Player extends JPanel  {
         if(player.personagemDelay > (player.TrocaPosicao*2)) {
         	player.personagemDelay = 0;
         }
+	}
+	
+	public void travado(Player player) {
+		player.x = player.x - player.velx;
+		player.y = player.y - player.vely;
 	}
 	
 	public void up() {

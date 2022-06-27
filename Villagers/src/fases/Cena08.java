@@ -65,7 +65,7 @@ public class Cena08 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos13 = new Decorativos(4, 100, 600);
 	Decorativos decorativos14 = new Decorativos(4, 0, 600);
 	Decorativos decorativos15 = new Decorativos(4, 0, 600);
-	Decorativos decorativos16 = new Decorativos(1, 1250, 490);
+	Decorativos decorativos16 = new Decorativos(1, 1250, 499);
 	Decorativos decorativos17 = new Decorativos(4, 500, 600);
 	Decorativos decorativos18 = new Decorativos(4, 600, 600);
 	Decorativos decorativos19 = new Decorativos(4, 700, 600);
@@ -130,16 +130,10 @@ public class Cena08 extends JPanel implements ActionListener, KeyListener{
 		}	
 		
 		// Se dialogo da menina estiver disponivel e  tecla E foi pressionada, desenhe a caixa de dialogo
-		if(menina.proxima == true && Caixa.CaixaMenina == true) {
+		if(velho.proximo == true && Caixa.CaixaMenina == true) {
 			Caixa.DialogoM(g, menina);
-			player.velMax = 0;
-			player.velx = 0;
-		}
-		else{
-			player.velMax = 13;
+			player.travado(player);
 		}	
-		
-		
 	}
 	
 	@Override
@@ -276,7 +270,19 @@ public class Cena08 extends JPanel implements ActionListener, KeyListener{
 			player.right();
 		}
 	}
+	//Mudar de cena ao chegar no fim do caminho.
 	 public void passagemDeCaminho() {
+      /*
+
+        if(player.x > 1219 && player.y == 364) {
+            Janela.cl.show(Janela.panelBase, "cena09");
+        }
+            else if(player.y < 5 && player.x < 450) {
+        	Janela.cl.show(Janela.panelBase, "cena07");
+        }
+
+
+        */
         if(player.x > 1219) {
         	/*
         	Janela.cena09.player.x = 30;
@@ -291,10 +297,5 @@ public class Cena08 extends JPanel implements ActionListener, KeyListener{
 	        	Janela.cena08.timer.stop();
         	Janela.cl.show(Janela.panelBase, "cena07");
         }*/
-        	
-        
-    
 	}
-	
-	
 }
