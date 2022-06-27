@@ -6,7 +6,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -42,7 +41,16 @@ public class Menu extends JPanel{
 		botaoJogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Janela.cena01Pergaminho.timer.start();
-				Janela.cl.show(Janela.panelBase, "cena01Pergaminho");					
+				Janela.intro.clip.stop();
+				Janela.intro.playAudio(Janela.intro.startBotao, 0);
+				Janela.cl.show(Janela.panelBase, "cena01Pergaminho");	
+				try {
+					Thread.sleep(2400);					
+					Janela.intro.playAudio(Janela.intro.fundoPadrao, 99);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}			
+								
 			}
 		});
 		this.add(botaoJogar);

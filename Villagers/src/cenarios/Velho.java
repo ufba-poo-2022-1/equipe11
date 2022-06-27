@@ -18,10 +18,19 @@ public class Velho {
 	Image VelhoEsquerda02;
 	String VelhoEsquerda02Path = "images//Velho//parado//velho_left2.png";
 	
+	
+	public Image VelhoAdaga01;
+	String VelhoAdaga01Path = "images//Velho//entregaAdaga//velho-sword1.png";
+	Image VelhoAdaga02;
+	String VelhoAdaga02Path = "images//Velho//entregaAdaga//velho-sword2.png";
+	Image VelhoAdaga03;
+	String VelhoAdaga03Path = "images//Velho//entregaAdaga//velho-sword3.png";
+	
 	//Posição inicial do Velho
 	public int x;
 	public int y;
 	public boolean orientacaoVelho = false, proximo = false;
+	public boolean adaga = false, entregaAdaga = false;
 	
 	static int fontSize = 20;
 	public int contador = 0;
@@ -34,7 +43,7 @@ public class Velho {
 	public int personagemDelay = 0;
 	//Intervalo de tempo entre frames da animacao do personagem
 	//Cada unidade multiplica o delay (TrocaPosicao = delay * unidade)
-	public int TrocaPosicao = 11;
+	public int TrocaPosicao = 20;
 
 
 	//Parâmetros x e y para definir posição inicial
@@ -47,6 +56,10 @@ public class Velho {
 		VelhoDireita02 = new ImageIcon(VelhoDireita02Path).getImage();
 		VelhoEsquerda01 = new ImageIcon(VelhoEsquerda01Path).getImage();
 		VelhoEsquerda02 = new ImageIcon(VelhoEsquerda02Path).getImage();
+		
+		VelhoAdaga01 = new ImageIcon(VelhoAdaga01Path).getImage();
+		VelhoAdaga02 = new ImageIcon(VelhoAdaga02Path).getImage();
+		VelhoAdaga03 = new ImageIcon(VelhoAdaga03Path).getImage();
 	}
 	
 	public void proximidade(Player player, Velho velho) {
@@ -108,23 +121,47 @@ public class Velho {
 	}
 	
 	public void draw(Graphics g) {
-		if(orientacaoVelho) {
-			if (personagemDelay <= TrocaPosicao) {
-				g.drawImage(VelhoDireita01, x, y, null);
+		if(entregaAdaga) {
+			if (personagemDelay <= TrocaPosicao*2/5) {
+				g.drawImage(VelhoAdaga01, x, y, null);
 			}
-			else if (personagemDelay <= (TrocaPosicao*2)) {
-				g.drawImage(VelhoDireita02, x, y, null);
+			else if (personagemDelay <= (TrocaPosicao*4/5)) {
+				g.drawImage(VelhoAdaga02, x, y, null);
 			}
+			else if (personagemDelay <= (TrocaPosicao*6/5)) {
+				g.drawImage(VelhoAdaga02, x, y, null);
+			}
+			else if (personagemDelay <= (TrocaPosicao*8/5)) {
+				g.drawImage(VelhoAdaga02, x, y, null);
+			}
+			else if (personagemDelay <= (TrocaPosicao*10/5)) {
+				g.drawImage(VelhoAdaga03, x, y, null);
+				entregaAdaga = false;
+				adaga = true;
+			}
+		}
+		else if(adaga) {
+			g.drawImage(VelhoAdaga03, x, y, null);
 		}
 		else {
-			if (personagemDelay <= TrocaPosicao) {
-				g.drawImage(VelhoEsquerda01, x, y, null);
+			if(orientacaoVelho) {
+				if (personagemDelay <= TrocaPosicao) {
+					g.drawImage(VelhoDireita01, x, y, null);
+				}
+				else if (personagemDelay <= (TrocaPosicao*2)) {
+					g.drawImage(VelhoDireita02, x, y, null);
+				}
 			}
-			else if (personagemDelay <= (TrocaPosicao*2)) {
-				g.drawImage(VelhoEsquerda02, x, y, null);
+			else {
+				if (personagemDelay <= TrocaPosicao) {
+					g.drawImage(VelhoEsquerda01, x, y, null);
+				}
+				else if (personagemDelay <= (TrocaPosicao*2)) {
+					g.drawImage(VelhoEsquerda02, x, y, null);
+				}
+				
 			}
-			
-		}
+		}		
 		
 	}
 

@@ -54,24 +54,18 @@ public class Cena04 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos2 = new Decorativos(6, 500, 600);
 	Decorativos decorativos3 = new Decorativos(6, 500, 200);
 	Decorativos decorativos4 = new Decorativos(6, 500, 0);
-	Decorativos decorativos5 = new Decorativos(5, 100, 200);
-	Decorativos decorativos6 = new Decorativos(9, 200, 400);
-	Decorativos decorativos7 = new Decorativos(5, 300, 100);
-	Decorativos decorativos8 = new Decorativos(6, 800, 450);
-	Decorativos decorativos9 = new Decorativos(6, 900, 200);
-	Decorativos decorativos10 = new Decorativos(2, 800, 650);
-	Decorativos decorativos11 = new Decorativos(2, 1000, 450);
-	Decorativos decorativos12 = new Decorativos(3, 1200, 650);
-	Decorativos decorativos13 = new Decorativos(2, 800, 350);
-	Decorativos decorativos14 = new Decorativos(5, 1200, 100);
-	Decorativos decorativos15 = new Decorativos(5, 1100, 400);
-	Decorativos decorativos16 = new Decorativos(1, 735, 0);
-	Decorativos decorativos17 = new Decorativos(8, 100, 500);
-	Decorativos decorativos18 = new Decorativos(4, 300, 600);
-	Decorativos decorativos19 = new Decorativos(0, 600, 500);
-	Decorativos decorativos20 = new Decorativos(0, 1000, 400);
-	Decorativos decorativos21 = new Decorativos(0, 500, 300);
-	Decorativos decorativos22 = new Decorativos(0, 1300, 400);
+	Decorativos decorativos5 = new Decorativos(5, 300, 100);
+	Decorativos decorativos6 = new Decorativos(6, 800, 450);
+	Decorativos decorativos7 = new Decorativos(6, 900, 200);
+	Decorativos decorativos8 = new Decorativos(2, 800, 650);
+	Decorativos decorativos9 = new Decorativos(2, 1000, 450);
+	Decorativos decorativos10 = new Decorativos(3, 1200, 650);
+	Decorativos decorativos11 = new Decorativos(2, 800, 350);
+	Decorativos decorativos12 = new Decorativos(5, 1200, 100);
+	Decorativos decorativos13 = new Decorativos(5, 1100, 400);
+	Decorativos decorativos14 = new Decorativos(0, 600, 500);
+	Decorativos decorativos15 = new Decorativos(0, 1000, 400);
+
 	
 	
 	/*
@@ -134,13 +128,8 @@ public class Cena04 extends JPanel implements ActionListener, KeyListener{
 		decorativos13.draw(g);
 		decorativos14.draw(g);
 		decorativos15.draw(g);
-		decorativos16.draw(g);
-		decorativos17.draw(g);
-		decorativos18.draw(g);
-		decorativos19.draw(g);
-		decorativos20.draw(g);
-		decorativos21.draw(g);
-		decorativos22.draw(g);
+		
+		
 
 		
 		menina.draw(g);

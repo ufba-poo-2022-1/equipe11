@@ -18,7 +18,7 @@ public class Janela extends JFrame{
 		
 		//cenas a serem inseridas na janela
 		static Menu menu = new Menu();
-		static Intro intro = new Intro();
+		public static Intro intro = new Intro();
 		static animacao animacao = new animacao();
 		public static Cena02 cena02 = new Cena02();
 		public static Cena03 cena03 = new Cena03();
@@ -58,7 +58,7 @@ public class Janela extends JFrame{
 		panelBase.add(batalha, "batalha");
 		panelBase.add(finalfeliz, "finalfeliz");
 		panelBase.add(finalruim, "finalruim");
-		cl.show(panelBase, "batalha");
+		cl.show(panelBase, "intro");
 
 		this.setTitle(TituloJanela);		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -66,6 +66,10 @@ public class Janela extends JFrame{
 		this.pack();
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
+	}
+	
+	public static Intro getIntro(){
+		return intro;
 	}
 
 	public static Intro getIntro() {

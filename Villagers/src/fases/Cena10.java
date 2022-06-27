@@ -63,7 +63,7 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos13 = new Decorativos(6, 900, 600);
 	Decorativos decorativos14 = new Decorativos(6, 1050, 600);
 	Decorativos decorativos15 = new Decorativos(6, 1200, 600);
-	Decorativos decorativos16 = new Decorativos(1, 780, 10);
+	//Decorativos decorativos16 = new Decorativos(1, 780, 10);
 	Decorativos decorativos17 = new Decorativos(3, 550, 650);
 	Decorativos decorativos18 = new Decorativos(3, 650, 650);
 	Decorativos decorativos19 = new Decorativos(3, 750, 650);
@@ -118,10 +118,10 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 		decorativos13.draw(g);
 		decorativos14.draw(g);
 		decorativos15.draw(g);
-		decorativos16.draw(g);
+		//decorativos16.draw(g);
 		decorativos17.draw(g);
 		decorativos18.draw(g);
-		decorativos19.draw(g);
+		
 		
 		velho.draw(g);
 		
@@ -205,15 +205,21 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 					Caixa.auxiliar = "";	
 					Caixa.contador = 0;
 					Caixa.fala++;
+					if(Caixa.fala == 6) {
+						velho.entregaAdaga = true;
+					}
+					else if(Caixa.fala == 7) {
+						velho.adaga = false;
+						player.adaga = true;
+						Janela.cena11.player.adaga = true;
+					}
 				}
 				Caixa.CaixaMenina = true;
-				System.out.println("Botao E pressionado proximo a menina.");
 				
 				Caixa.auxPassagemdeDialogo++;
 
 			}
 			else {
-				System.out.println("Botao E pressionado longe da menina.");
 			}
 			
 		}
@@ -281,12 +287,12 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
         	Janela.cena10.timer.stop();
             Janela.cl.show(Janela.panelBase, "cena11");
         }
-        
+        /*
             else if(player.x < 10) {
         	Janela.cena09.timer.start();
         	Janela.cena10.timer.stop();
         	Janela.cl.show(Janela.panelBase, "cena09");
-        }
+        }*/
 
 
 	}	

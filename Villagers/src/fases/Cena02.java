@@ -46,21 +46,40 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
 	Caminhos caminhos = new Caminhos(1);
 	
-	Decorativos decorativos = new Decorativos(0, 650, 490);
-	Decorativos decorativos2 = new Decorativos(0, 400, 440);
-	Decorativos decorativos3 = new Decorativos(0, 1120, 400);
-	Decorativos decorativos4 = new Decorativos(5, 810, 300);
-	Decorativos decorativos5 = new Decorativos(5, 240, 150);
-	Decorativos decorativos6 = new Decorativos(5, 20, 300);
-	Decorativos decorativos7 = new Decorativos(5, 0, 50);
-	Decorativos decorativos8 = new Decorativos(2, 760, 620);
-	Decorativos decorativos9 = new Decorativos(2, 590, 600);
-	Decorativos decorativos10 = new Decorativos(2, 190, 600);
-	Decorativos decorativos11 = new Decorativos(0, 539, 80);
-	Decorativos decorativos12 = new Decorativos(6, 539, 210);
-	Decorativos decorativos13 = new Decorativos(6, 1090, 180);
-	Decorativos decorativos14 = new Decorativos(6, 839, 80);
-	Decorativos decorativos15 = new Decorativos(2, 339, 590);
+	//Inicializar velho
+	Velho velho = new Velho(700, 450);
+
+	Decorativos decorativos = new Decorativos(0, 300, 420);
+	Decorativos decorativos2 = new Decorativos(0, 430, 620);
+	Decorativos decorativos3 = new Decorativos(0, 700, 420);
+	Decorativos decorativos4 = new Decorativos(6, 500, 580);
+	Decorativos decorativos5 = new Decorativos(6, 300, 610);
+	Decorativos decorativos6 = new Decorativos(5, 810, 300);
+	Decorativos decorativos7 = new Decorativos(5, 240, 150);
+	Decorativos decorativos8 = new Decorativos(5, 400, 380);
+	Decorativos decorativos9 = new Decorativos(5, 20, 300);
+	
+	
+	/*
+	 *Lista de decorativos:
+	 	0 - Cogumelos
+	 	1 - Placa de perigo
+	 	2 - Arbusto
+	 	3 - Arbusto com frutas
+	 	4 - Arbusto em chamas
+	 	5 - Arvore com frutos
+	 	6 - Arvore 
+	 	7 - Arvore seca
+	 	8 - Arvore seca em chamas
+	 	9 - Casa 01
+	 	10 - Casa 02
+	 	11 - Casa 03
+	 	12 - Casa 04
+	 	13 - Casa 05
+	 	14 - Mercado Guerreiro
+	 	
+	 */
+
 	
 	public Cena02(){ 
 		//
@@ -94,12 +113,9 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		decorativos7.draw(g);
 		decorativos8.draw(g);
 		decorativos9.draw(g);
-		decorativos10.draw(g);
-		decorativos11.draw(g);
-		decorativos12.draw(g);
-		decorativos13.draw(g);
-		decorativos14.draw(g);
-		decorativos15.draw(g);
+	
+		
+		velho.draw(g);
 		
 		player.draw(g);
 		
@@ -115,9 +131,6 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		decorativos.colisaoD(player, decorativos5, 5);
 		decorativos.colisaoD(player, decorativos6, 5);
 		decorativos.colisaoD(player, decorativos7, 5);
-		decorativos.colisaoD(player, decorativos12, 6);
-		decorativos.colisaoD(player, decorativos13, 6);
-		decorativos.colisaoD(player, decorativos14, 6);
 		
 		passagemDeCaminho();
         repaint();

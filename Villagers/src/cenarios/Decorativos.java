@@ -26,7 +26,7 @@ public class Decorativos {
 	 	12 - Casa 04
 	 	13 - Casa 05
 	 	14 - Mercado Guerreiro
-	 	
+	 	15 - Transparente para colis„o
 	 */
 
 	
@@ -66,7 +66,10 @@ public class Decorativos {
 	Image Decorativos14;
 	String Decorativos14Path = "images//Decorativos//mercado.png";
 	
-int numeroDecorativo, x, y;
+	Image Decorativos15;
+	String Decorativos15Path = "images//Decorativos//transparente.png";
+
+	int numeroDecorativo, x, y;
 	
 	public Decorativos(int numeroDecorativo, int x, int y) {
 		this.numeroDecorativo = numeroDecorativo;
@@ -88,7 +91,8 @@ int numeroDecorativo, x, y;
 		Decorativos12 = new ImageIcon(Decorativos12Path).getImage();
 		Decorativos13 = new ImageIcon(Decorativos13Path).getImage();
 		Decorativos14 = new ImageIcon(Decorativos14Path).getImage();
-
+		Decorativos15 = new ImageIcon(Decorativos15Path).getImage();
+		
 		Decorativos.add(Decorativos00);
 		Decorativos.add(Decorativos01);
 		Decorativos.add(Decorativos02);
@@ -104,6 +108,7 @@ int numeroDecorativo, x, y;
 		Decorativos.add(Decorativos12);
 		Decorativos.add(Decorativos13);
 		Decorativos.add(Decorativos14);
+		Decorativos.add(Decorativos15);
 	}		
 	public void colisaoD(Player player, Decorativos decorativos, int numeroDecorativo) {
 		//Algoritmo de colis√£o com a objetos.

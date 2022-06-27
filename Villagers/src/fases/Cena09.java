@@ -38,13 +38,14 @@ public class Cena09 extends JPanel implements ActionListener, KeyListener{
 	Player player = new Player(15,370, "Direita");
 	
 	//Inicializar menina
-	Menina menina = new Menina(585, 270);
+	Menina menina = new Menina(625, 270);
 
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
 	Caminhos caminhos = new Caminhos(8);
 	
+	//Velho foi removido da cena
 	//Inicializar velho
-	Velho velho = new Velho(700, 270);
+	//Velho velho = new Velho(700, 270);
 	
 	//Inicializar botao
 	BotaoE botao = new BotaoE(menina.x +40, menina.y - 50);
@@ -64,8 +65,7 @@ public class Cena09 extends JPanel implements ActionListener, KeyListener{
 	Decorativos decorativos13 = new Decorativos(7, 605, 520);
 	Decorativos decorativos14 = new Decorativos(7, 805, 520);
 	Decorativos decorativos15 = new Decorativos(7, 1005, 520);
-	Decorativos decorativos16 = new Decorativos(1, 1250, 290);
-	Decorativos decorativos17 = new Decorativos(7, 1205, 520);
+	Decorativos decorativos16 = new Decorativos(7, 1205, 520);
 	
 	public Cena09(){ 
 		//
@@ -106,10 +106,10 @@ public class Cena09 extends JPanel implements ActionListener, KeyListener{
 		decorativos14.draw(g);
 		decorativos15.draw(g);
 		decorativos16.draw(g);
-		decorativos17.draw(g);
+
 		
 		menina.draw(g);
-		velho.draw(g);
+		//velho.draw(g);
 		
 		player.draw(g);
 		
@@ -127,8 +127,8 @@ public class Cena09 extends JPanel implements ActionListener, KeyListener{
 		player.animacao(player);
 		player.colisaoTotalTela(player);
 		
-		velho.colisao(player, velho);
-		velho.animacao(player, velho);
+		//velho.colisao(player, velho);
+		//velho.animacao(player, velho);
 		
 		menina.proximidade(player, menina);
 		menina.colisao(player, menina);
@@ -235,8 +235,12 @@ public class Cena09 extends JPanel implements ActionListener, KeyListener{
 			player.right();
 		}
 	}
-
+	//Mudar de cena ao chegar no fim do caminho.
 	 public void passagemDeCaminho() {
+     /*
+	        if(player.x > 1219 && player.y == 383) {
+
+      */
 	        if(player.x > 1219) {
 	        	Janela.cena10.timer.start();
 	        	Janela.cena09.timer.stop();
