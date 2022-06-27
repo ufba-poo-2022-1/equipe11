@@ -49,9 +49,6 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	//Inicializar velho
 	Velho velho = new Velho(700, 450);
 	
-	//Inicializar botao
-	BotaoE botao = new BotaoE(menina.x +40, menina.y - 50);
-	//TODO: Corrigir decoração
 	Decorativos decorativos = new Decorativos(0, 600, 520);
 	Decorativos decorativos2 = new Decorativos(0, 400, 520);
 	Decorativos decorativos3 = new Decorativos(0, 800, 520);
@@ -97,7 +94,6 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		decorativos9.draw(g);
 		decorativos10.draw(g);
 		
-		menina.draw(g);
 		velho.draw(g);
 		
 		player.draw(g);
@@ -114,9 +110,6 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		decorativos.colisaoD(player, decorativos5, 5);
 		decorativos.colisaoD(player, decorativos6, 5);
 		decorativos.colisaoD(player, decorativos7, 5);
-		decorativos.colisaoD(player, decorativos12, 6);
-		decorativos.colisaoD(player, decorativos13, 6);
-		decorativos.colisaoD(player, decorativos14, 6);
 		
 		passagemDeCaminho();
         repaint();
