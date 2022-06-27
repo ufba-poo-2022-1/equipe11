@@ -33,6 +33,7 @@ public class Intro extends JPanel{
 	
 	Intro(){
 		//Panel
+
 		playAudio(audioFileName, 99);
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		this.setBackground(Color.black);
@@ -59,6 +60,7 @@ public class Intro extends JPanel{
 	}	
 	
 	//Leitura de arquivo .wav
+
 	public void playAudio(String caminho, int loop){
 		try {
 		File audioPath = new File(caminho);
