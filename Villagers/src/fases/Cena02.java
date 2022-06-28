@@ -45,15 +45,12 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 	
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
 	Caminhos caminhos = new Caminhos(1);
-	
-	//Inicializar velho
-	Velho velho = new Velho(700, 450);
 
 	Decorativos decorativos = new Decorativos(0, 300, 420);
-	Decorativos decorativos2 = new Decorativos(0, 430, 620);
+	//Decorativos decorativos2 = new Decorativos(0, 430, 620);
 	Decorativos decorativos3 = new Decorativos(0, 700, 420);
-	Decorativos decorativos4 = new Decorativos(6, 500, 580);
-	Decorativos decorativos5 = new Decorativos(6, 300, 610);
+	//Decorativos decorativos4 = new Decorativos(6, 500, 580);
+	//Decorativos decorativos5 = new Decorativos(6, 300, 610);
 	Decorativos decorativos6 = new Decorativos(5, 810, 300);
 	Decorativos decorativos7 = new Decorativos(5, 240, 150);
 	Decorativos decorativos8 = new Decorativos(5, 400, 380);
@@ -105,17 +102,15 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		
 		caminhos.draw(g);
 		decorativos.draw(g);
-		decorativos2.draw(g);
+		//decorativos2.draw(g);
 		decorativos3.draw(g);
-		decorativos4.draw(g);
-		decorativos5.draw(g);
+		//decorativos4.draw(g);
+		//decorativos5.draw(g);
 		decorativos6.draw(g);
 		decorativos7.draw(g);
 		decorativos8.draw(g);
 		decorativos9.draw(g);
 	
-		
-		velho.draw(g);
 		
 		player.draw(g);
 		
@@ -127,8 +122,8 @@ public class Cena02 extends JPanel implements ActionListener, KeyListener{
 		player.animacao(player);
 		player.colisaoTotalTela(player);
 		
-		decorativos.colisaoD(player, decorativos4, 5);
-		decorativos.colisaoD(player, decorativos5, 5);
+		//decorativos.colisaoD(player, decorativos4, 5);
+		//decorativos.colisaoD(player, decorativos5, 5);
 		decorativos.colisaoD(player, decorativos6, 5);
 		decorativos.colisaoD(player, decorativos7, 5);
 		

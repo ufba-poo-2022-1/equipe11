@@ -97,7 +97,7 @@ public class CenaFinalRuim extends JPanel implements ActionListener, KeyListener
 
 	@Override
 	public void keyPressed(KeyEvent e) {		
-		if (e.getKeyCode() == KeyEvent.VK_E) {	
+		if (e.getKeyCode() == KeyEvent.VK_E) {				
 			Janela.cl.show(Janela.panelBase, "intro");
 		}
 	}

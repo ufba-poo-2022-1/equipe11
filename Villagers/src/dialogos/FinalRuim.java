@@ -8,7 +8,10 @@ public class FinalRuim {
 	public static int contador = 0;
     static Font f = new Font("SansSerif Bold Italic", Font.BOLD, fontSize);
 	String[] paragrafos;
-    static String fraseruim = "O aldeão decide dar um fim nessa história macabra dando o \núltimo golpe na menina possuída... \nA menina deu seu último suspiro, e o aldeão fica triste com a \nsituação \nDe repente, ele começa a ouvir vozes o tentando a pegar o anél \namaldiçoado \nEle sente o grande pdoer que ele o daria, e cede sua vontade \npara a maldição... \nO ciclo continua...";
+    static String fraseruim = "O aldeão decide dar um fim nessa história macabra dando o \núltimo golpe na menina possuída... "
+    		+ "\nA menina deu seu último suspiro, e o aldeão fica triste com a \nsituação \nDe repente, "
+    		+ "ele começa a ouvir vozes o tentando a pegar o anél \namaldiçoado \nEle sente o grande poder que "
+    		+ "ele o daria, e cede sua vontade \npara a maldição... \nO ciclo continua...";
     static int x = 410;
 	static int y = 140;
     public FinalRuim() {

@@ -13,7 +13,9 @@ public class FinalFeliz{
 	public static int contador = 0;
     static Font f = new Font("SansSerif Bold Italic", Font.BOLD, fontSize);
 	String[] paragrafos;
-    static String frasefeliz = "O aldeão decide salvar a menina do seu destino, recitando a \noração passada pelo guerreiro. \nMenina: Não acredito... Você me salvou! \nMenina: Achava que não era possivel, nem aquele velho \nconseguiu. \nMenina: Agora poderei viver minha vida de verdade, obrigado.";
+    static String frasefeliz = "O aldeão decide salvar a menina do seu destino, recitando a \noração passada pelo guerreiro. "
+    		+ "\nMenina: Não acredito... Você me salvou! \nMenina: Achava que não era possivel, nem aquele velho "
+    		+ "\nconseguiu. \nMenina: Agora poderei viver minha vida de verdade, obrigado.";
     static int x = 410;
 	static int y = 210;
     public FinalFeliz() {

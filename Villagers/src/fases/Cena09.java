@@ -37,8 +37,6 @@ public class Cena09 extends JPanel implements ActionListener, KeyListener{
 	//Inicializando player
 	Player player = new Player(15,370, "Direita");
 	
-	//Inicializar menina
-	Menina menina = new Menina(625, 270);
 
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
 	Caminhos caminhos = new Caminhos(8);
@@ -46,9 +44,6 @@ public class Cena09 extends JPanel implements ActionListener, KeyListener{
 	//Velho foi removido da cena
 	//Inicializar velho
 	//Velho velho = new Velho(700, 270);
-	
-	//Inicializar botao
-	BotaoE botao = new BotaoE(menina.x +40, menina.y - 50);
 	
 	Decorativos decorativos = new Decorativos(5, 0, 50);
 	Decorativos decorativos2 = new Decorativos(6, 150, 180);
@@ -107,32 +102,21 @@ public class Cena09 extends JPanel implements ActionListener, KeyListener{
 		decorativos15.draw(g);
 		decorativos16.draw(g);
 
-		
-		menina.draw(g);
 		//velho.draw(g);
 		
 		player.draw(g);
 		
-
-		if(menina.proxima) {
-			botao.draw(g);			
-		}	
 		
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		botao.animacao(botao);
 		
 		player.animacao(player);
 		player.colisaoTotalTela(player);
 		
 		//velho.colisao(player, velho);
 		//velho.animacao(player, velho);
-		
-		menina.proximidade(player, menina);
-		menina.colisao(player, menina);
-		menina.animacao(player, menina);
 		
 		decorativos.colisaoD(player, decorativos16, 01);
 		passagemDeCaminho();
@@ -165,19 +149,7 @@ public class Cena09 extends JPanel implements ActionListener, KeyListener{
 			player.aaux = false;
 			player.daux = true;
 		}
-		
-		if (e.getKeyCode() == KeyEvent.VK_E) {
-			if(menina.proxima) {
-				System.out.println("Botao E pressionado proximo a menina.");
-				Exe.janela.cl.show(Exe.janela.panelBase, "menu");
-				player.x = 0;
-				player.y = 500;
-			}
-			else {
-				System.out.println("Botao E pressionado longe da menina.");
-			}
-			
-		}
+	
 	}
 		
 	

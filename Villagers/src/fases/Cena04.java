@@ -173,8 +173,7 @@ public class Cena04 extends JPanel implements ActionListener, KeyListener{
 		menina.proximidade(player, menina);
 		menina.colisao(player, menina);
 		menina.animacao(player, menina);
-		
-		decorativos.colisaoD(player, decorativos16, 01);
+
 		passagemDeCaminho();
 		
         repaint();

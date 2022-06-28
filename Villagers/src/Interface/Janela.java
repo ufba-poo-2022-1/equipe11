@@ -71,9 +71,4 @@ public class Janela extends JFrame{
 	public static Intro getIntro(){
 		return intro;
 	}
-
-	public static Intro getIntro() {
-		return intro;
-	}
-
 }

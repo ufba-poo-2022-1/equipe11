@@ -199,7 +199,7 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 		}
 		
 		if (e.getKeyCode() == KeyEvent.VK_E) {
-			if(velho.proximo) {
+			if(velho.proximo && player.adaga == false) {
 				if(Caixa.auxPassagemdeDialogo != 0) {
 					Caixa.currentDialog = "";
 					Caixa.auxiliar = "";	
@@ -282,11 +282,13 @@ public class Cena10 extends JPanel implements ActionListener, KeyListener{
 	}
 
 	public void passagemDeCaminho() {
-        if(player.y < Intro.SCREEN_HEIGHT - 761) {
-        	Janela.cena11.timer.start();
-        	Janela.cena10.timer.stop();
-            Janela.cl.show(Janela.panelBase, "cena11");
-        }
+		if(player.adaga) {
+			if(player.y < Intro.SCREEN_HEIGHT - 751) {
+	        	Janela.cena11.timer.start();
+	        	Janela.cena10.timer.stop();
+	            Janela.cl.show(Janela.panelBase, "cena11");
+	        }
+		}        
         /*
             else if(player.x < 10) {
         	Janela.cena09.timer.start();

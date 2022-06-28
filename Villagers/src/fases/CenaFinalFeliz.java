@@ -96,7 +96,7 @@ public class CenaFinalFeliz extends JPanel implements ActionListener, KeyListene
 
 	@Override
 	public void keyPressed(KeyEvent e) {		
-		if (e.getKeyCode() == KeyEvent.VK_E) {	
+		if (e.getKeyCode() == KeyEvent.VK_E) {
 			Janela.cl.show(Janela.panelBase, "intro");
 		}
 	}

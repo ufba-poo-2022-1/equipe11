@@ -46,9 +46,6 @@ public class Cena05 extends JPanel implements ActionListener, KeyListener{
 	//Selecionar o caminho trocando o parâmetro de Caminhos.
 	Caminhos caminhos = new Caminhos(4);
 	
-	//Inicializar velho
-	Velho velho = new Velho(700, 300);
-	
 	//Inicializar botao
 	BotaoE botao = new BotaoE(menina.x +40, menina.y - 50);
 	
@@ -146,7 +143,6 @@ public class Cena05 extends JPanel implements ActionListener, KeyListener{
 		
 		
 		menina.draw(g);
-		velho.draw(g);
 		
 		player.draw(g);
 		
@@ -180,9 +176,6 @@ public class Cena05 extends JPanel implements ActionListener, KeyListener{
 		
 		player.animacao(player);
 		player.colisaoTotalTela(player);
-		
-		velho.colisao(player, velho);
-		velho.animacao(player, velho);
 		
 		menina.proximidade(player, menina);
 		menina.colisao(player, menina);
