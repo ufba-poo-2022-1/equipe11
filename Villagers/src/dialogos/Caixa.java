@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
 import Interface.Intro;
+import Interface.Janela;
 import cenarios.Caminhos;
 import cenarios.Menina;
 import cenarios.MeninaBatalha;
@@ -28,11 +29,12 @@ public class Caixa {
 		
 	static int fontSize = 20;
 	public static int contador = 0;
+	public static String Frase = "";
     static Font f = new Font("Comic Sans MS", Font.BOLD, fontSize);
 	//Dialogos
   	public static String currentDialog = "";
   	public static String auxiliar = "";
-	public static String dialogos[] [] = new String[12][10];
+	public static String dialogos[] [] = new String[13][12];
 
 	public Caixa() {
 		
@@ -41,7 +43,7 @@ public class Caixa {
 		dialogos[2][1] = "Menina \n Estou um pouco longe de casa e me perdi...";
 		dialogos[2][2] = "Menina \n Posso ir com você por enquanto?";
 			
-	// Dialogos terceira tela (Cena04)
+	// Dialogos terceira tela (Cena04) 
 		dialogos[3][0] = "Menina \n Moro em uma vila próxima daqui sabe, ela foi destruída recentemente e os moradores sumiram, junto com minha \nfamília.";
 		dialogos[3][1] = "Menina \n Não consigo lembrar de nada daquele dia, tudo é tão confuso, não sei o que fazer."; 
 	
@@ -65,14 +67,14 @@ public class Caixa {
 		
 	// Dialogos sétima tela (Cena08)
 		dialogos[7][0] = "Menina \n O guerreiro famoso percebeu a doença que assolava a vila, e partiu uma jornada... ";
-		dialogos[7][1] = "Menina \n Ele retornou depois de um tempo, mas já era tarde";
+		dialogos[7][1] = "Menina \n Ele retornou depois de um tempo, mas já era tarde.";
 		dialogos[7][2] = "Menina \n O anél... me fez fazer coisas horríveis! Não era eu, eu juro!";
 		dialogos[7][3] = "Menina \n Estou sentindo ele de novo, tenho que correr, não quero machucar você também!";
 		
 	// Dialogos nona tela (Cena10)
-		dialogos[9][0] = "Guerreiro \n Olá aldeão, pela sua cara já sei que descobriu certas coisas sobre aquela vila";
+		dialogos[9][0] = "Guerreiro \n Olá aldeão, pela sua cara já sei que descobriu certas coisas sobre aquela vila.";
 		dialogos[9][1] = "Guerreiro \n Aquela menina já sofreu muito, não merecia nada daquela tragédia...";
-		dialogos[9][2] = "Guerreiro \n Quando voltei com a cura, todos já estavam mortos, e só ela restava";
+		dialogos[9][2] = "Guerreiro \n Quando voltei com a cura, todos já estavam mortos, e só ela restava.";
 		dialogos[9][3] = "Guerreiro \n O ser maligno que a possuia era muito forte, eu mal conseguia lutar contra ele";
 		dialogos[9][4] = "Guerreiro \n A minha breve vitória se deu por uma oração que aprendi na viagem, talvez possa funcionar de novo.";
 		dialogos[9][5] = "Guerreiro \n Porém ela não é tão forte como antes, acho que se você lutar, deve ter uma chance boa de ganhar.";
@@ -81,17 +83,22 @@ public class Caixa {
 	// Dialogos décima tela (Cena11)
 		dialogos[10][0] = "Menina \n Então agora você já sabe de tudo, está está aqui para me matar?";
 		dialogos[10][1] = "Menina \n Eu não consigo controlar meu corpo, espero que esteja preparado.";
-		dialogos[10][2] = "Menina \n Pelo menos tive uma pessoa para passsar meus ultimos suspiros, lhe agradeço por isso";
-		dialogos[10][3] = "Menina \n Me perdoe pelo que irá acontecer agora";
-		// Primeira Batida
+		dialogos[10][2] = "Menina \n Pelo menos tive uma pessoa para passsar meus ultimos suspiros, lhe agradeço por isso.";
+		dialogos[10][3] = "Menina \n Me perdoe pelo que irá acontecer agora.";
+		// Primeira Batida(Player)
 		dialogos[10][4] = "Menina \n Argh, essa espada daquele guerreiro é forte!";
-		// Segunda Batida
-		dialogos[10][5] = "Menina \n Continue! Acho que o ser não deve aguentar muito mais!";
-		// Terceira Batida
-		dialogos[10][6] = "Menina \n Finalmente, vejo o fim desse sofrimento";
-		dialogos[10][7] = "Menina \n O fim que você, aldeão, quiser me dar, aceitarei.";
+		// Segunda Batida(Menina)
+		dialogos[10][5] = "Menina \n Não consigo me controlar...";
+		// Terceira Batida(Player)
+		dialogos[10][6] = "Menina \n Continue! Acho que o ser não deve aguentar muito mais!";
+		// Quarta Batida(Menina)
+		dialogos[10][7] = "Menina \n Por favo resista esse ataque!";
+		// Quinta Batida(Player)
+		dialogos[10][8] = "Menina \n Finalmente, vejo o fim desse sofrimento.";
+		dialogos[10][9] = "Menina \n O fim que você, aldeão, quiser me dar, aceitarei.";
 		//Escolha
-		dialogos [10][8] = "Deseja poupar a menina com a oração ou mata-la com a espada? \n \n  POUPAR[P]                                             MATAR[M]";
+		dialogos[10][10] = "Deseja poupar a menina com a oração ou mata-la com a espada? \n \n  POUPAR[P]                                             MATAR[M]";
+		
 	}
 	
 	public static void DialogoM(Graphics g, Menina menina) {
@@ -103,19 +110,20 @@ public class Caixa {
 		int x = 50, y = 500, width = 1250, height= Intro.SCREEN_HEIGHT/4;
 		drawSubWindow(g2,x, y, width, height);
 		
-		//Imprimir frase letra por letra na caixa
-		if((menina.proxima && auxiliar.length() < currentDialog.length()) &&
-		(menina.personagemDelay <= menina.TrocaPosicao*2)) {
-			auxiliar = auxiliar + currentDialog.charAt(contador);
-			contador++;			
-			Menina.dialogM = true;
-		}
+		
 		
 		g.setColor(Color.white);
 		g.setFont(f);
 		
 		for(String line : currentDialog.split("\n")) {
 			if(cena >= 0  && dialogos[cena][fala] != null) {
+				//Imprimir frase letra por letra na caixa
+				if((menina.proxima && auxiliar.length() < currentDialog.length()) &&
+				(menina.personagemDelay <= menina.TrocaPosicao*2)) {
+					auxiliar = auxiliar + currentDialog.charAt(contador);
+					contador++;			
+					Menina.dialogM = true;
+				}
 				g.drawString(line, x+30, y+35);
 				y+= 45;
 				x+= 10;
@@ -149,7 +157,7 @@ public class Caixa {
 		(menina.personagemDelay <= menina.TrocaPosicao*2)) {
 			auxiliar = auxiliar + currentDialog.charAt(contador);
 			contador++;			
-			Menina.dialogM = true;
+			Velho.dialogV = true;
 		}
 		
 		g.setColor(Color.white);
@@ -174,6 +182,36 @@ public class Caixa {
 			}
 		}
 		
+	}
+	public static void Dialogo(Graphics g) {
+
+		//Window
+		Graphics2D g2 = (Graphics2D) g;
+		
+		//Janela de texto
+		int x = 50, y = 500, width = 1250, height= Intro.SCREEN_HEIGHT/4;
+		drawSubWindow(g2,x, y, width, height);
+		
+		g.setColor(Color.white);
+		g.setFont(f);
+		
+		for(String line : currentDialog.split("\n")) {
+			if(cena >= 0  && dialogos[cena][fala] != null) {
+				g.drawString(line, x+30, y+35);
+				y+= 45;
+				x+= 10;
+		
+				currentDialog = dialogos[cena][fala];
+			}
+			else {
+				contador = 0;
+				currentDialog = "";
+				auxiliar = "";
+				fala = 0;
+				auxPassagemdeDialogo = 0;
+				CaixaMenina = false;
+			}
+		}
 	}
 	
 	public static void DialogoV(Graphics g, Velho velho) {
